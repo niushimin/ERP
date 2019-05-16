@@ -1,1 +1,1 @@
-what a fu*k!
+damn it!
