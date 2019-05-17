@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp4j.ssm.mapper.DeviceCheckMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.DeviceCheck">
+    <id column="device_check_id" jdbcType="VARCHAR" property="deviceCheckId" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="device_check_emp_id" jdbcType="VARCHAR" property="deviceCheckEmpId" />
+    <result column="device_check_date" jdbcType="TIMESTAMP" property="deviceCheckDate" />
+    <result column="device_check_result" jdbcType="VARCHAR" property="deviceCheckResult" />
+    <result column="device_check_fault_id" jdbcType="VARCHAR" property="deviceCheckFaultId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    device_check_id, device_id, device_check_emp_id, device_check_date, device_check_result, 
+    device_check_fault_id
+  </sql>
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.DeviceCheckExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from device_check
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device_check
+    where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from device_check
+    where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.DeviceCheckExample">
+    delete from device_check
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.DeviceCheck">
+    insert into device_check (device_check_id, device_id, device_check_emp_id, 
+      device_check_date, device_check_result, device_check_fault_id
+      )
+    values (#{deviceCheckId,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{deviceCheckEmpId,jdbcType=VARCHAR}, 
+      #{deviceCheckDate,jdbcType=TIMESTAMP}, #{deviceCheckResult,jdbcType=VARCHAR}, #{deviceCheckFaultId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.DeviceCheck">
+    insert into device_check
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceCheckId != null">
+        device_check_id,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="deviceCheckEmpId != null">
+        device_check_emp_id,
+      </if>
+      <if test="deviceCheckDate != null">
+        device_check_date,
+      </if>
+      <if test="deviceCheckResult != null">
+        device_check_result,
+      </if>
+      <if test="deviceCheckFaultId != null">
+        device_check_fault_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceCheckId != null">
+        #{deviceCheckId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCheckEmpId != null">
+        #{deviceCheckEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCheckDate != null">
+        #{deviceCheckDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceCheckResult != null">
+        #{deviceCheckResult,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCheckFaultId != null">
+        #{deviceCheckFaultId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.DeviceCheckExample" resultType="java.lang.Long">
+    select count(*) from device_check
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update device_check
+    <set>
+      <if test="record.deviceCheckId != null">
+        device_check_id = #{record.deviceCheckId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceId != null">
+        device_id = #{record.deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceCheckEmpId != null">
+        device_check_emp_id = #{record.deviceCheckEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceCheckDate != null">
+        device_check_date = #{record.deviceCheckDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deviceCheckResult != null">
+        device_check_result = #{record.deviceCheckResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceCheckFaultId != null">
+        device_check_fault_id = #{record.deviceCheckFaultId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update device_check
+    set device_check_id = #{record.deviceCheckId,jdbcType=VARCHAR},
+      device_id = #{record.deviceId,jdbcType=VARCHAR},
+      device_check_emp_id = #{record.deviceCheckEmpId,jdbcType=VARCHAR},
+      device_check_date = #{record.deviceCheckDate,jdbcType=TIMESTAMP},
+      device_check_result = #{record.deviceCheckResult,jdbcType=VARCHAR},
+      device_check_fault_id = #{record.deviceCheckFaultId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.DeviceCheck">
+    update device_check
+    <set>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCheckEmpId != null">
+        device_check_emp_id = #{deviceCheckEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCheckDate != null">
+        device_check_date = #{deviceCheckDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceCheckResult != null">
+        device_check_result = #{deviceCheckResult,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCheckFaultId != null">
+        device_check_fault_id = #{deviceCheckFaultId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.DeviceCheck">
+    update device_check
+    set device_id = #{deviceId,jdbcType=VARCHAR},
+      device_check_emp_id = #{deviceCheckEmpId,jdbcType=VARCHAR},
+      device_check_date = #{deviceCheckDate,jdbcType=TIMESTAMP},
+      device_check_result = #{deviceCheckResult,jdbcType=VARCHAR},
+      device_check_fault_id = #{deviceCheckFaultId,jdbcType=VARCHAR}
+    where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
+  </update>
+</mapper>
