@@ -18,7 +18,27 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="typeAliasesPackage" value="com.erp4j.ssm.pojo"/>-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            params=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+        <property name="typeAliasesPackage" value="com.erp4j.ssm.pojo.quality.monitor"/>
+    </bean>
+
+    <bean id="pageHelper" class="com.github.pagehelper.PageInterceptor">
+        <property name="properties">
+            <value>
+                params=mysql
+            </value>
+        </property>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

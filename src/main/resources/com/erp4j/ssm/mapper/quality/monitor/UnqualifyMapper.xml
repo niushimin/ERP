@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp4j.ssm.mapper.quality.monitor.UnqualifyMapper">
+
+    <resultMap id="unqualifyApplyQueriesMapper" type="unqualifyapplypojo">
+        <result property="unqualifyApplyId" column="unqualify_apply_id"/>
+        <result property="unqualifyItem" column="unqualify_item"/>
+        <result property="unqualifyCount" column="unqualify_count"/>
+        <result property="assemblyDate" column="assembly_date"/>
+        <result property="empId" column="emp_id"/>
+        <result property="applyDate" column="apply_date"/>
+        <result property="note" column="note"/>
+
+        <!--<result property="productName" column=""-->
+    </resultMap>
+    <select id="unqualifyApplyQueries" resultMap="unqualifyApplyQueriesMapper">
+        select unqualify_apply_id ,unqualify_item  from unqualify_apply
+    </select>
+</mapper>
