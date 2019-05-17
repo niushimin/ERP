@@ -15,4 +15,7 @@
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--restful风格过滤静态资源-->
+    <!--<mvc:resources location="/js/" mapping="/js/**"> </mvc:resources>-->
 </beans>
