@@ -11,9 +11,9 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/erp?serverTimezone=GMT&amp;useSSL=false"/>
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.5.20:3306/erp?serverTimezone=GMT&amp;useSSL=false"/>
         <property name="user" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="password" value="root"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
