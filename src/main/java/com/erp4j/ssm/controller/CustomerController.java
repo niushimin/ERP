@@ -34,7 +34,7 @@ public class CustomerController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public Map<String, Object> list(String page, String rows) {
+    public Map list(String page, String rows) {
         int total = customerService.findTotal();
         List<Custom> list = customerService.findRows();
 
