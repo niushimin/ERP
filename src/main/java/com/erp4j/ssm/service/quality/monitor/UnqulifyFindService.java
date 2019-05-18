@@ -4,5 +4,5 @@ import com.erp4j.ssm.pojo.quality.monitor.UnqualifyApplyPojo;
 
 public interface UnqulifyFindService {
 
-    UnqualifyApplyPojo[] queryList(int page, int rows);
+    UnqualifyApplyPojo[] queryUnqulifyApplyAll(int page, int rows);
 }

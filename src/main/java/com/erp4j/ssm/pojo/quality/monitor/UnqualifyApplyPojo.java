@@ -13,7 +13,7 @@ public class UnqualifyApplyPojo {
 
     private Date assemblyDate;
 
-    private String empId;
+    private String empName;
 
     private Date applyDate;
 
@@ -59,12 +59,12 @@ public class UnqualifyApplyPojo {
         this.assemblyDate = assemblyDate;
     }
 
-    public String getEmpId() {
-        return empId;
+    public String getEmpName() {
+        return empName;
     }
 
-    public void setEmpId(String empId) {
-        this.empId = empId;
+    public void setEmpName(String empName) {
+        this.empName = empName;
     }
 
     public Date getApplyDate() {

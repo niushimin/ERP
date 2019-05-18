@@ -18,9 +18,9 @@ public class UnqulifyFindServiceImpl implements UnqulifyFindService {
      * @return
      */
     @Override
-    public UnqualifyApplyPojo[] queryList(int page, int rows) {
+    public UnqualifyApplyPojo[] queryUnqulifyApplyAll(int page, int rows) {
         //PageHelper.startPage(1, 10);
-        UnqualifyApplyPojo[] unqualifyApplyQueries = unqualifyMapper.unqualifyApplyQueries(page,rows);
+        UnqualifyApplyPojo[] unqualifyApplyQueries = unqualifyMapper.queryUnqulifyApplyAll(page,rows);
         return unqualifyApplyQueries;
     }
 }

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UnqualifyMapper {
 
-    UnqualifyApplyPojo[] unqualifyApplyQueries(@Param("page") int page, @Param("page") int rows);
+    UnqualifyApplyPojo[] queryUnqulifyApplyAll(@Param("page") int page, @Param("page") int rows);
 }
