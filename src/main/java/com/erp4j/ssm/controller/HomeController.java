@@ -38,6 +38,7 @@ public class HomeController {
         list.add("product:delete");
 
         //设备管理
+
         list.add("device:add");
         list.add("device:edit");
         list.add("device:delete");
