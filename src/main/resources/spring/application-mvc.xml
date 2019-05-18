@@ -16,7 +16,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--<mvc:resources location="/WEB-INF/" mapping="/**"> </mvc:resources>-->
     <!--处理静态资源 地址映射-->
     <mvc:resources mapping="/**" location="/WEB-INF/"/>
+
 </beans>

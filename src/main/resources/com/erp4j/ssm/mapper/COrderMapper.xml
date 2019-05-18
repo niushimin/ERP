@@ -320,4 +320,8 @@
       status = #{status,jdbcType=INTEGER}
     where order_id = #{orderId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findTotal" resultType="int">
+    select count(order_id) from c_order;
+  </select>
 </mapper>
