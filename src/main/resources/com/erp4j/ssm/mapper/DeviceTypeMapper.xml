@@ -11,6 +11,68 @@
     <result column="device_type_quantity" jdbcType="INTEGER" property="deviceTypeQuantity" />
     <result column="device_type_warranty" jdbcType="TIMESTAMP" property="deviceTypeWarranty" />
   </resultMap>
+
+  <!--新增-->
+  <resultMap id="BaseResultMap1" type="com.erp4j.ssm.pojo.device.DeviceTypeVo">
+    <id column="device_type_id" jdbcType="VARCHAR" property="deviceTypeId" />
+    <result column="device_type_name" jdbcType="VARCHAR" property="deviceTypeName" />
+    <result column="device_type_model" jdbcType="VARCHAR" property="deviceTypeModel" />
+    <result column="device_type_spec" jdbcType="VARCHAR" property="deviceTypeSpec" />
+    <result column="device_type_supplier" jdbcType="VARCHAR" property="deviceTypeSupplier" />
+    <result column="device_type_producer" jdbcType="VARCHAR" property="deviceTypeProducer" />
+    <result column="device_type_quantity" jdbcType="INTEGER" property="deviceTypeQuantity" />
+    <result column="device_type_warranty" jdbcType="TIMESTAMP" property="deviceTypeWarranty" />
+    <result column="device_type_idd" property="deviceTypeIdd"/>
+  </resultMap>
+
+  <select id="find" resultMap="BaseResultMap1">
+       select
+			device_type_id,
+			device_type_id as device_type_idd,
+			device_type_name,
+			device_type_model,
+			device_type_spec,
+			device_type_supplier,
+			device_type_producer,
+			device_type_quantity,
+			device_type_warranty
+		from
+			device_type
+		order by device_type_id ASC
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--逆向工程生成-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

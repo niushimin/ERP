@@ -811,7 +811,7 @@ SWFUpload.prototype.stopUpload = function () {
  * Settings methods
  *   These methods change the SWFUpload settings.
  *   SWFUpload settings should not be changed directly on the settings object
- *   since many of the settings need to be passed to Flash in order to take
+ *   since many of the settings need to be passed to Flash in corder to take
  *   effect.
  * *********************** */
 
@@ -1006,7 +1006,7 @@ SWFUpload.prototype.setButtonCursor = function (cursor) {
 
 	Because the ExternalInterface library is buggy the event calls
 	are added to a queue and the queue then executed by a setTimeout.
-	This ensures that events are executed in a determinate order and that
+	This ensures that events are executed in a determinate corder and that
 	the ExternalInterface bugs are avoided.
 ******************************* */
 
@@ -1037,7 +1037,7 @@ SWFUpload.prototype.queueEvent = function (handlerName, argumentArray) {
 };
 
 // Private: Causes the next event in the queue to be executed.  Since events are queued using a setTimeout
-// we must queue them in order to garentee that they are executed in order.
+// we must queue them in corder to garentee that they are executed in corder.
 SWFUpload.prototype.executeNextEvent = function () {
 	// Warning: Don't call this.debug inside here or you'll create an infinite loop
 

@@ -3,24 +3,13 @@ package com.erp4j.ssm.mapper;
 import com.erp4j.ssm.pojo.Device;
 import com.erp4j.ssm.pojo.DeviceExample;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.device.DeviceVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface DeviceMapper {
 
-   /* List<Device> find();*/
-
-
-
-
-
-
-
-
-
-
-
-
-
+    List<DeviceVo> findDeviceList(DeviceVo deviceVo);
 
 
     //逆向工程生成
@@ -45,4 +34,7 @@ public interface DeviceMapper {
     int updateByPrimaryKeySelective(Device record);
 
     int updateByPrimaryKey(Device record);
+
+
+
 }
