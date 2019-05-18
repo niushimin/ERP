@@ -1,13 +1,11 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
-<<<<<<< HEAD:src/main/java/com/erp4j/ssm/controller/quality/monitor/EmployeeController.java
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
 import com.erp4j.ssm.pojo.Employee;
-=======
-import com.erp4j.ssm.pojo.ResponseVo;
+
+
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
 import com.erp4j.ssm.pojo.product.Product;
->>>>>>> af593ec04339fac75599caff3861ae2b1ef12acc:src/main/java/com/erp4j/ssm/controller/quality/monitor/UnqulifyController.java
 import com.erp4j.ssm.service.quality.monitor.UnqulifyFindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

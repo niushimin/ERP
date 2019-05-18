@@ -1,6 +1,6 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
-import com.erp4j.ssm.pojo.Product;
+import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.service.quality.monitor.UnqulifyFindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
