@@ -9,7 +9,7 @@
 
     <context:component-scan base-package="com.erp4j.ssm.controller"/>
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -19,4 +19,10 @@
     <!--处理静态资源 地址映射-->
     <mvc:resources mapping="/**" location="/WEB-INF/"/>
 
+    <!--convertor-->
+    <bean id="conversionServiceFactoryBean" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters" ref="dateConverter"/>
+    </bean>
+    <!--字符串转成日期类型-->
+    <bean id="dateConverter" class="com.erp4j.ssm.controller.converter.DateConverter"/>
 </beans>
