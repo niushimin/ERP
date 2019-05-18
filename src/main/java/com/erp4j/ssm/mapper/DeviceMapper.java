@@ -6,6 +6,24 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface DeviceMapper {
+
+   /* List<Device> find();*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //逆向工程生成
     long countByExample(DeviceExample example);
 
     int deleteByExample(DeviceExample example);
