@@ -2,6 +2,7 @@ package com.erp4j.ssm.pojo.corder;
 
 import com.erp4j.ssm.pojo.custom.Custom;
 import com.erp4j.ssm.pojo.product.Product;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,8 +14,9 @@ public class COrder {
 
     private Product product;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderDate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date requestDate;
 
     private String note;
@@ -126,4 +128,5 @@ public class COrder {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
 }

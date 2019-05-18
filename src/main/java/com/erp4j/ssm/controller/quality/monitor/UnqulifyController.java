@@ -25,13 +25,7 @@ public class UnqulifyController {
 
         return responseVo;
     }
-    /*返回产品详细信息*/
-    @ResponseBody
-    @RequestMapping("product/get/{productId}")
-    public Product selectProductById(@PathVariable("productId") String productId){
-        Product product = unqulifyFindService.selectProductById(productId);
-        return product;
-    }
+
     /*返回申请人详细信息*/
     @ResponseBody
     @RequestMapping("employee/get/{empId}")

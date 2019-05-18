@@ -34,4 +34,10 @@ public class COrderServiceImpl implements COrderService {
         int total = (int) orderMapper.countByExample(new COrderExample());
         return total;
     }
+
+    @Override
+    public boolean insertCOrder(COrder cOrder) {
+
+        return false;
+    }
 }

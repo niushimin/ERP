@@ -37,6 +37,11 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
+
+        list.add("work:add");
+        list.add("work:edit");
+        list.add("work:delete");
+
         session.setAttribute("sysPermissionList",list);
         return "home";
     }

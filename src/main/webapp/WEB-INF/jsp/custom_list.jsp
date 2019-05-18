@@ -38,8 +38,7 @@
 		</c:if>
 		<c:if test="${per=='custom:delete' }" >
 		    <div style="float: left;">  
-		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel"
-		        	 onclick="custom_delete()">删除</a>  
+		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="custom_delete()">删除</a>
 		    </div>  
 		</c:if>
 	</c:forEach>
@@ -155,7 +154,7 @@ function doSearch_custom(value,name){ //用户输入用户名,点击搜素,触�
 		}
 	}
 	
-	function  openCustomNote(index){ 
+	function openCustomNote(index){
 		
 		var row = onCustomClickRow(index);
 		$("#customNoteDialog").dialog({

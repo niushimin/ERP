@@ -15,4 +15,14 @@ public interface ProductService {
     List<Product> queryProduct(int page, int rows);
 
     int queryTotal();
+
+    boolean insertCustom(Product product);
+
+    boolean updateCustom(Product product);
+
+    boolean deleteMultiCustom(List<String> ids);
+
+    Product queryProductById(String productId);
+
+    List<Product> queryProduct();
 }

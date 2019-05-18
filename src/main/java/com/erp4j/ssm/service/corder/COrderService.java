@@ -16,4 +16,5 @@ public interface COrderService {
 
     int queryTotal();
 
+    boolean insertCOrder(COrder cOrder);
 }
