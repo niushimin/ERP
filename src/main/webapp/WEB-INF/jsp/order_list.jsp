@@ -55,7 +55,6 @@
         <input id="search_text_order" class="easyui-searchbox"  
             data-options="searcher:doSearch_order,prompt:'请输入...',menu:'#menu_order'"  
             style="width:250px;vertical-align: middle;">
-        </input>
         <div id="menu_order" style="width:120px"> 
 			<div data-options="name:'orderId'">订单编号</div> 
 			<div data-options="name:'orderCustom'">客户名称</div>
