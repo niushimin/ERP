@@ -1,4 +1,4 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.product;
 
 import java.util.ArrayList;
 import java.util.List;

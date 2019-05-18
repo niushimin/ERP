@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.corder;
 
-import com.erp4j.ssm.pojo.COrder;
-import com.erp4j.ssm.pojo.COrderExample;
+import com.erp4j.ssm.pojo.corder.COrder;
+import com.erp4j.ssm.pojo.corder.COrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,5 +28,5 @@ public interface COrderMapper {
 
     int updateByPrimaryKey(COrder record);
 
-    int findTotal();
+    List<COrder> queryCorder();
 }

@@ -280,7 +280,7 @@ function doSearch_manufacture(value,name){ //用户输入用户名,点击搜素,
 		var row = onManufactureClickRow(index);
 		$("#manuOrderInfo").dialog({
     		onOpen :function(){
-    			$.get("order/get/"+row.cOrder.orderId,'',function(data){
+    			$.get("corder/get/"+row.cOrder.orderId,'',function(data){
     				manuOrderEditor = TAOTAO.createEditor("#manuOrderEditForm [name=note]");	
  		    		//回显数据
  	        		data.customId = data.custom.customId; 
@@ -357,7 +357,7 @@ function doSearch_manufacture(value,name){ //用户输入用户名,点击搜素,
 	}
 	
 	function submitManuOrderEditForm(){
-		$.get("order/edit_judge",'',function(data){
+		$.get("corder/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
@@ -366,7 +366,7 @@ function doSearch_manufacture(value,name){ //用户输入用户名,点击搜素,
     				return ;
     			}
     			manuOrderEditor.sync();
-    			$.post("order/update_all",$("#manuOrderEditForm").serialize(), function(data){
+    			$.post("corder/update_all",$("#manuOrderEditForm").serialize(), function(data){
     				if(data.status == 200){
     					$.messager.alert('提示','修改订单成功!','info',function(){
     						$("#manuOrderInfo").dialog("close");

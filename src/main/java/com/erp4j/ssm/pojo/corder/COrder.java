@@ -1,4 +1,7 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.corder;
+
+import com.erp4j.ssm.pojo.custom.Custom;
+import com.erp4j.ssm.pojo.product.Product;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -6,9 +9,9 @@ import java.util.Date;
 public class COrder {
     private String orderId;
 
-    private String customId;
+    private Custom custom;
 
-    private String productId;
+    private Product product;
 
     private Date orderDate;
 
@@ -33,23 +36,23 @@ public class COrder {
     }
 
     public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+        this.orderId = orderId;
     }
 
-    public String getCustomId() {
-        return customId;
+    public Custom getCustom() {
+        return custom;
     }
 
-    public void setCustomId(String customId) {
-        this.customId = customId == null ? null : customId.trim();
+    public void setCustom(Custom custom) {
+        this.custom = custom;
     }
 
-    public String getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId == null ? null : productId.trim();
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Date getOrderDate() {
@@ -73,7 +76,7 @@ public class COrder {
     }
 
     public void setNote(String note) {
-        this.note = note == null ? null : note.trim();
+        this.note = note;
     }
 
     public Integer getQuantity() {
@@ -97,7 +100,7 @@ public class COrder {
     }
 
     public void setUnit(String unit) {
-        this.unit = unit == null ? null : unit.trim();
+        this.unit = unit;
     }
 
     public String getImage() {
@@ -105,7 +108,7 @@ public class COrder {
     }
 
     public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
+        this.image = image;
     }
 
     public String getFile() {
@@ -113,7 +116,7 @@ public class COrder {
     }
 
     public void setFile(String file) {
-        this.file = file == null ? null : file.trim();
+        this.file = file;
     }
 
     public Integer getStatus() {
@@ -122,23 +125,5 @@ public class COrder {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "COrder{" +
-                "orderId='" + orderId + '\'' +
-                ", customId='" + customId + '\'' +
-                ", productId='" + productId + '\'' +
-                ", orderDate=" + orderDate +
-                ", requestDate=" + requestDate +
-                ", note='" + note + '\'' +
-                ", quantity=" + quantity +
-                ", unitPrice=" + unitPrice +
-                ", unit='" + unit + '\'' +
-                ", image='" + image + '\'' +
-                ", file='" + file + '\'' +
-                ", status=" + status +
-                '}';
     }
 }

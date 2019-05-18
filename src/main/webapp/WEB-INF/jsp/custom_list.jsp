@@ -23,7 +23,7 @@
     </thead>
 </table>
 
-<div  id="toolbar_custom" style=" height: 22px; padding: 3px 11px; background: #fafafa;">  
+<div id="toolbar_custom" style=" height: 22px; padding: 3px 11px; background: #fafafa;">
 	
 	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
 		<c:if test="${per=='custom:add' }" >
@@ -54,7 +54,6 @@
         <input id="search_text_custom" class="easyui-searchbox"  
             data-options="searcher:doSearch_custom,prompt:'请输入...',menu:'#menu_custom'"  
             style="width:250px;vertical-align: middle;">
-        </input>
         <div id="menu_custom" style="width:120px"> 
 			<div data-options="name:'customId'">客户编号</div> 
 			<div data-options="name:'customName'">客户名称</div>

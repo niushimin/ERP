@@ -4,6 +4,7 @@ import com.erp4j.ssm.pojo.UnqualifyApply;
 import com.erp4j.ssm.pojo.UnqualifyApplyExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 public interface UnqualifyApplyMapper {
     long countByExample(UnqualifyApplyExample example);

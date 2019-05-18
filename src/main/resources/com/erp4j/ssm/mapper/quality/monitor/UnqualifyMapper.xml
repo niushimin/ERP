@@ -9,12 +9,14 @@
         <result property="assemblyDate" column="assembly_date"/>
         <result property="applyDate" column="apply_date"/>
         <result property="note" column="note"/>
+        <result property="productId" column="product_id"/>
+        <result property="empId" column="emp_id"/>
 
-        <result property="productName" column="product_name"/>
         <result property="empName" column="emp_name"/>
+        <result property="productName" column="product_name"/>
     </resultMap>
     <select id="queryUnqulifyApplyAll" resultMap="BaseResultMap">
-       select unqualify_apply_id ,unqualify_item,unqualify_count,assembly_date,apply_date,un.note,product_name,em.emp_name
+       select unqualify_apply_id ,un.product_id,un.emp_id,unqualify_item,unqualify_count,assembly_date,apply_date,un.note,product_name,em.emp_name
         from unqualify_apply un
         left join product pr
         on un.product_id=pr.product_id

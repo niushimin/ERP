@@ -326,7 +326,7 @@ function doSearch_fCountCheck(value,name){ //用户输入用户名,点击搜素,
 		var row = onFCountClickRow(index);
 		$("#fCountOrderInfo").dialog({
     		onOpen :function(){
-    			$.get("order/get/"+row.orderId,'',function(data){
+    			$.get("corder/get/"+row.orderId,'',function(data){
     				fCountCheckOrderEditor = TAOTAO.createEditor("#fCountOrderEditForm [name=note]");	
  		    		//回显数据
  	        		data.customId = data.custom.customId; 
@@ -399,7 +399,7 @@ function doSearch_fCountCheck(value,name){ //用户输入用户名,点击搜素,
 	}
 	
 	function submitfCountOrderEditForm(){
-		$.get("order/edit_judge",'',function(data){
+		$.get("corder/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
@@ -409,7 +409,7 @@ function doSearch_fCountCheck(value,name){ //用户输入用户名,点击搜素,
     			}
     			fCountCheckOrderEditor.sync();
     			
-    			$.post("order/update_all",$("#fCountOrderEditForm").serialize(), function(data){
+    			$.post("corder/update_all",$("#fCountOrderEditForm").serialize(), function(data){
     				if(data.status == 200){
     					$.messager.alert('提示','修改订单信息成功!','info',function(){
     						$("#fCountOrderInfo").dialog("close");

@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.custom;
 
-import com.erp4j.ssm.pojo.Custom;
-import com.erp4j.ssm.pojo.CustomExample;
+import com.erp4j.ssm.pojo.custom.Custom;
+import com.erp4j.ssm.pojo.custom.CustomExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
