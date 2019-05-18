@@ -1,6 +1,10 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
-import com.erp4j.ssm.pojo.ResponseVo;
+import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
+import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
+import com.erp4j.ssm.pojo.Employee;
+
+
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
 import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.service.quality.monitor.UnqulifyFindService;
@@ -10,8 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
-public class UnqulifyController {
+@RequestMapping("/employee")
+public class EmployeeController {
 
     @Autowired
     UnqulifyFindService unqulifyFindService;
@@ -25,18 +32,22 @@ public class UnqulifyController {
 
         return responseVo;
     }
-    /*返回产品详细信息*/
-    @ResponseBody
-    @RequestMapping("product/get/{productId}")
-    public Product selectProductById(@PathVariable("productId") String productId){
-        Product product = unqulifyFindService.selectProductById(productId);
-        return product;
-    }
+
     /*返回申请人详细信息*/
     @ResponseBody
-    @RequestMapping("employee/get/{empId}")
+    @RequestMapping("/get/{empId}")
     public EmployeeForm selectEmployeeById(@PathVariable("empId") String empId){
         EmployeeForm employeeForm = unqulifyFindService.selectEmployeeById(empId);
         return employeeForm;
     }
+    /*返回所有申请人信息*/
+    @ResponseBody
+    @RequestMapping("/get_data")
+    public List<Employee> selectEmployAll(){
+        List<Employee> employees = unqulifyFindService.selectEmployAll();
+        return employees;
+    }
+
+
+
 }

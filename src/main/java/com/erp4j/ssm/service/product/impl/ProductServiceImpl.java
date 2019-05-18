@@ -34,4 +34,37 @@ public class ProductServiceImpl implements ProductService {
         int total = (int) productMapper.countByExample(new ProductExample());
         return total;
     }
+
+    @Override
+    public boolean insertCustom(Product product) {
+        int result = productMapper.insertSelective(product);
+        return result == 1;
+    }
+
+    @Override
+    public boolean updateCustom(Product product) {
+        int result = productMapper.updateByPrimaryKey(product);
+        return result == 1;
+    }
+
+    @Override
+    public boolean deleteMultiCustom(List<String> ids) {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andProductIdIn(ids);
+        int result = productMapper.deleteByExample(productExample);
+        return result == ids.size();
+    }
+
+    @Override
+    public Product queryProductById(String productId) {
+        Product product = productMapper.selectByPrimaryKey(productId);
+        return product;
+    }
+
+    @Override
+    public List<Product> queryProduct() {
+        List<Product> products = productMapper.selectByExample(new ProductExample());
+        return products;
+    }
 }

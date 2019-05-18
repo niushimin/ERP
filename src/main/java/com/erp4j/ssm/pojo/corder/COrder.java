@@ -126,4 +126,5 @@ public class COrder {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
 }

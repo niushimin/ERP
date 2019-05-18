@@ -50,6 +50,7 @@
 			device_manufacture_date,
 			device_service_life,
 			device_keeper_id,
+<<<<<<< HEAD:src/main/resources/com/erp4j/ssm/mapper/device/DeviceMapper.xml
 			em.emp_name as device_keeper,
 			de.note
     from device de
@@ -62,6 +63,20 @@
 
 
 
+=======
+			emp_name as device_keeper,
+			note
+		FROM
+			device,
+			device_type,
+			employee
+		WHERE
+			device.device_type_id = device_type.device_type_id
+		AND device.device_keeper_id = employee.emp_id
+
+		corder by device_id ASC
+	</select>
+>>>>>>> 6f63bab88135148464543610a8522303cbfb6bde:src/main/resources/com/erp4j/ssm/mapper/DeviceMapper.xml
 
 
     <!--逆向工程生成-->

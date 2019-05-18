@@ -288,4 +288,8 @@
       note = #{note,jdbcType=VARCHAR}
     where custom_id = #{customId,jdbcType=VARCHAR}
   </update>
+
+  <delete id="deleteMultiCustom">
+
+  </delete>
 </mapper>

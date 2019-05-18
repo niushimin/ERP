@@ -297,7 +297,6 @@ function doSearch_work(value,name){ //用户输入用户名,点击搜素,触发�
 		$("#workProductInfo").dialog({
     		onOpen :function(){
     			$.get("product/get/"+row.product.productId,'',function(data){
-    				
     				workProductEditor = TAOTAO.createEditor("#workProductEditForm [name=note]");	
 		    		//回显数据
 		    		$("#workProductEditForm").form("load", data);

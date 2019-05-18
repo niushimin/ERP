@@ -27,4 +27,6 @@ public interface CustomMapper {
     int updateByPrimaryKeySelective(Custom record);
 
     int updateByPrimaryKey(Custom record);
+
+    int deleteMultiCustom(int[] ids);
 }

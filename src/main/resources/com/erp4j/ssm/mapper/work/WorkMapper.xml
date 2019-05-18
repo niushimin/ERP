@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.WorkMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Work">
+<mapper namespace="com.erp4j.ssm.mapper.work.WorkMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.work.Work">
     <id column="work_id" jdbcType="VARCHAR" property="workId" />
     <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
@@ -70,7 +69,7 @@
   <sql id="Base_Column_List">
     work_id, process_number, product_id, process_id, device_id, rating
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.WorkExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.work.WorkExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +93,13 @@
     delete from work
     where work_id = #{workId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.WorkExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.work.WorkExample">
     delete from work
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Work">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.work.Work">
     insert into work (work_id, process_number, product_id, 
       process_id, device_id, rating
       )
@@ -108,7 +107,7 @@
       #{processId,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{rating,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Work">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.work.Work">
     insert into work
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="workId != null">
@@ -151,7 +150,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.WorkExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.work.WorkExample" resultType="java.lang.Long">
     select count(*) from work
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +194,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Work">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.work.Work">
     update work
     <set>
       <if test="processNumber != null">
@@ -216,7 +215,7 @@
     </set>
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Work">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.work.Work">
     update work
     set process_number = #{processNumber,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=VARCHAR},
@@ -225,4 +224,20 @@
       rating = #{rating,jdbcType=INTEGER}
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
+
+  <resultMap id="workMap" type="com.erp4j.ssm.pojo.work.Work">
+    <id column="work_id" jdbcType="VARCHAR" property="workId" />
+    <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
+    <result column="rating" jdbcType="INTEGER" property="rating" />
+    <association property="product" column="product_id" select="com.erp4j.ssm.mapper.product.ProductMapper.selectByPrimaryKey"/>
+    <association property="process" column="process_id" select="com.erp4j.ssm.mapper.ProcessMapper.selectByPrimaryKey"/>
+    <association property="device" column="device_id" select="com.erp4j.ssm.mapper.DeviceMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+  <select id="queryWork" resultMap="workMap">
+    select
+    <include refid="Base_Column_List" />
+    from work
+  </select>
+
 </mapper>

@@ -133,10 +133,10 @@
 		}
 		//同步文本框中的订单要求
 		orderAddEditor.sync();
-		
+		alert("111")
 		//ajax的post方式提交表单
 		//$("#orderAddForm").serialize()将表单序列号为key-value形式的字符串
-		$.post("corder/insert",$("#orderAddForm").serialize(), function(data){
+		$.post("order/insert",$("#orderAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','新增订单成功!');
 				clearOrderADDForm();
@@ -147,7 +147,8 @@
 			}else{
 				$.messager.alert('提示',data.msg);
 			}
-		});
+		})
+		alert("222");
 	}
 	
 	function clearOrderADDForm(){

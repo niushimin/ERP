@@ -448,7 +448,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_add(){
-    	$.get("corder/add_judge",'',function(data){
+    	$.get("order/add_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{

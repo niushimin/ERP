@@ -1,5 +1,7 @@
 package com.erp4j.ssm.service.quality.monitor.impl;
 
+import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
+import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.mapper.DepartmentMapper;
 import com.erp4j.ssm.mapper.EmployeeMapper;
 import com.erp4j.ssm.mapper.UnqualifyApplyMapper;
@@ -7,6 +9,7 @@ import com.erp4j.ssm.mapper.product.ProductMapper;
 import com.erp4j.ssm.pojo.*;
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
 import com.erp4j.ssm.pojo.product.Product;
+import com.erp4j.ssm.pojo.product.ProductExample;
 import com.erp4j.ssm.pojo.quality.monitor.UnqualifyApplyPojo;
 import com.erp4j.ssm.mapper.quality.monitor.UnqualifyMapper;
 import com.erp4j.ssm.service.quality.monitor.UnqulifyFindService;
@@ -73,5 +76,42 @@ public class UnqulifyFindServiceImpl implements UnqulifyFindService {
         }
 
         return employeeForm;
+    }
+
+    @Override
+    public List<Product> selectProductAll() {
+        List<Product> products = productMapper.selectByExample(new ProductExample());
+        return products;
+    }
+
+    @Override
+    public List<Employee> selectEmployAll() {
+        List<Employee> employees = employeeMapper.selectByExample(new EmployeeExample());
+        return employees;
+    }
+
+    @Override
+    public void deleteUnqulifyById(String[] ids) {
+        for (String id : ids) {
+            unqualifyApplyMapper.deleteByPrimaryKey(id);
+        }
+    }
+
+    @Override
+    public void insertUnqulify(UnqualifyApply unqualifyApply) {
+        int insert = unqualifyApplyMapper.insert(unqualifyApply);
+    }
+
+    @Override
+    public ResponseStatus getResponseStatus() {
+        ResponseStatus responseStatus = new ResponseStatus();
+        responseStatus.setMsg("OK");
+        responseStatus.setStatus("200");
+        return responseStatus;
+    }
+
+    @Override
+    public void unqulifyUpdateAll(UnqualifyApply unqualifyApply) {
+        unqualifyApplyMapper.updateByPrimaryKey(unqualifyApply);
     }
 }

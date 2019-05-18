@@ -1,4 +1,4 @@
-package com.erp4j.ssm.service.customer;
+package com.erp4j.ssm.service.custom;
 
 import com.erp4j.ssm.pojo.custom.Custom;
 
@@ -17,4 +17,10 @@ public interface CustomService {
     int queryTotal();
 
     boolean insertCustom(Custom custom);
+
+    boolean deleteMultiCustom(List<String> ids);
+
+    boolean updateCustom(Custom custom);
+
+    List<Custom> queryCustom();
 }

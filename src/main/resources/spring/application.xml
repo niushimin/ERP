@@ -2,8 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.erp4j.ssm">
@@ -41,6 +45,25 @@
             </value>
         </property>
     </bean>
+
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置通知事务管理器-->
+    <tx:advice id="txAdvice1" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--传播行为和隔离级别可以省略不写-->
+            <tx:method name="deleteMultiCustom" propagation="REQUIRED" isolation="DEFAULT"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <!--关联通知和切面-->
+        <aop:pointcut id="pointcut1" expression="execution(* com.erp4j.ssm.service.custom.impl.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice1" pointcut-ref="pointcut1"/>
+    </aop:config>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.erp4j.ssm.mapper"/>

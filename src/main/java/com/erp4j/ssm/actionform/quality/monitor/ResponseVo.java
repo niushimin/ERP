@@ -1,4 +1,4 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.actionform.quality.monitor;
 
 import java.util.List;
 

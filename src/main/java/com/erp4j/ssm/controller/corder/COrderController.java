@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,5 +40,33 @@ public class COrderController {
         map.put("rows", list);
         return map;
     }
+    @ResponseBody
+    @RequestMapping("/add_judge")
+    public Map<String, Object> add_judge() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("msg", null);
+        return map;
+    }
 
+    @RequestMapping("/add")
+    public String add() {
+        return "order_add";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/insert")
+    public Map<String, Object> insert(COrder cOrder) {
+
+        System.out.println(cOrder.getProduct().getProductId());
+        System.out.println(cOrder.getCustom().getCustomId());
+        /*boolean flag = orderService.insertCOrder();*/
+        HashMap<String, Object> map = new HashMap<>();
+        /*if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
+        }*/
+        return map;
+    }
 }
