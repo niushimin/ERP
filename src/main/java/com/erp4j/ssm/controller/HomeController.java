@@ -37,8 +37,6 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
-<<<<<<< HEAD
-        //设备管理
         list.add("device:add");
         list.add("device:edit");
         list.add("device:delete");
@@ -58,12 +56,10 @@ public class HomeController {
         list.add("deviceMaintain:add");
         list.add("deviceMaintain:edit");
         list.add("deviceMaintain:delete");
-=======
 
         list.add("work:add");
         list.add("work:edit");
         list.add("work:delete");
->>>>>>> 6f63bab88135148464543610a8522303cbfb6bde
 
         session.setAttribute("sysPermissionList",list);
         return "home";
