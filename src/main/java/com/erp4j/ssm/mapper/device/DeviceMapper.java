@@ -1,4 +1,4 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.device;
 
 import com.erp4j.ssm.pojo.Device;
 import com.erp4j.ssm.pojo.DeviceExample;

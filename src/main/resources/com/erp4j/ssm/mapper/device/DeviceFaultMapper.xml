@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.DeviceFaultMapper">
+<mapper namespace="com.erp4j.ssm.mapper.device.DeviceFaultMapper">
   <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.DeviceFault">
     <id column="device_fault_id" jdbcType="VARCHAR" property="deviceFaultId" />
     <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
@@ -9,6 +9,52 @@
     <result column="device_fault_date" jdbcType="TIMESTAMP" property="deviceFaultDate" />
     <result column="device_fault_maintenance" jdbcType="VARCHAR" property="deviceFaultMaintenance" />
   </resultMap>
+
+   <!-- 新增-->
+    <resultMap id="BaseResultMap1" type="com.erp4j.ssm.pojo.device.DeviceFaultVo">
+        <id column="device_fault_id" jdbcType="VARCHAR" property="deviceFaultId" />
+        <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+        <result column="device_fault_cause" jdbcType="VARCHAR" property="deviceFaultCause" />
+        <result column="device_fault_detail" jdbcType="VARCHAR" property="deviceFaultDetail" />
+        <result column="device_fault_date" jdbcType="TIMESTAMP" property="deviceFaultDate" />
+        <result column="device_fault_maintenance" jdbcType="VARCHAR" property="deviceFaultMaintenance" />
+        <result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="find" resultMap="BaseResultMap1">
+        	select
+			device_fault_id,
+			de.device_id,
+			device_name,
+			device_fault_cause,
+			device_fault_detail,
+			device_fault_date,
+			device_fault_maintenance
+			from device_fault df
+			left join device de
+			on df.device_id=de.device_id
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--逆向工程生成-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

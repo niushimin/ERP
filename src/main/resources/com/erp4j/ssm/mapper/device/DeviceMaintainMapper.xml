@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.DeviceMaintainMapper">
+<mapper namespace="com.erp4j.ssm.mapper.device.DeviceMaintainMapper">
   <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.DeviceMaintain">
     <id column="device_maintain_id" jdbcType="VARCHAR" property="deviceMaintainId" />
     <result column="device_fault_id" jdbcType="VARCHAR" property="deviceFaultId" />
@@ -10,6 +10,66 @@
     <result column="device_maintain_cost" jdbcType="DECIMAL" property="deviceMaintainCost" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+
+
+
+   <!-- 新增-->
+    <resultMap id="BaseResultMap1" type="com.erp4j.ssm.pojo.device.DeviceMaintainVo">
+        <id column="device_maintain_id" jdbcType="VARCHAR" property="deviceMaintainId" />
+        <result column="device_fault_id" jdbcType="VARCHAR" property="deviceFaultId" />
+        <result column="device_maintain_emp_id" jdbcType="VARCHAR" property="deviceMaintainEmpId" />
+        <result column="device_maintain_date" jdbcType="TIMESTAMP" property="deviceMaintainDate" />
+        <result column="device_maintain_result" jdbcType="VARCHAR" property="deviceMaintainResult" />
+        <result column="device_maintain_cost" jdbcType="DECIMAL" property="deviceMaintainCost" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+        <result column="device_maintain_emp" property="deviceMaintainEmp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="find" resultMap="BaseResultMap1">
+
+        select
+			device_maintain_id,
+			device_fault_id,
+			device_maintain_emp_id,
+			em.emp_name as device_maintain_emp,
+			device_maintain_date,
+			device_maintain_result,
+			device_maintain_cost,
+			dm.note
+		from device_maintain dm
+		left join employee em
+		on dm.device_maintain_emp_id=em.emp_id
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--逆向工程生成-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

@@ -1,11 +1,31 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.device;
 
 import com.erp4j.ssm.pojo.DeviceFault;
 import com.erp4j.ssm.pojo.DeviceFaultExample;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.device.DeviceFaultVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface DeviceFaultMapper {
+
+    List<DeviceFaultVo> find(DeviceFaultVo deviceFaultVo);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //逆向工程生成
     long countByExample(DeviceFaultExample example);
 
     int deleteByExample(DeviceFaultExample example);
@@ -27,4 +47,6 @@ public interface DeviceFaultMapper {
     int updateByPrimaryKeySelective(DeviceFault record);
 
     int updateByPrimaryKey(DeviceFault record);
+
+
 }
