@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.CustomMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Custom">
+<mapper namespace="com.erp4j.ssm.mapper.custom.CustomMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.custom.Custom">
     <id column="custom_id" jdbcType="VARCHAR" property="customId" />
     <result column="custom_name" jdbcType="VARCHAR" property="customName" />
     <result column="full_name" jdbcType="VARCHAR" property="fullName" />
@@ -75,7 +75,7 @@
     custom_id, custom_name, full_name, address, fax, email, owner_name, owner_tel, status, 
     note
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.CustomExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.custom.CustomExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -99,13 +99,13 @@
     delete from custom
     where custom_id = #{customId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.CustomExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.custom.CustomExample">
     delete from custom
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Custom">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.custom.Custom">
     insert into custom (custom_id, custom_name, full_name, 
       address, fax, email, 
       owner_name, owner_tel, status, 
@@ -115,7 +115,7 @@
       #{ownerName,jdbcType=VARCHAR}, #{ownerTel,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{note,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Custom">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.custom.Custom">
     insert into custom
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="customId != null">
@@ -182,7 +182,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.CustomExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.custom.CustomExample" resultType="java.lang.Long">
     select count(*) from custom
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -242,7 +242,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Custom">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.custom.Custom">
     update custom
     <set>
       <if test="customName != null">
@@ -275,7 +275,7 @@
     </set>
     where custom_id = #{customId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Custom">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.custom.Custom">
     update custom
     set custom_name = #{customName,jdbcType=VARCHAR},
       full_name = #{fullName,jdbcType=VARCHAR},

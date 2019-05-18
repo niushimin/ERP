@@ -2,10 +2,11 @@ package com.erp4j.ssm.service.quality.monitor.impl;
 
 import com.erp4j.ssm.mapper.DepartmentMapper;
 import com.erp4j.ssm.mapper.EmployeeMapper;
-import com.erp4j.ssm.mapper.ProductMapper;
 import com.erp4j.ssm.mapper.UnqualifyApplyMapper;
+import com.erp4j.ssm.mapper.product.ProductMapper;
 import com.erp4j.ssm.pojo.*;
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
+import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.pojo.quality.monitor.UnqualifyApplyPojo;
 import com.erp4j.ssm.mapper.quality.monitor.UnqualifyMapper;
 import com.erp4j.ssm.service.quality.monitor.UnqulifyFindService;

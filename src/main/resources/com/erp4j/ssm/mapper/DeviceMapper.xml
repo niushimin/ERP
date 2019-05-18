@@ -43,7 +43,7 @@
 			device.device_type_id = device_type.device_type_id
 		AND device.device_keeper_id = employee.emp_id
 
-		order by device_id ASC
+		corder by device_id ASC
 	</select>-->
 
 

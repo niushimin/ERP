@@ -1,4 +1,4 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.corder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

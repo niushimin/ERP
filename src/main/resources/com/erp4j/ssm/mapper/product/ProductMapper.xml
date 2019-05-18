@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.ProductMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Product">
+<mapper namespace="com.erp4j.ssm.mapper.product.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.product.Product">
     <id column="product_id" jdbcType="VARCHAR" property="productId" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="product_type" jdbcType="VARCHAR" property="productType" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     product_id, product_name, product_type, image, note, status
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.product.ProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from product
     where product_id = #{productId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.ProductExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.product.ProductExample">
     delete from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Product">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.product.Product">
     insert into product (product_id, product_name, product_type, 
       image, note, status
       )
@@ -108,7 +108,7 @@
       #{image,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Product">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.product.Product">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.ProductExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.product.ProductExample" resultType="java.lang.Long">
     select count(*) from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.product.Product">
     update product
     <set>
       <if test="productName != null">
@@ -216,7 +216,7 @@
     </set>
     where product_id = #{productId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Product">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.product.Product">
     update product
     set product_name = #{productName,jdbcType=VARCHAR},
       product_type = #{productType,jdbcType=VARCHAR},
