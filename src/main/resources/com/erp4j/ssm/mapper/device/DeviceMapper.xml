@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.DeviceMapper">
+<mapper namespace="com.erp4j.ssm.mapper.device.DeviceMapper">
     <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Device">
         <id column="device_id" jdbcType="VARCHAR" property="deviceId"/>
         <result column="device_name" jdbcType="VARCHAR" property="deviceName"/>
@@ -50,7 +50,6 @@
 			device_manufacture_date,
 			device_service_life,
 			device_keeper_id,
-<<<<<<< HEAD
 			em.emp_name as device_keeper,
 			de.note
     from device de
@@ -58,27 +57,11 @@
     on de.device_type_id=dt.device_type_id
     left join employee em
     on de.device_keeper_id=em.emp_id
-=======
-			emp_name as device_keeper,
-			note
-		FROM
-			device,
-			device_type,
-			employee
-		WHERE
-			device.device_type_id = device_type.device_type_id
-		AND device.device_keeper_id = employee.emp_id
-
-		corder by device_id ASC
-	</select>-->
+	</select>
 
 
 
 
-
->>>>>>> 193a79dc3c7dd3ddd5b130f85267f836fb25bba8
-
-  </select>
 
 
     <!--逆向工程生成-->
