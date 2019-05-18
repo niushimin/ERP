@@ -56,9 +56,10 @@ public class COrderController {
 
     @ResponseBody
     @RequestMapping("/insert")
-    public Map<String, Object> insert(Date orderDate) {
+    public Map<String, Object> insert(COrder cOrder) {
 
-        System.out.println(orderDate);
+        System.out.println(cOrder.getProduct().getProductId());
+        System.out.println(cOrder.getCustom().getCustomId());
         /*boolean flag = orderService.insertCOrder();*/
         HashMap<String, Object> map = new HashMap<>();
         /*if (flag) {

@@ -50,15 +50,6 @@
 			device_manufacture_date,
 			device_service_life,
 			device_keeper_id,
-<<<<<<< HEAD
-			em.emp_name as device_keeper,
-			de.note
-    from device de
-    left join device_type dt
-    on de.device_type_id=dt.device_type_id
-    left join employee em
-    on de.device_keeper_id=em.emp_id
-=======
 			emp_name as device_keeper,
 			note
 		FROM
@@ -70,15 +61,7 @@
 		AND device.device_keeper_id = employee.emp_id
 
 		corder by device_id ASC
-	</select>-->
-
-
-
-
-
->>>>>>> 193a79dc3c7dd3ddd5b130f85267f836fb25bba8
-
-  </select>
+	</select>
 
 
     <!--逆向工程生成-->
