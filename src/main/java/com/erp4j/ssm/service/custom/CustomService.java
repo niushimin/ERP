@@ -23,4 +23,6 @@ public interface CustomService {
     boolean updateCustom(Custom custom);
 
     List<Custom> queryCustom();
+
+    Custom queryCustomById(String customId);
 }

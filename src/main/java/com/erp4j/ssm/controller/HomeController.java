@@ -25,9 +25,9 @@ public class HomeController {
         list.add("unqualify:edit");
         list.add("unqualify:delete");
 
-        list.add("corder:add");
-        list.add("corder:edit");
-        list.add("corder:delete");
+        list.add("order:add");
+        list.add("order:edit");
+        list.add("order:delete");
 
         list.add("custom:add");
         list.add("custom:edit");

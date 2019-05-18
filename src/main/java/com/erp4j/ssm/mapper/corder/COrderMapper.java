@@ -1,11 +1,14 @@
 package com.erp4j.ssm.mapper.corder;
 
+import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.corder.COrder;
 import com.erp4j.ssm.pojo.corder.COrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface COrderMapper {
+
+    // 逆向工程生成的接口
     long countByExample(COrderExample example);
 
     int deleteByExample(COrderExample example);
@@ -28,5 +31,11 @@ public interface COrderMapper {
 
     int updateByPrimaryKey(COrder record);
 
+
+    // 自己写的接口
     List<COrder> queryCorder();
+
+    int insertCOrder(QueryVo queryVo);
+
+    int updateCorder(QueryVo queryVo);
 }
