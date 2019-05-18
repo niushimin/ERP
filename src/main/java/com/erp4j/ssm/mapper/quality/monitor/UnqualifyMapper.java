@@ -4,8 +4,10 @@ import com.erp4j.ssm.pojo.quality.monitor.UnqualifyApplyPojo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.ArrayList;
+import java.util.List;
+
 public interface UnqualifyMapper {
 
-    UnqualifyApplyPojo[] queryUnqulifyApplyAll(@Param("page") int page, @Param("page") int rows);
+    ArrayList<UnqualifyApplyPojo> queryUnqulifyApplyAll(@Param("page") int page, @Param("page") int rows);
 }

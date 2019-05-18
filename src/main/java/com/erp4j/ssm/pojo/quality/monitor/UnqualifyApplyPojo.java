@@ -7,6 +7,8 @@ public class UnqualifyApplyPojo {
 
     private String productName;
 
+    private String productId;
+
     private String unqualifyItem;
 
     private Integer unqualifyCount;
@@ -15,9 +17,27 @@ public class UnqualifyApplyPojo {
 
     private String empName;
 
+    private String empId;
+
     private Date applyDate;
 
     private String note;
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
 
     public String getUnqualifyApplyId() {
         return unqualifyApplyId;
