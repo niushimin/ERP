@@ -60,4 +60,10 @@ public class CustomServiceImpl implements CustomService {
         List<Custom> customs = customMapper.selectByExample(new CustomExample());
         return customs;
     }
+
+    @Override
+    public Custom queryCustomById(String customId) {
+        Custom custom = customMapper.selectByPrimaryKey(customId);
+        return custom;
+    }
 }

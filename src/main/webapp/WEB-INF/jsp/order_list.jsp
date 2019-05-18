@@ -28,17 +28,17 @@
 <div  id="toolbar_order" style=" height: 22px; padding: 3px 11px; background: #fafafa;">  
 	
 	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
-		<c:if test="${per=='corder:add' }" >
+		<c:if test="${per=='order:add' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="order_add()">新增</a>  
 		    </div>  
 		</c:if>
-		<c:if test="${per=='corder:edit' }" >
+		<c:if test="${per=='order:edit' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="order_edit()">编辑</a>  
 		    </div>  
 		</c:if>
-		<c:if test="${per=='corder:delete' }" >
+		<c:if test="${per=='order:delete' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="order_delete()">删除</a>  
 		    </div>  
@@ -182,7 +182,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 		
 		$("#orderList").datagrid({
 	        title:'订单列表', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',
-			nowrap:true, toolbar:"toolbar_order", url:'corder/list', method:'get', loadMsg:'数据加载中......',
+			nowrap:true, toolbar:"toolbar_order", url:'order/list', method:'get', loadMsg:'数据加载中......',
 			fitColumns:true,//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 				{field : 'ck', checkbox:true },
@@ -204,7 +204,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 	}else{
 		$("#orderList").datagrid({  
 	        title:'订单列表', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',
-			nowrap:true, toolbar:"toolbar_order", url:'corder/search_order_by_'+name+'?searchValue='+value,
+			nowrap:true, toolbar:"toolbar_order", url:'order/search_order_by_'+name+'?searchValue='+value,
 			loadMsg:'数据加载中......', fitColumns:true,//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 	             	{field : 'ck', checkbox:true }, 
@@ -417,12 +417,12 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 	
 	//更新订单要求
 	function updateOrderNote(){
-		$.get("corder/edit_judge",'',function(data){
+		$.get("order/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
     			orderNoteEditor.sync();
-    			$.post("corder/update_note",$("#orderNoteForm").serialize(), function(data){
+    			$.post("order/update_note",$("#orderNoteForm").serialize(), function(data){
     				if(data.status == 200){
     					$("#orderNoteDialog").dialog("close");
     					$("#orderList").datagrid("reload");
@@ -458,7 +458,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_edit(){
-    	$.get("corder/edit_judge",'',function(data){
+    	$.get("order/edit_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -499,7 +499,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_delete(){
-    	$.get("corder/delete_judge",'',function(data){
+    	$.get("order/delete_judge",'',function(data){
       		if(data.msg != null){
       			$.messager.alert('提示', data.msg);
       		}else{
@@ -511,7 +511,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
               	$.messager.confirm('确认','确定删除ID为 '+ids+' 的订单吗？',function(r){
               	    if (r){
               	    	var params = {"ids":ids};
-                      	$.post("corder/delete_batch",params, function(data){
+                      	$.post("order/delete_batch",params, function(data){
                   			if(data.status == 200){
                   				$.messager.alert('提示','删除订单成功!',undefined,function(){
                   					$("#orderList").datagrid("reload");

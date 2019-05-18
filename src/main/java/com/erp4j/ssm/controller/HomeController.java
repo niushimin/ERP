@@ -25,9 +25,9 @@ public class HomeController {
         list.add("unqualify:edit");
         list.add("unqualify:delete");
 
-        list.add("corder:add");
-        list.add("corder:edit");
-        list.add("corder:delete");
+        list.add("order:add");
+        list.add("order:edit");
+        list.add("order:delete");
 
         list.add("custom:add");
         list.add("custom:edit");
@@ -37,10 +37,33 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
+<<<<<<< HEAD
+        //设备管理
+        list.add("device:add");
+        list.add("device:edit");
+        list.add("device:delete");
+
+        list.add("deviceType:add");
+        list.add("deviceType:edit");
+        list.add("deviceType:delete");
+
+        list.add("deviceCheck:add");
+        list.add("deviceCheck:edit");
+        list.add("deviceCheck:delete");
+
+        list.add("deviceFault:add");
+        list.add("deviceFault:edit");
+        list.add("deviceFault:delete");
+
+        list.add("deviceMaintain:add");
+        list.add("deviceMaintain:edit");
+        list.add("deviceMaintain:delete");
+=======
 
         list.add("work:add");
         list.add("work:edit");
         list.add("work:delete");
+>>>>>>> 6f63bab88135148464543610a8522303cbfb6bde
 
         session.setAttribute("sysPermissionList",list);
         return "home";

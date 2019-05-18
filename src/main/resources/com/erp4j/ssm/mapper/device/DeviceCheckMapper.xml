@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.DeviceCheckMapper">
+<mapper namespace="com.erp4j.ssm.mapper.device.DeviceCheckMapper">
   <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.DeviceCheck">
     <id column="device_check_id" jdbcType="VARCHAR" property="deviceCheckId" />
     <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
@@ -9,6 +9,67 @@
     <result column="device_check_result" jdbcType="VARCHAR" property="deviceCheckResult" />
     <result column="device_check_fault_id" jdbcType="VARCHAR" property="deviceCheckFaultId" />
   </resultMap>
+
+  <!--  新增-->
+    <resultMap id="BaseResultMap1" type="com.erp4j.ssm.pojo.device.DeviceCheckVo">
+        <id column="device_check_id" jdbcType="VARCHAR" property="deviceCheckId" />
+        <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+        <result column="device_check_emp_id" jdbcType="VARCHAR" property="deviceCheckEmpId" />
+        <result column="device_check_date" jdbcType="TIMESTAMP" property="deviceCheckDate" />
+        <result column="device_check_result" jdbcType="VARCHAR" property="deviceCheckResult" />
+        <result column="device_check_fault_id" jdbcType="VARCHAR" property="deviceCheckFaultId" />
+        <result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+        <result column="device_check_emp" property="deviceCheckEmp" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <select id="find" resultMap="BaseResultMap1">
+
+        select
+			device_check_id,
+			de.device_id,
+			de.device_name,
+			em.emp_id as device_check_emp_id,
+			em.emp_name as device_check_emp,
+			device_check_date,
+			device_check_result,
+			device_check_fault_id
+	    from device_check dc
+	    left join device de
+	    on dc.device_id=de.device_id
+	    left join employee em
+	    on dc.device_check_emp_id=em.emp_id
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--逆向工程生成-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

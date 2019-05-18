@@ -2,9 +2,11 @@ package com.erp4j.ssm.controller.custom;
 
 import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.custom.Custom;
+import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.service.custom.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -64,6 +66,7 @@ public class CustomController {
         return map;
     }
 
+    // 修改顾客信息权限校验
     @ResponseBody
     @RequestMapping("/edit_judge")
     public Map<String, Object> edit_judge() {
@@ -72,11 +75,13 @@ public class CustomController {
         return map;
     }
 
+    // 跳转到修改顾客信息页面
     @RequestMapping("/edit")
     public String edit() {
         return "custom_edit";
     }
 
+    // 将修改的信息保存到数据库中
     @ResponseBody
     @RequestMapping("/update_all")
     public Map<String, Object> update_all(Custom custom) {
@@ -91,6 +96,7 @@ public class CustomController {
     }
 
 
+    // 删除顾客信息权限校验
     @ResponseBody
     @RequestMapping("/delete_judge")
     public Map<String, Object> delete_judge() {
@@ -99,6 +105,7 @@ public class CustomController {
         return map;
     }
 
+    // 批量删除顾客信息
     @ResponseBody
     @RequestMapping("/delete_batch")
     public Map<String, Object> delete_batch(QueryVo queryVo) {
@@ -110,6 +117,13 @@ public class CustomController {
             map.put("data", null);
         }
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("/get/{customId}")
+    public Custom get(@PathVariable("customId") String customId) {
+        Custom custom = customService.queryCustomById(customId);
+        return custom;
     }
 
     @ResponseBody

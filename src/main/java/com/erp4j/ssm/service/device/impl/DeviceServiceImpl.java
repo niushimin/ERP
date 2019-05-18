@@ -1,7 +1,6 @@
 package com.erp4j.ssm.service.device.impl;
 
-import com.erp4j.ssm.mapper.DeviceMapper;
-import com.erp4j.ssm.pojo.Device;
+import com.erp4j.ssm.mapper.device.DeviceMapper;
 import com.erp4j.ssm.pojo.device.DeviceVo;
 import com.erp4j.ssm.pojo.device.EUDataGridResult;
 import com.erp4j.ssm.service.device.DeviceService;
