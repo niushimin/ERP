@@ -1,6 +1,7 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.UnqualifyApply;
@@ -46,24 +47,29 @@ public class UnqualifyController {
     public String unqualifyEditJudgt(){
         return "msg";
     }
+
     /*修改不合格品*/
     @RequestMapping("/edit")
     public String unqulifyEdit(){
         return "unqualify_edit";
     }
+
     /*删除不合格品验证*/
     @ResponseBody
     @RequestMapping("/delete_judge")
     public String unqulifyDeleteJudge(){
         return "msg";
     }
+
     /*删除不合格品*/
+    @ResponseBody
     @RequestMapping("/delete_batch")
     public ResponseStatus unqulifyDelete(String[] ids){
         unqulifyFindService.deleteUnqulifyById(ids);
         ResponseStatus responseStatus = unqulifyFindService.getResponseStatus();
         return responseStatus;
     }
+
     /*提交添加不合格品数据*/
     @ResponseBody
     @RequestMapping("/insert")
@@ -72,6 +78,7 @@ public class UnqualifyController {
         ResponseStatus responseStatus = unqulifyFindService.getResponseStatus();
         return responseStatus;
     }
+
     /*提交修改不合格品数据*/
     @ResponseBody
     @RequestMapping("update_all")
@@ -80,5 +87,18 @@ public class UnqualifyController {
         ResponseStatus responseStatus = unqulifyFindService.getResponseStatus();
         return responseStatus;
     }
-
+    /*根据不合格品编号查询不合格品*/
+    @ResponseBody
+    @RequestMapping("/search_unqualify_by_unqualifyId")
+    public ResponseVo searchUnqualifyByUnqualifyId(QueryParameters queryParameters){
+        ResponseVo responseVo = unqulifyFindService.searchUnqualifyByUnqualifyId(queryParameters);
+        return responseVo;
+    }
+    /*根据产品名称查询不合格品*/
+    @ResponseBody
+    @RequestMapping("/search_unqualify_by_productName")
+    public ResponseVo searchUnqualifyByProductName(QueryParameters queryParameters){
+        ResponseVo responseVo = unqulifyFindService.searchUnqualifyByProductName(queryParameters);
+        return responseVo;
+    }
 }

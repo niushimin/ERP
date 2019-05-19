@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.erp4j.ssm.mapper.quality.monitor.UnqualifyMapper">
 
-    <resultMap id="BaseResultMap" type="unqualifyapplypojo">
+    <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.quality.monitor.UnqualifyApplyPojo">
         <result property="unqualifyApplyId" column="unqualify_apply_id"/>
         <result property="unqualifyItem" column="unqualify_item"/>
         <result property="unqualifyCount" column="unqualify_count"/>
@@ -22,5 +22,30 @@
         on un.product_id=pr.product_id
         left join employee em
         on un.emp_id=em.emp_id
+        <where>
+            <if test="unqualifyApplyId != null">
+                unqualify_apply_id like #{unqualifyApplyId}
+            </if>
+            <if test="productName != null">
+               and  product_name like #{productName}
+            </if>
+        </where>
+    </select>
+
+    <select id="searchUnqualifyCountByProductName" resultType="int">
+        select count(*)
+        from unqualify_apply un
+        left join product pr
+        on un.product_id=pr.product_id
+        left join employee em
+        on un.emp_id=em.emp_id
+        <where>
+            <if test="unqualifyApplyId != null">
+                unqualify_apply_id like #{unqualifyApplyId}
+            </if>
+            <if test="productName != null">
+                and  product_name like #{productName}
+            </if>
+        </where>
     </select>
 </mapper>
