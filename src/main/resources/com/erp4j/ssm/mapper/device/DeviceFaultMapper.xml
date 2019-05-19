@@ -34,7 +34,54 @@
 			on df.device_id=de.device_id
     </select>
 
+  <!-- 修改备注-->
+  <update id="updateNote" parameterType="com.erp4j.ssm.pojo.device.DeviceFaultVo" >
+	UPDATE device_fault
+		SET device_fault_detail = #{deviceFaultDetail}
+		WHERE
+			device_fault_id = #{deviceFaultId}
+	</update>
 
+  <select id="searchDeviceFaultByDeviceFaultId" resultMap="BaseResultMap1">
+		select
+			device_fault_id,
+			de.device_id,
+			device_name,
+			device_fault_cause,
+			device_fault_detail,
+			device_fault_date,
+			device_fault_maintenance
+			from device_fault df
+			left join device de
+			on df.device_id=de.device_id
+		where device_fault_id like CONCAT(
+				'%',
+				#{deviceFaultId},'%' )
+	</select>
+
+  <select id="searchDeviceFaultByDeviceName" resultMap="BaseResultMap1">
+		select
+			device_fault_id,
+			de.device_id,
+			device_name,
+			device_fault_cause,
+			device_fault_detail,
+			device_fault_date,
+			device_fault_maintenance
+			from device_fault df
+			left join device de
+			on df.device_id=de.device_id
+		where device_name like CONCAT(
+				'%',
+				#{deviceName},'%' )
+	</select>
+
+  <select id="listType" resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM
+			device_fault
+	</select>
 
 
 

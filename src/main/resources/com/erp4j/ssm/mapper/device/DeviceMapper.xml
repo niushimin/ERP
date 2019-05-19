@@ -59,7 +59,102 @@
     on de.device_keeper_id=em.emp_id
 	</select>
 
+    <!-- 修改备注-->
+    <update id="updateNote" parameterType="com.erp4j.ssm.pojo.device.DeviceVo" >
+		UPDATE device
+		SET note = #{note}
+		WHERE
+			device_id = #{deviceId}
+	</update>
 
+<<<<<<< HEAD
+    <!-- 查询所有记录 -->
+    <select id="listType" resultMap="BaseResultMap1">
+		SELECT
+			device_id,
+			device_name
+		FROM
+			device
+	</select>
+
+    <select id="searchDeviceByDeviceId" resultMap="BaseResultMap1">
+    select
+			device_id,
+			device_name,
+			dt.device_type_id,
+			dt.device_type_name,
+			device_status_id,
+			device_purchase_date,
+			device_purchase_price,
+			device_manufacture_date,
+			device_service_life,
+			device_keeper_id,
+			em.emp_name as device_keeper,
+			de.note
+    from device de
+    left join device_type dt
+    on de.device_type_id=dt.device_type_id
+    left join employee em
+    on de.device_keeper_id=em.emp_id
+	where device_id like CONCAT(
+				'%',
+				#{deviceId},'%' )
+	</select>
+
+    <select id="searchDeviceByDeviceName" resultMap="BaseResultMap1">
+		select
+			device_id,
+			device_name,
+			dt.device_type_id,
+			dt.device_type_name,
+			device_status_id,
+			device_purchase_date,
+			device_purchase_price,
+			device_manufacture_date,
+			device_service_life,
+			device_keeper_id,
+			em.emp_name as device_keeper,
+			de.note
+    from device de
+    left join device_type dt
+    on de.device_type_id=dt.device_type_id
+    left join employee em
+    on de.device_keeper_id=em.emp_id
+	where device_name like CONCAT(
+				'%',
+				#{deviceName},'%' )
+	</select>
+
+    <select id="searchDeviceByDeviceTypeName" resultMap="BaseResultMap1">
+		select
+			device_id,
+			device_name,
+			dt.device_type_id,
+			dt.device_type_name,
+			device_status_id,
+			device_purchase_date,
+			device_purchase_price,
+			device_manufacture_date,
+			device_service_life,
+			device_keeper_id,
+			em.emp_name as device_keeper,
+			de.note
+    from device de
+    left join device_type dt
+    on de.device_type_id=dt.device_type_id
+    left join employee em
+    on de.device_keeper_id=em.emp_id
+	where device_type_name like CONCAT(
+				'%',
+				#{deviceTypeName},'%' )
+	</select>
+
+
+
+
+
+=======
+>>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
     <!--逆向工程生成-->
 
     <sql id="Example_Where_Clause">

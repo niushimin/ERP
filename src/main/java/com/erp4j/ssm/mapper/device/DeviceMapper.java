@@ -11,6 +11,21 @@ public interface DeviceMapper {
 
     List<DeviceVo> findDeviceList(DeviceVo deviceVo);
 
+    int updateNote(DeviceVo deviceVo);
+
+    List<DeviceVo> listType();
+
+    List<DeviceVo> searchDeviceByDeviceId(String deviceId);
+
+    List<DeviceVo> searchDeviceByDeviceName(String deviceName);
+
+    List<DeviceVo> searchDeviceByDeviceTypeName(String deviceTypeName);
+
+
+
+
+
+
 
     //逆向工程生成
     long countByExample(DeviceExample example);
