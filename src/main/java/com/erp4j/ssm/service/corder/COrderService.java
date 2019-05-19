@@ -22,4 +22,20 @@ public interface COrderService {
     boolean deleteMultiCOrder(List<String> ids);
 
     boolean updateCOrder(QueryVo queryVo);
+
+    List<COrder> queryCOrderById(String searchValue, int page, int rows);
+
+    int queryTotalById(String searchValue);
+
+    List<COrder> queryCOrderByCustom(String searchValue, int page, int rows);
+
+    int queryTotalByCustom(String searchValue);
+
+    List<COrder> queryCOrderByProduct(String searchValue, int page, int rows);
+
+    int queryTotalByProduct(String searchValue);
+
+    COrder queryCOrderById(String cOrderId);
+
+    List<COrder> queryCOrder();
 }

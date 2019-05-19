@@ -57,4 +57,58 @@ public class COrderServiceImpl implements COrderService {
         return result == 1;
     }
 
+    @Override
+    public List<COrder> queryCOrderById(String searchValue, int page, int rows) {
+        PageHelper.startPage(page, rows);
+        List<COrder> cOrders = orderMapper.queryCOrderById(searchValue);
+        return cOrders;
+    }
+
+    @Override
+    public int queryTotalById(String searchValue) {
+        COrderExample cOrderExample = new COrderExample();
+        COrderExample.Criteria criteria = cOrderExample.createCriteria();
+        criteria.andCustomIdLike("%" + searchValue + "%");
+        int total = (int) orderMapper.countByExample(cOrderExample);
+        return total;
+    }
+
+    @Override
+    public List<COrder> queryCOrderByCustom(String searchValue, int page, int rows) {
+        PageHelper.startPage(page, rows);
+        List<COrder> corders = orderMapper.queryCorderByCustom(searchValue);
+        return corders;
+    }
+
+    @Override
+    public int queryTotalByCustom(String searchValue) {
+        int total = orderMapper.queryTotalByCustom(searchValue);
+        return total;
+    }
+
+    @Override
+    public List<COrder> queryCOrderByProduct(String searchValue, int page, int rows) {
+        PageHelper.startPage(page, rows);
+        List<COrder> corders = orderMapper.queryCorderByProduct(searchValue);
+        return corders;
+    }
+
+    @Override
+    public int queryTotalByProduct(String searchValue) {
+        int total = orderMapper.queryTotalByProduct(searchValue);
+        return total;
+    }
+
+    @Override
+    public COrder queryCOrderById(String cOrderId) {
+        COrder cOrder = orderMapper.querySingleById(cOrderId);
+        return cOrder;
+    }
+
+    @Override
+    public List<COrder> queryCOrder() {
+        List<COrder> corders = orderMapper.queryCorder();
+        return corders;
+    }
+
 }

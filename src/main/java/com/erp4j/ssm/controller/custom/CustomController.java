@@ -4,6 +4,7 @@ import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.custom.Custom;
 import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.service.custom.CustomService;
+import net.sf.jsqlparser.expression.operators.relational.OldOracleJoinBinaryExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ public class CustomController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public Map list(int page, int rows) {
+    public Map<String, Object> list(int page, int rows) {
         List<Custom> list = customService.queryCustom(page, rows);
         int total = customService.queryTotal();
         Map<String, Object> map = new HashMap<>();
@@ -131,5 +132,29 @@ public class CustomController {
     public List<Custom> get_data() {
         List<Custom> list = customService.queryCustom();
         return list;
+    }
+
+    // 根据客户Id查询客户信息
+    @ResponseBody
+    @RequestMapping("/search_custom_by_customId")
+    public Map<String, Object> search_custom_by_customId(String searchValue, int page, int rows) {
+        List<Custom> list = customService.queryCustomById(searchValue, page, rows);
+        int total = customService.queryTotalById(searchValue);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", list);
+        return map;
+    }
+
+    // 根据客户名称查询客户信息
+    @ResponseBody
+    @RequestMapping("/search_custom_by_customName")
+    public Map<String, Object> search_custom_by_customName(String searchValue, int page, int rows) {
+        List<Custom> list = customService.queryCustomByName(searchValue, page, rows);
+        int total = customService.queryTotalByName(searchValue);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", list);
+        return map;
     }
 }

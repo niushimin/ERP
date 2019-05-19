@@ -84,7 +84,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from work
     where work_id = #{workId,jdbcType=VARCHAR}
@@ -100,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.erp4j.ssm.pojo.work.Work">
-    insert into work (work_id, process_number, product_id, 
+    insert into work (work_id, process_number, product_id,
       process_id, device_id, rating
       )
-    values (#{workId,jdbcType=VARCHAR}, #{processNumber,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, 
+    values (#{workId,jdbcType=VARCHAR}, #{processNumber,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR},
       #{processId,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{rating,jdbcType=INTEGER}
       )
   </insert>
@@ -225,13 +225,16 @@
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
 
+
+
+
   <resultMap id="workMap" type="com.erp4j.ssm.pojo.work.Work">
     <id column="work_id" jdbcType="VARCHAR" property="workId" />
     <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
     <result column="rating" jdbcType="INTEGER" property="rating" />
     <association property="product" column="product_id" select="com.erp4j.ssm.mapper.product.ProductMapper.selectByPrimaryKey"/>
-    <association property="process" column="process_id" select="com.erp4j.ssm.mapper.ProcessMapper.selectByPrimaryKey"/>
-    <association property="device" column="device_id" select="com.erp4j.ssm.mapper.DeviceMapper.selectByPrimaryKey"/>
+    <association property="process" column="process_id" select="com.erp4j.ssm.mapper.process.ProcessMapper.selectByPrimaryKey"/>
+    <association property="device" column="device_id" select="com.erp4j.ssm.mapper.device.DeviceMapper.selectByPrimaryKey"/>
   </resultMap>
 
   <select id="queryWork" resultMap="workMap">
@@ -239,5 +242,83 @@
     <include refid="Base_Column_List" />
     from work
   </select>
+
+  <insert id="insertWork">
+    insert into work (work_id, process_number, product_id, process_id, device_id, rating)
+    values (#{workId}, #{processNumber}, #{productId}, #{processId}, #{deviceId}, #{rating})
+  </insert>
+
+  <update id="updateWork">
+    update work
+    <set>
+      <if test="processNumber != null">
+        process_number = #{processNumber},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId},
+      </if>
+      <if test="processId != null">
+        process_id = #{processId},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId},
+      </if>
+      <if test="rating != null">
+        rating = #{rating},
+      </if>
+    </set>
+    where work_id = #{workId}
+  </update>
+
+  <select id="queryCOrderById" resultMap="workMap">
+    select
+    <include refid="Base_Column_List"/>
+    from work
+    where work_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <sql id="Base_Column_Work">
+    w.work_id, w.process_number, w.product_id, w.process_id, w.device_id, w.rating
+  </sql>
+
+  <select id="queryWorkByProduct" resultMap="workMap">
+    select
+    <include refid="Base_Column_Work"/>
+    from work w left join product p on w.product_id = p.product_id
+    where product_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByProduct" resultType="int">
+    select count(w.work_id)
+    from work w left join product p on w.product_id = p.product_id
+    where p.product_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryWorkByDevice" resultMap="workMap">
+    select
+    <include refid="Base_Column_Work"/>
+    from work w left join device d on w.device_id = d.device_id
+    where d.device_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByDevice" resultType="int">
+    select count(w.work_id)
+    from work w left join device d on w.device_id = d.device_id
+    where d.device_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryWorkByProcess" resultMap="workMap">
+    select
+    <include refid="Base_Column_List"/>
+    from work
+    where process_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByProcess" resultType="int">
+    select count(work_id)
+    from work
+    where process_id like concat("%", #{searchValue}, "%")
+  </select>
+
 
 </mapper>

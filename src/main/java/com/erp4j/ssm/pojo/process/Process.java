@@ -1,4 +1,4 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.process;
 
 public class Process {
     private String processId;

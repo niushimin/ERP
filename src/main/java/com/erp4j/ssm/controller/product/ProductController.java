@@ -117,6 +117,7 @@ public class ProductController {
         return map;
     }
 
+    // 根据产品Id获取产品信息
     @ResponseBody
     @RequestMapping("/get/{productId}")
     public Product get(@PathVariable("productId") String productId) {
@@ -124,10 +125,47 @@ public class ProductController {
         return product;
     }
 
+    // 获取所有的产品信息
     @ResponseBody
     @RequestMapping("/get_data")
     public List<Product> get_data() {
         List<Product> list = productService.queryProduct();
         return list;
+    }
+
+    // 根据产品Id查询商品信息
+    @ResponseBody
+    @RequestMapping("/search_product_by_productId")
+    public Map<String, Object> search_product_by_productId(String searchValue, int page, int rows) {
+        List<Product> list = productService.queryProductById(searchValue, page, rows);
+        int total = productService.queryTotalById(searchValue);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", list);
+        return map;
+    }
+
+    // 根据产品名称查询商品信息
+    @ResponseBody
+    @RequestMapping("/search_product_by_productName")
+    public Map<String, Object> search_product_by_productName(String searchValue, int page, int rows) {
+        List<Product> list = productService.queryProductByName(searchValue, page, rows);
+        int total = productService.queryTotalByName(searchValue);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", list);
+        return map;
+    }
+
+    // 根据产品种类查询商品信息
+    @ResponseBody
+    @RequestMapping("/search_product_by_productType")
+    public Map<String, Object> search_product_by_productType(String searchValue, int page, int rows) {
+        List<Product> list = productService.queryProductByType(searchValue, page, rows);
+        int total = productService.queryTotalByType(searchValue);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", list);
+        return map;
     }
 }

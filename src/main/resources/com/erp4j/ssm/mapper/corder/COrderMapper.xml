@@ -388,4 +388,54 @@
     </set>
     where order_id = #{orderId}
   </update>
+
+  <select id="queryCOrderById" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List" />
+    from c_order
+    where order_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <sql id="Base_Column_List_COrder">
+    o.order_id, o.custom_id, o.product_id, o.order_date, o.request_date, o.note, o.quantity, o.unit_price,
+    o.unit, o.image, o.file, o.status
+  </sql>
+
+  <select id="queryCorderByCustom" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List_COrder" />
+    from c_order o left join custom c on o.custom_id = c.custom_id
+    where c.custom_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByCustom" resultType="int">
+    select count(o.order_id)
+    from c_order o left join custom c on o.custom_id = c.custom_id
+    where c.custom_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryCorderByProduct" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List_COrder" />
+    from c_order o left join product c on o.product_id = c.product_id
+    where c.product_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByProduct" resultType="int">
+    select count(o.order_id)
+    from c_order o left join product c on o.product_id = c.product_id
+    where c.product_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="querySingleById" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List" />
+    from c_order
+    where order_id = #{cOrderId}
+  </select>
+
+  <select id="queryCOrderId" resultType="string">
+    select order_id
+    from c_order
+  </select>
 </mapper>

@@ -1,8 +1,10 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.manufacture;
 
-import com.erp4j.ssm.pojo.Manufacture;
-import com.erp4j.ssm.pojo.ManufactureExample;
+import com.erp4j.ssm.pojo.manufacture.Manufacture;
+import com.erp4j.ssm.pojo.manufacture.ManufactureExample;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.manufacture.ManufactureVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface ManufactureMapper {
@@ -27,4 +29,18 @@ public interface ManufactureMapper {
     int updateByPrimaryKeySelective(Manufacture record);
 
     int updateByPrimaryKey(Manufacture record);
+
+    List<Manufacture> queryManufacture();
+
+    int insertManufacture(ManufactureVo manufactureVo);
+
+    int updateManufacture(ManufactureVo manufactureVo);
+
+    List<Manufacture> queryManufactureById(String searchValue);
+
+    List<Manufacture> queryManufactureByOrderId(String searchValue);
+
+    List<Manufacture> queryManufactureByTechnologyName(String searchValue);
+
+    int queryTotalByTechnologyName(String searchValue);
 }

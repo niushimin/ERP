@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.technology;
 
-import com.erp4j.ssm.pojo.Technology;
-import com.erp4j.ssm.pojo.TechnologyExample;
+import com.erp4j.ssm.pojo.technology.Technology;
+import com.erp4j.ssm.pojo.technology.TechnologyExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +27,6 @@ public interface TechnologyMapper {
     int updateByPrimaryKeySelective(Technology record);
 
     int updateByPrimaryKey(Technology record);
+
+    List<String> queryTechnologyName();
 }

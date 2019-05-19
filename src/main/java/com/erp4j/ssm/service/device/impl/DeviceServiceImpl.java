@@ -1,6 +1,8 @@
 package com.erp4j.ssm.service.device.impl;
 
 import com.erp4j.ssm.mapper.device.DeviceMapper;
+import com.erp4j.ssm.pojo.Device;
+import com.erp4j.ssm.pojo.DeviceExample;
 import com.erp4j.ssm.pojo.device.DeviceVo;
 import com.erp4j.ssm.pojo.device.EUDataGridResult;
 import com.erp4j.ssm.service.device.DeviceService;
@@ -32,4 +34,17 @@ public class DeviceServiceImpl implements DeviceService {
         result.setTotal(pageInfo.getTotal());
         return result;
     }
+
+    @Override
+    public Device queryDeviceById(String deviceId) {
+        Device device = deviceMapper.selectByPrimaryKey(deviceId);
+        return device;
+    }
+
+    @Override
+    public List<Device> queryDevice() {
+        List<Device> devices = deviceMapper.selectByExample(new DeviceExample());
+        return devices;
+    }
+
 }

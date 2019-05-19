@@ -9,4 +9,8 @@ import java.util.List;
 public interface DeviceService {
 
     EUDataGridResult findDeviceList(Integer page, Integer rows,DeviceVo deviceVo);
+
+    Device queryDeviceById(String deviceId);
+
+    List<Device> queryDevice();
 }

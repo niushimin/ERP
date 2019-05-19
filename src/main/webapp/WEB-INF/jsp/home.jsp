@@ -67,7 +67,7 @@
 			<ul id="scheduleMonitor" class="easyui-tree" data-options="animate:true,lines:true">
 				<li><span>计划进度</span>
 					<ul>
-						<li id=11 data-options="attributes:{'url':'order/find'}">订单管理</li>
+						<li id=11 data-options="attributes:{'url':'corder/find'}">订单管理</li>
 					</ul>
 					<ul>
 						<li id=12 data-options="attributes:{'url':'custom/find'}">客户管理</li>

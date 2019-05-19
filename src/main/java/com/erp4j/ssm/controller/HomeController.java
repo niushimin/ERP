@@ -25,9 +25,9 @@ public class HomeController {
         list.add("unqualify:edit");
         list.add("unqualify:delete");
 
-        list.add("order:add");
-        list.add("order:edit");
-        list.add("order:delete");
+        list.add("corder:add");
+        list.add("corder:edit");
+        list.add("corder:delete");
 
         list.add("custom:add");
         list.add("custom:edit");
@@ -36,6 +36,14 @@ public class HomeController {
         list.add("product:add");
         list.add("product:edit");
         list.add("product:delete");
+
+        list.add("manufacture:add");
+        list.add("manufacture:edit");
+        list.add("manufacture:delete");
+
+        list.add("task:add");
+        list.add("task:edit");
+        list.add("task:delete");
 
         list.add("device:add");
         list.add("device:edit");

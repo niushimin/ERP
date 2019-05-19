@@ -38,4 +38,18 @@ public interface COrderMapper {
     int insertCOrder(QueryVo queryVo);
 
     int updateCorder(QueryVo queryVo);
+
+    List<COrder> queryCOrderById(String searchValue);
+
+    List<COrder> queryCorderByCustom(String searchValue);
+
+    int queryTotalByCustom(String searchValue);
+
+    List<COrder> queryCorderByProduct(String searchValue);
+
+    int queryTotalByProduct(String searchValue);
+
+    COrder querySingleById(String cOrderId);
+
+    List<String> queryCOrderId();
 }

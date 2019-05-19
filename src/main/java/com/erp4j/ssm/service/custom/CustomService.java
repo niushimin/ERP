@@ -25,4 +25,12 @@ public interface CustomService {
     List<Custom> queryCustom();
 
     Custom queryCustomById(String customId);
+
+    List<Custom> queryCustomById(String searchValue, int page, int rows);
+
+    int queryTotalById(String searchValue);
+
+    List<Custom> queryCustomByName(String searchValue, int page, int rows);
+
+    int queryTotalByName(String searchValue);
 }

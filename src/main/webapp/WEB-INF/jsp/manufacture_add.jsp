@@ -20,7 +20,7 @@
 	            <td>订单编号:</td>
 	            <td>
 	            	<input class="easyui-combobox" name="orderId"  panelHeight="auto" data-options="required:true,
-	            		valueField:'orderId',textField:'orderId',url:'order/get_data', editable:false"/>
+	            		valueField:'orderId',textField:'orderId',url:'corder/get_data', editable:false"/>
 	            </td>
 	        </tr>
 	        <tr>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.TechnologyMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Technology">
+<mapper namespace="com.erp4j.ssm.mapper.technology.TechnologyMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.technology.Technology">
     <id column="technology_id" jdbcType="VARCHAR" property="technologyId" />
     <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
     <result column="price" jdbcType="DECIMAL" property="price" />
@@ -74,7 +74,7 @@
     technology_id, technology_name, price, vital_process_period, standard_capacity, overtime_standard_capacity, 
     overtime_overfulfil_capacity, double_capacity, overfulfil_capacity
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.TechnologyExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.technology.TechnologyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -98,13 +98,13 @@
     delete from technology
     where technology_id = #{technologyId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.TechnologyExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.technology.TechnologyExample">
     delete from technology
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Technology">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.technology.Technology">
     insert into technology (technology_id, technology_name, price, 
       vital_process_period, standard_capacity, overtime_standard_capacity, 
       overtime_overfulfil_capacity, double_capacity, 
@@ -114,7 +114,7 @@
       #{overtimeOverfulfilCapacity,jdbcType=INTEGER}, #{doubleCapacity,jdbcType=INTEGER}, 
       #{overfulfilCapacity,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Technology">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.technology.Technology">
     insert into technology
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="technologyId != null">
@@ -175,7 +175,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.TechnologyExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.technology.TechnologyExample" resultType="java.lang.Long">
     select count(*) from technology
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -231,7 +231,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Technology">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.technology.Technology">
     update technology
     <set>
       <if test="technologyName != null">
@@ -261,7 +261,7 @@
     </set>
     where technology_id = #{technologyId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Technology">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.technology.Technology">
     update technology
     set technology_name = #{technologyName,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
@@ -273,4 +273,12 @@
       overfulfil_capacity = #{overfulfilCapacity,jdbcType=INTEGER}
     where technology_id = #{technologyId,jdbcType=VARCHAR}
   </update>
+
+
+
+
+  <select id="queryTechnologyName" resultType="string">
+    select technology_name
+    from technology
+  </select>
 </mapper>

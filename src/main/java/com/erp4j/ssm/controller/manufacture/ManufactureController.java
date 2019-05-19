@@ -1,12 +1,11 @@
-package com.erp4j.ssm.controller.work;
+package com.erp4j.ssm.controller.manufacture;
 
 import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.corder.COrder;
-import com.erp4j.ssm.pojo.custom.Custom;
-import com.erp4j.ssm.pojo.product.Product;
-import com.erp4j.ssm.pojo.work.Work;
-import com.erp4j.ssm.pojo.work.WorkVo;
-import com.erp4j.ssm.service.work.WorkService;
+import com.erp4j.ssm.pojo.manufacture.Manufacture;
+import com.erp4j.ssm.pojo.manufacture.ManufactureVo;
+import com.erp4j.ssm.service.manufacture.ManufactureService;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,34 +17,36 @@ import java.util.Map;
 
 /**
  * @Author: Ethan New
- * @Date: 2019/5/18 20:25
+ * @Date: 2019/5/19 14:56
  * @Description:
  */
 
 @Controller
-@RequestMapping("/work")
-public class WorkController {
+@RequestMapping("/manufacture")
+public class ManufactureController {
 
     @Autowired
-    WorkService workService;
+    ManufactureService manufactureService;
 
+    // 从主页查看生产计划列表信息
     @RequestMapping("/find")
     public String find() {
-        return "work_list";
+        return "manufacture_list";
     }
 
+    // 返回生产计划列表的数据
     @ResponseBody
     @RequestMapping("/list")
-    public Map list(int page, int rows) {
-        List<Work> list = workService.queryWork(page, rows);
-        int total = workService.queryTotal();
+    public Map<String, Object> list(int page, int rows) {
+        List<Manufacture> list = manufactureService.queryManufacture(page, rows);
+        int total = manufactureService.queryTotal();
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-    // 新增作业信息权限校验
+    // 新增生产计划权限校验
     @ResponseBody
     @RequestMapping("/add_judge")
     public Map<String, Object> add_judge() {
@@ -53,17 +54,17 @@ public class WorkController {
         return map;
     }
 
-    // 跳转新增作业信息页面
+    // 跳转新增生产计划页面
     @RequestMapping("/add")
     public String add() {
-        return "work_add";
+        return "manufacture_add";
     }
 
-    // 保存作业信息
+    // 保存生产计划信息
     @ResponseBody
     @RequestMapping("/insert")
-    public Map<String, Object> insert(WorkVo workVo) {
-        boolean flag = workService.insertWork(workVo);
+    public Map<String, Object> insert(ManufactureVo manufactureVo) {
+        boolean flag = manufactureService.insertManufacture(manufactureVo);
         HashMap<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -73,7 +74,7 @@ public class WorkController {
         return map;
     }
 
-    // 修改作业信息权限校验
+    // 修改生产计划权限校验
     @ResponseBody
     @RequestMapping("/edit_judge")
     public Map<String, Object> edit_judge() {
@@ -81,17 +82,17 @@ public class WorkController {
         return map;
     }
 
-    // 跳转到修改作业信息页面
+    // 跳转到修改生产计划页面
     @RequestMapping("/edit")
     public String edit() {
-        return "work_edit";
+        return "manufacture_edit";
     }
 
-    // 保存作业信息
+    // 将修改的生产计划保存到数据库中
     @ResponseBody
     @RequestMapping("/update_all")
-    public Map<String, Object> update_all(WorkVo workVo) {
-        boolean flag = workService.updateWork(workVo);
+    public Map<String, Object> update_all(ManufactureVo manufactureVo) {
+        boolean flag = manufactureService.updateManufacture(manufactureVo);
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -101,20 +102,19 @@ public class WorkController {
         return map;
     }
 
-    // 删除作业信息权限校验
+    // 删除生产计划权限校验
     @ResponseBody
     @RequestMapping("/delete_judge")
     public Map<String, Object> delete_judge() {
         Map<String, Object> map = new HashMap<>();
-        map.put("msg", null);
         return map;
     }
 
-    // 批量删除作业信息
+    // 批量删除生产计划
     @ResponseBody
     @RequestMapping("/delete_batch")
     public Map<String, Object> delete_batch(QueryVo queryVo) {
-        boolean flag = workService.deleteMultiWork(queryVo.getIds());
+        boolean flag = manufactureService.deleteMultiManufacture(queryVo.getIds());
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -124,51 +124,42 @@ public class WorkController {
         return map;
     }
 
-    // 根据作业Id查询订单信息
+    // 根据生产批号查询生产计划信息
     @ResponseBody
-    @RequestMapping("/search_work_by_workId")
-    public Map<String, Object> search_work_by_workId(String searchValue, int page, int rows) {
-        List<Work> list = workService.queryWorkById(searchValue, page, rows);
-        int total = workService.queryTotalById(searchValue);
+    @RequestMapping("/search_manufacture_by_manufactureSn")
+    public Map<String, Object> search_manufacture_by_manufactureSn(String searchValue, int page, int rows) {
+        List<Manufacture> list = manufactureService.queryManufactureById(searchValue, page, rows);
+        int total = manufactureService.queryTotalById(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-    // 根据产品名称查询作业信息
+    // 根据订单编号查询生产计划信息
     @ResponseBody
-    @RequestMapping("/search_work_by_workProduct")
-    public Map<String, Object> search_work_by_workProduct(String searchValue, int page, int rows) {
-        List<Work> list = workService.queryWorkByProduct(searchValue, page, rows);
-        int total = workService.queryTotalByProduct(searchValue);
+    @RequestMapping("/search_manufacture_by_manufactureOrderId")
+    public Map<String, Object> search_manufacture_by_manufactureOrderId(String searchValue, int page, int rows) {
+        List<Manufacture> list = manufactureService.queryManufactureByOrderId(searchValue, page, rows);
+        int total = manufactureService.queryTotalByOrderId(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-    // 根据设备名称查询作业信息
+    // 根据工艺名称查询生产计划信息
     @ResponseBody
-    @RequestMapping("/search_work_by_workDevice")
-    public Map<String, Object> search_work_by_workDevice(String searchValue, int page, int rows) {
-        List<Work> list = workService.queryWorkByDevice(searchValue, page, rows);
-        int total = workService.queryTotalDevice(searchValue);
+    @RequestMapping("/search_manufacture_by_manufactureTechnologyName")
+    public Map<String, Object> search_manufacture_by_manufactureTechnologyName(String searchValue, int page, int rows) {
+        List<Manufacture> list = manufactureService.queryManufactureByTechnologyName(searchValue, page, rows);
+        int total = manufactureService.queryTotalByTechnologyName(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-    // 根据工序查询作业信息
-    @ResponseBody
-    @RequestMapping("/search_work_by_workProcess")
-    public Map<String, Object> search_work_by_workProcess(String searchValue, int page, int rows) {
-        List<Work> list = workService.queryWorkByProcess(searchValue, page, rows);
-        int total = workService.queryTotalProcess(searchValue);
-        Map<String, Object> map = new HashMap<>();
-        map.put("total", total);
-        map.put("rows", list);
-        return map;
-    }
+
+
 }

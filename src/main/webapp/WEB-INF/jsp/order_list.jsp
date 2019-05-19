@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 
 <table class="easyui-datagrid" id="orderList" title="订单列表" data-options="singleSelect:false,collapsible:true,
-	pagination:true,rownumbers:true,url:'order/list',method:'get',pageSize:10,fitColumns:true,toolbar:toolbar_order">
+	pagination:true,rownumbers:true,url:'corder/list',method:'get',pageSize:10,fitColumns:true,toolbar:toolbar_order">
     <thead>
         <tr>
 			<th data-options="field:'ck',checkbox:true"></th>
@@ -28,17 +28,17 @@
 <div  id="toolbar_order" style=" height: 22px; padding: 3px 11px; background: #fafafa;">  
 	
 	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
-		<c:if test="${per=='order:add' }" >
+		<c:if test="${per=='corder:add' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="order_add()">新增</a>  
 		    </div>  
 		</c:if>
-		<c:if test="${per=='order:edit' }" >
+		<c:if test="${per=='corder:edit' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="order_edit()">编辑</a>  
 		    </div>  
 		</c:if>
-		<c:if test="${per=='order:delete' }" >
+		<c:if test="${per=='corder:delete' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="order_delete()">删除</a>  
 		    </div>  
@@ -64,10 +64,10 @@
 </div>  
 
 <div id="orderEditWindow" class="easyui-window" title="编辑订单" data-options="modal:true,closed:true,resizable:true,
-	iconCls:'icon-save',href:'order/edit'" style="width:65%;height:80%;padding:10px;">
+	iconCls:'icon-save',href:'corder/edit'" style="width:65%;height:80%;padding:10px;">
 </div>
 <div id="orderAddWindow" class="easyui-window" title="添加订单" data-options="modal:true,closed:true,resizable:true,
-	iconCls:'icon-save',href:'order/add'" style="width:65%;height:80%;padding:10px;">
+	iconCls:'icon-save',href:'corder/add'" style="width:65%;height:80%;padding:10px;">
 </div>
 
 <div id="orderCustomInfo" class="easyui-dialog" title="客户信息" data-options="modal:true,closed:true,resizable:true,
@@ -182,7 +182,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 		
 		$("#orderList").datagrid({
 	        title:'订单列表', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',
-			nowrap:true, toolbar:"toolbar_order", url:'order/list', method:'get', loadMsg:'数据加载中......',
+			nowrap:true, toolbar:"toolbar_order", url:'corder/list', method:'get', loadMsg:'数据加载中......',
 			fitColumns:true,//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 				{field : 'ck', checkbox:true },
@@ -204,7 +204,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 	}else{
 		$("#orderList").datagrid({  
 	        title:'订单列表', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',
-			nowrap:true, toolbar:"toolbar_order", url:'order/search_order_by_'+name+'?searchValue='+value,
+			nowrap:true, toolbar:"toolbar_order", url:'corder/search_order_by_'+name+'?searchValue='+value,
 			loadMsg:'数据加载中......', fitColumns:true,//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 	             	{field : 'ck', checkbox:true }, 

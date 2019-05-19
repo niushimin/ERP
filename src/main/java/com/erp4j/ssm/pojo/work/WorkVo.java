@@ -1,19 +1,21 @@
 package com.erp4j.ssm.pojo.work;
 
-import com.erp4j.ssm.pojo.Device;
-import com.erp4j.ssm.pojo.process.Process;
-import com.erp4j.ssm.pojo.product.Product;
+/**
+ * @Author: Ethan New
+ * @Date: 2019/5/19 15:51
+ * @Description:
+ */
 
-public class Work {
+public class WorkVo {
     private String workId;
 
     private String processNumber;
 
-    private Product product;
+    private String productId;
 
-    private Process process;
+    private String processId;
 
-    private Device device;
+    private String deviceId;
 
     private Integer rating;
 
@@ -33,28 +35,28 @@ public class Work {
         this.processNumber = processNumber;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public Process getProcess() {
-        return process;
+    public String getProcessId() {
+        return processId;
     }
 
-    public void setProcess(Process process) {
-        this.process = process;
+    public void setProcessId(String processId) {
+        this.processId = processId;
     }
 
-    public Device getDevice() {
-        return device;
+    public String getDeviceId() {
+        return deviceId;
     }
 
-    public void setDevice(Device device) {
-        this.device = device;
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     public Integer getRating() {
