@@ -25,4 +25,16 @@ public interface ProductService {
     Product queryProductById(String productId);
 
     List<Product> queryProduct();
+
+    List<Product> queryProductById(String searchValue, int page, int rows);
+
+    int queryTotalById(String searchValue);
+
+    List<Product> queryProductByName(String searchValue, int page, int rows);
+
+    int queryTotalByName(String searchValue);
+
+    List<Product> queryProductByType(String searchValue, int page, int rows);
+
+    int queryTotalByType(String searchValue);
 }

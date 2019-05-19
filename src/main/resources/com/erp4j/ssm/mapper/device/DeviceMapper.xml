@@ -67,6 +67,7 @@
 			device_id = #{deviceId}
 	</update>
 
+<<<<<<< HEAD
     <!-- 查询所有记录 -->
     <select id="listType" resultMap="BaseResultMap1">
 		SELECT
@@ -152,6 +153,8 @@
 
 
 
+=======
+>>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
     <!--逆向工程生成-->
 
     <sql id="Example_Where_Clause">

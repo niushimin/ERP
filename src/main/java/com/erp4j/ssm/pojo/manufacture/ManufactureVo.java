@@ -1,8 +1,8 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.manufacture;
 
 import java.util.Date;
 
-public class Manufacture {
+public class ManufactureVo {
     private String manufactureSn;
 
     private String orderId;

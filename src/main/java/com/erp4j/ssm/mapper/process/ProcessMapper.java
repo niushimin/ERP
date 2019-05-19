@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.process;
 
-import com.erp4j.ssm.pojo.Process;
-import com.erp4j.ssm.pojo.ProcessExample;
+import com.erp4j.ssm.pojo.process.Process;
+import com.erp4j.ssm.pojo.process.ProcessExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

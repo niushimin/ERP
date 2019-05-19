@@ -1,7 +1,7 @@
 package com.erp4j.ssm.pojo.work;
 
 import com.erp4j.ssm.pojo.Device;
-import com.erp4j.ssm.pojo.Process;
+import com.erp4j.ssm.pojo.process.Process;
 import com.erp4j.ssm.pojo.product.Product;
 
 public class Work {

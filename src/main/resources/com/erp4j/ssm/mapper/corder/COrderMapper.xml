@@ -340,4 +340,102 @@
     <include refid="Base_Column_List" />
     from c_order
   </select>
+
+  <insert id="insertCOrder">
+    insert into c_order
+      (order_id, custom_id, product_id, order_date, request_date, note, quantity, unit_price, unit, image, file, status)
+    values (#{orderId}, #{customId}, #{productId},#{orderDate}, #{requestDate}, #{note},
+      #{quantity}, #{unitPrice}, #{unit}, #{image}, #{file}, #{status})
+
+  </insert>
+
+  <update id="updateCorder">
+    update c_order
+    <set>
+      <if test="customId != null">
+        custom_id = #{customId},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId},
+      </if>
+      <if test="orderDate != null">
+        order_date = #{orderDate},
+      </if>
+      <if test="requestDate != null">
+        request_date = #{requestDate},
+      </if>
+      <if test="note != null">
+        note = #{note},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice},
+      </if>
+      <if test="unit != null">
+        unit = #{unit},
+      </if>
+      <if test="image != null">
+        image = #{image},
+      </if>
+      <if test="file != null">
+        file = #{file},
+      </if>
+      <if test="status != null">
+        status = #{status},
+      </if>
+    </set>
+    where order_id = #{orderId}
+  </update>
+
+  <select id="queryCOrderById" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List" />
+    from c_order
+    where order_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <sql id="Base_Column_List_COrder">
+    o.order_id, o.custom_id, o.product_id, o.order_date, o.request_date, o.note, o.quantity, o.unit_price,
+    o.unit, o.image, o.file, o.status
+  </sql>
+
+  <select id="queryCorderByCustom" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List_COrder" />
+    from c_order o left join custom c on o.custom_id = c.custom_id
+    where c.custom_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByCustom" resultType="int">
+    select count(o.order_id)
+    from c_order o left join custom c on o.custom_id = c.custom_id
+    where c.custom_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryCorderByProduct" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List_COrder" />
+    from c_order o left join product c on o.product_id = c.product_id
+    where c.product_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByProduct" resultType="int">
+    select count(o.order_id)
+    from c_order o left join product c on o.product_id = c.product_id
+    where c.product_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="querySingleById" resultMap="COrderMap">
+    select
+    <include refid="Base_Column_List" />
+    from c_order
+    where order_id = #{cOrderId}
+  </select>
+
+  <select id="queryCOrderId" resultType="string">
+    select order_id
+    from c_order
+  </select>
 </mapper>

@@ -60,4 +60,48 @@ public class CustomServiceImpl implements CustomService {
         List<Custom> customs = customMapper.selectByExample(new CustomExample());
         return customs;
     }
+
+    @Override
+    public Custom queryCustomById(String customId) {
+        Custom custom = customMapper.selectByPrimaryKey(customId);
+        return custom;
+    }
+
+    @Override
+    public List<Custom> queryCustomById(String searchValue, int page, int rows) {
+        PageHelper.startPage(page, rows);
+        CustomExample customExample = new CustomExample();
+        CustomExample.Criteria criteria = customExample.createCriteria();
+        criteria.andCustomIdLike("%" + searchValue + "%");
+        List<Custom> list = customMapper.selectByExample(customExample);
+        return list;
+    }
+
+    @Override
+    public int queryTotalById(String searchValue) {
+        CustomExample customExample = new CustomExample();
+        CustomExample.Criteria criteria = customExample.createCriteria();
+        criteria.andCustomIdLike("%" + searchValue + "%");
+        int total = (int) customMapper.countByExample(customExample);
+        return total;
+    }
+
+    @Override
+    public List<Custom> queryCustomByName(String searchValue, int page, int rows) {
+        PageHelper.startPage(page, rows);
+        CustomExample customExample = new CustomExample();
+        CustomExample.Criteria criteria = customExample.createCriteria();
+        criteria.andCustomNameLike("%" + searchValue + "%");
+        List<Custom> list = customMapper.selectByExample(customExample);
+        return list;
+    }
+
+    @Override
+    public int queryTotalByName(String searchValue) {
+        CustomExample customExample = new CustomExample();
+        CustomExample.Criteria criteria = customExample.createCriteria();
+        criteria.andCustomNameLike("%" + searchValue + "%");
+        int total = (int) customMapper.countByExample(customExample);
+        return total;
+    }
 }

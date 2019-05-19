@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.ProcessMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Process">
+<mapper namespace="com.erp4j.ssm.mapper.process.ProcessMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.process.Process">
     <id column="process_id" jdbcType="VARCHAR" property="processId" />
     <result column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
     <result column="sequence" jdbcType="INTEGER" property="sequence" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     process_id, technology_plan_id, sequence, quota
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.ProcessExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.process.ProcessExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from process
     where process_id = #{processId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.ProcessExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.process.ProcessExample">
     delete from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Process">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.process.Process">
     insert into process (process_id, technology_plan_id, sequence, 
       quota)
     values (#{processId,jdbcType=VARCHAR}, #{technologyPlanId,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
       #{quota,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Process">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.process.Process">
     insert into process
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="processId != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.ProcessExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.process.ProcessExample" resultType="java.lang.Long">
     select count(*) from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Process">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.process.Process">
     update process
     <set>
       <if test="technologyPlanId != null">
@@ -186,7 +186,7 @@
     </set>
     where process_id = #{processId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Process">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.process.Process">
     update process
     set technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR},
       sequence = #{sequence,jdbcType=INTEGER},

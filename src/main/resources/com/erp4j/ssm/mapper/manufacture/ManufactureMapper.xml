@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.ManufactureMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Manufacture">
+<mapper namespace="com.erp4j.ssm.mapper.manufacture.ManufactureMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.manufacture.Manufacture">
     <id column="manufacture_sn" jdbcType="VARCHAR" property="manufactureSn" />
     <result column="order_id" jdbcType="VARCHAR" property="orderId" />
     <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     manufacture_sn, order_id, technology_id, launch_quantity, begin_date, end_date
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.ManufactureExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.manufacture.ManufactureExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from manufacture
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.ManufactureExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.manufacture.ManufactureExample">
     delete from manufacture
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Manufacture">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.manufacture.Manufacture">
     insert into manufacture (manufacture_sn, order_id, technology_id, 
       launch_quantity, begin_date, end_date
       )
@@ -108,7 +108,7 @@
       #{launchQuantity,jdbcType=INTEGER}, #{beginDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Manufacture">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.manufacture.Manufacture">
     insert into manufacture
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="manufactureSn != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.ManufactureExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.manufacture.ManufactureExample" resultType="java.lang.Long">
     select count(*) from manufacture
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Manufacture">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.manufacture.Manufacture">
     update manufacture
     <set>
       <if test="orderId != null">
@@ -216,7 +216,7 @@
     </set>
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Manufacture">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.manufacture.Manufacture">
     update manufacture
     set order_id = #{orderId,jdbcType=VARCHAR},
       technology_id = #{technologyId,jdbcType=VARCHAR},
@@ -225,4 +225,81 @@
       end_date = #{endDate,jdbcType=TIMESTAMP}
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </update>
+
+
+
+  <resultMap id="manufactureMap" type="com.erp4j.ssm.pojo.manufacture.Manufacture">
+    <id column="manufacture_sn" jdbcType="VARCHAR" property="manufactureSn" />
+    <result column="launch_quantity" jdbcType="INTEGER" property="launchQuantity" />
+    <result column="begin_date" jdbcType="TIMESTAMP" property="beginDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+    <association property="cOrder" column="order_id"
+                 select="com.erp4j.ssm.mapper.corder.COrderMapper.queryCOrderById"/>
+    <association property="technology" column="technology_id"
+                 select="com.erp4j.ssm.mapper.technology.TechnologyMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+  <select id="queryManufacture" resultMap="manufactureMap">
+    select
+    <include refid="Base_Column_List"/>
+    from manufacture
+  </select>
+
+  <insert id="insertManufacture">
+    insert into manufacture (manufacture_sn, order_id, technology_id, launch_quantity, begin_date, end_date)
+    values (#{manufactureSn}, #{orderId}, #{technologyId}, #{launchQuantity}, #{beginDate}, #{endDate})
+  </insert>
+
+  <update id="updateManufacture">
+    update manufacture
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId},
+      </if>
+      <if test="technologyId != null">
+        technology_id = #{technologyId},
+      </if>
+      <if test="launchQuantity != null">
+        launch_quantity = #{launchQuantity},
+      </if>
+      <if test="beginDate != null">
+        begin_date = #{beginDate},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate},
+      </if>
+    </set>
+    where manufacture_sn = #{manufactureSn}
+  </update>
+
+  <select id="queryManufactureById" resultMap="manufactureMap">
+    select
+    <include refid="Base_Column_List"/>
+    from manufacture
+    where manufacture_sn like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryManufactureByOrderId" resultMap="manufactureMap">
+    select
+    <include refid="Base_Column_List"/>
+    from manufacture
+    where order_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <sql id="Base_Column_Manufacture">
+    m.manufacture_sn, m.order_id, m.technology_id, m.launch_quantity, m.begin_date, m.end_date
+  </sql>
+
+  <select id="queryManufactureByTechnologyName" resultMap="manufactureMap">
+    select
+    <include refid="Base_Column_Manufacture"/>
+    from manufacture m left join technology t on m.technology_id = t.technology_id
+    where t.technology_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByTechnologyName" resultType="int">
+    select count(m.manufacture_sn)
+    from manufacture m left join technology t on m.technology_id = t.technology_id
+    where t.technology_name like concat("%", #{searchValue}, "%")
+  </select>
 </mapper>

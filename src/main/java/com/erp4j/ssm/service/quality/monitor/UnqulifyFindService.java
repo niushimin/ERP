@@ -1,9 +1,7 @@
 package com.erp4j.ssm.service.quality.monitor;
 
-import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
+import com.erp4j.ssm.actionform.quality.monitor.*;
 import com.erp4j.ssm.pojo.Employee;
-import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
-import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
 import com.erp4j.ssm.pojo.UnqualifyApply;
 
 import java.util.List;
@@ -32,4 +30,8 @@ public interface UnqulifyFindService {
     ResponseStatus getResponseStatus();
 
     void unqulifyUpdateAll(UnqualifyApply unqualifyApply);
+
+    ResponseVo searchUnqualifyByUnqualifyId(QueryParameters queryParameters);
+
+    ResponseVo searchUnqualifyByProductName(QueryParameters queryParameters);
 }

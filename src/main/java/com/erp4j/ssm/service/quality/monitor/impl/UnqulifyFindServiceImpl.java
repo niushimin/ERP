@@ -1,5 +1,6 @@
 package com.erp4j.ssm.service.quality.monitor.impl;
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.mapper.DepartmentMapper;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,7 +46,7 @@ public class UnqulifyFindServiceImpl implements UnqulifyFindService {
         ResponseVo<UnqualifyApplyPojo> unqualifyApplyPojoResponseVo = new ResponseVo<>();
         /*分页*/
         PageHelper.startPage(page, rows);
-        List<UnqualifyApplyPojo> unqualifyApplyPojos = unqualifyMapper.queryUnqulifyApplyAll(page,rows);
+        List<UnqualifyApplyPojo> unqualifyApplyPojos = unqualifyMapper.queryUnqulifyApplyAll(null,null);
         unqualifyApplyPojoResponseVo.setRows(unqualifyApplyPojos);
         /*查询总数*/
         UnqualifyApplyExample unqualifyApplyExample = new UnqualifyApplyExample();
@@ -113,5 +115,37 @@ public class UnqulifyFindServiceImpl implements UnqulifyFindService {
     @Override
     public void unqulifyUpdateAll(UnqualifyApply unqualifyApply) {
         unqualifyApplyMapper.updateByPrimaryKey(unqualifyApply);
+    }
+
+    @Override
+    public ResponseVo searchUnqualifyByUnqualifyId(QueryParameters queryParameters) {
+        ResponseVo<UnqualifyApplyPojo> unqualifyApplyPojoResponseVo = new ResponseVo<>();
+        /*构造查询条件*/
+        UnqualifyApplyExample unqualifyApplyExample = new UnqualifyApplyExample();
+        UnqualifyApplyExample.Criteria criteria = unqualifyApplyExample.createCriteria();
+        criteria.andUnqualifyApplyIdLike(queryParameters.getSearchValue());
+        /*查询总数*/
+        long unqualifyCount = unqualifyApplyMapper.countByExample(unqualifyApplyExample);
+        unqualifyApplyPojoResponseVo.setTotal((int)unqualifyCount);
+        /*分页*/
+        PageHelper.startPage(queryParameters.getPage(), queryParameters.getRows());
+        ArrayList<UnqualifyApplyPojo> unqualifyApplyPojos = unqualifyMapper.queryUnqulifyApplyAll("%" + queryParameters.getSearchValue() + "%", null);
+        unqualifyApplyPojoResponseVo.setRows(unqualifyApplyPojos);
+
+        return unqualifyApplyPojoResponseVo;
+    }
+
+    @Override
+    public ResponseVo searchUnqualifyByProductName(QueryParameters queryParameters) {
+        ResponseVo<UnqualifyApplyPojo> unqualifyApplyPojoResponseVo = new ResponseVo<>();
+        /*查询总数*/
+        int count = unqualifyMapper.searchUnqualifyCountByProductName(null, "%" + queryParameters.getSearchValue() + "%");
+        unqualifyApplyPojoResponseVo.setTotal(count);
+        /*分页*/
+        PageHelper.startPage(queryParameters.getPage(), queryParameters.getRows());
+        ArrayList<UnqualifyApplyPojo> unqualifyApplyPojos = unqualifyMapper.queryUnqulifyApplyAll(null,"%" + queryParameters.getSearchValue() + "%");
+        unqualifyApplyPojoResponseVo.setRows(unqualifyApplyPojos);
+
+        return unqualifyApplyPojoResponseVo;
     }
 }

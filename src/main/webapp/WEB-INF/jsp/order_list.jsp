@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 
 <table class="easyui-datagrid" id="orderList" title="订单列表" data-options="singleSelect:false,collapsible:true,
-	pagination:true,rownumbers:true,url:'order/list',method:'get',pageSize:10,fitColumns:true,toolbar:toolbar_order">
+	pagination:true,rownumbers:true,url:'corder/list',method:'get',pageSize:10,fitColumns:true,toolbar:toolbar_order">
     <thead>
         <tr>
 			<th data-options="field:'ck',checkbox:true"></th>
@@ -64,10 +64,10 @@
 </div>  
 
 <div id="orderEditWindow" class="easyui-window" title="编辑订单" data-options="modal:true,closed:true,resizable:true,
-	iconCls:'icon-save',href:'order/edit'" style="width:65%;height:80%;padding:10px;">
+	iconCls:'icon-save',href:'corder/edit'" style="width:65%;height:80%;padding:10px;">
 </div>
 <div id="orderAddWindow" class="easyui-window" title="添加订单" data-options="modal:true,closed:true,resizable:true,
-	iconCls:'icon-save',href:'order/add'" style="width:65%;height:80%;padding:10px;">
+	iconCls:'icon-save',href:'corder/add'" style="width:65%;height:80%;padding:10px;">
 </div>
 
 <div id="orderCustomInfo" class="easyui-dialog" title="客户信息" data-options="modal:true,closed:true,resizable:true,
@@ -417,12 +417,12 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 	
 	//更新订单要求
 	function updateOrderNote(){
-		$.get("corder/edit_judge",'',function(data){
+		$.get("order/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
     			orderNoteEditor.sync();
-    			$.post("corder/update_note",$("#orderNoteForm").serialize(), function(data){
+    			$.post("order/update_note",$("#orderNoteForm").serialize(), function(data){
     				if(data.status == 200){
     					$("#orderNoteDialog").dialog("close");
     					$("#orderList").datagrid("reload");
@@ -458,7 +458,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_edit(){
-    	$.get("corder/edit_judge",'',function(data){
+    	$.get("order/edit_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -499,7 +499,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_delete(){
-    	$.get("corder/delete_judge",'',function(data){
+    	$.get("order/delete_judge",'',function(data){
       		if(data.msg != null){
       			$.messager.alert('提示', data.msg);
       		}else{
@@ -511,7 +511,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
               	$.messager.confirm('确认','确定删除ID为 '+ids+' 的订单吗？',function(r){
               	    if (r){
               	    	var params = {"ids":ids};
-                      	$.post("corder/delete_batch",params, function(data){
+                      	$.post("order/delete_batch",params, function(data){
                   			if(data.status == 200){
                   				$.messager.alert('提示','删除订单成功!',undefined,function(){
                   					$("#orderList").datagrid("reload");

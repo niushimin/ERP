@@ -3,6 +3,8 @@ package com.erp4j.ssm.mapper.work;
 import com.erp4j.ssm.pojo.work.Work;
 import com.erp4j.ssm.pojo.work.WorkExample;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.work.WorkVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface WorkMapper {
@@ -29,4 +31,22 @@ public interface WorkMapper {
     int updateByPrimaryKey(Work record);
 
     List<Work> queryWork();
+
+    int insertWork(WorkVo workVo);
+
+    int updateWork(WorkVo workVo);
+
+    List<Work> queryCOrderById(String searchValue);
+
+    List<Work> queryWorkByProduct(String searchValue);
+
+    int queryTotalByProduct(String searchValue);
+
+    List<Work> queryWorkByDevice(String searchValue);
+
+    int queryTotalByDevice(String searchValue);
+
+    List<Work> queryWorkByProcess(String searchValue);
+
+    int queryTotalByProcess(String searchValue);
 }

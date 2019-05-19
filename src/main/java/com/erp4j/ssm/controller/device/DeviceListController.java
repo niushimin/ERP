@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +32,7 @@ public class DeviceListController {
         return result;
     }
 
+<<<<<<< HEAD
     //获取所有设备信息
     @RequestMapping("/get_data")
     @ResponseBody
@@ -175,6 +175,20 @@ public class DeviceListController {
     public EUDataGridResult searchDeviceByDeviceTypeName(Integer page, Integer rows, String searchValue) {
         EUDataGridResult result = deviceService.searchDeviceByDeviceTypeName(page, rows, searchValue);
         return result;
+=======
+    @ResponseBody
+    @RequestMapping("/get/{deviceId}")
+    public Device get(@PathVariable String deviceId) {
+        Device device = deviceService.queryDeviceById(deviceId);
+        return device;
+    }
+
+    @ResponseBody
+    @RequestMapping("/get_data")
+    public List<Device> get_data() {
+        List<Device> list = deviceService.queryDevice();
+        return list;
+>>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
     }
 }
 

@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface UnqualifyMapper {
 
-    ArrayList<UnqualifyApplyPojo> queryUnqulifyApplyAll(@Param("page") int page, @Param("page") int rows);
+    ArrayList<UnqualifyApplyPojo> queryUnqulifyApplyAll(@Param("unqualifyApplyId") String unqualifyApplyId, @Param("productName") String productName);
+    int searchUnqualifyCountByProductName(@Param("unqualifyApplyId") String unqualifyApplyId, @Param("productName") String productName);
 }
