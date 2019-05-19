@@ -1,6 +1,7 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
+import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.Employee;
 
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/employee")
@@ -22,6 +25,7 @@ public class EmployeeController {
 
     @Autowired
     UnqulifyFindService unqulifyFindService;
+
 
     /*返回不合格品列表*/
     @ResponseBody
@@ -46,6 +50,27 @@ public class EmployeeController {
     public List<Employee> selectEmployAll(){
         List<Employee> employees = unqulifyFindService.selectEmployAll();
         return employees;
+    }
+    /*修改申请人验证*/
+    @ResponseBody
+    @RequestMapping("/edit_judge")
+    public Map<String,String> editEmployeeJudge(){
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("msg",null);
+        return hashMap;
+    }
+    /*修改申请人*/
+    @ResponseBody
+    @RequestMapping("/update_all")
+    public ResponseStatus updateEmployeeAll(Employee employee){
+        ResponseStatus responseStatus = null;
+        if(unqulifyFindService.updateEmployeeAll(employee)){
+            responseStatus = unqulifyFindService.getResponseStatus("OK","200");
+        }else{
+            responseStatus = unqulifyFindService.getResponseStatus("修改失败","400");
+        }
+
+        return responseStatus;
     }
 
 

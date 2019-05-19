@@ -21,6 +21,22 @@ public class HomeController {
         HttpSession session = request.getSession();
         ArrayList<String> list = new ArrayList<>();
         /*添加权限*/
+        list.add("fMeasureCheck:add");
+        list.add("fMeasureCheck:edit");
+        list.add("fMeasureCheck:delete");
+
+        list.add("fCountCheck:add");
+        list.add("fCountCheck:edit");
+        list.add("fCountCheck:delete");
+
+        list.add("pMeasureCheck:add");
+        list.add("pMeasureCheck:edit");
+        list.add("pMeasureCheck:delete");
+
+        list.add("pCountCheck:add");
+        list.add("pCountCheck:edit");
+        list.add("pCountCheck:delete");
+
         list.add("unqualify:add");
         list.add("unqualify:edit");
         list.add("unqualify:delete");
