@@ -11,9 +11,11 @@ public interface DeviceMaintainMapper {
 
     List<DeviceMaintainVo> find(DeviceMaintainVo deviceMaintainVo);
 
+    int updateNote(DeviceMaintainVo deviceMaintainVo);
 
+    List<DeviceMaintainVo> searchDeviceMaintainByDeviceMaintainId(String deviceMaintainId);
 
-
+    List<DeviceMaintainVo> searchDeviceMaintainByDeviceFaultId(String deviceFaultId);
 
 
 
@@ -49,6 +51,7 @@ public interface DeviceMaintainMapper {
     int updateByPrimaryKeySelective(DeviceMaintain record);
 
     int updateByPrimaryKey(DeviceMaintain record);
+
 
 
 }

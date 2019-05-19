@@ -11,9 +11,11 @@ public interface DeviceTypeMapper {
 
     List<DeviceTypeVo> find(DeviceTypeVo deviceTypeVo);
 
+    List<DeviceType> listType();
 
+    List<DeviceTypeVo> searchDeviceTypeByDeviceTypeId(String deviceTypeId);
 
-
+    List<DeviceTypeVo> searchDeviceTypeByDeviceTypeName(String deviceTypeName);
 
     //逆向工程生成
     long countByExample(DeviceTypeExample example);
@@ -37,6 +39,7 @@ public interface DeviceTypeMapper {
     int updateByPrimaryKeySelective(DeviceType record);
 
     int updateByPrimaryKey(DeviceType record);
+
 
 
 }

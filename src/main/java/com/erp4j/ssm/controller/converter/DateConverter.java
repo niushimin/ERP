@@ -11,11 +11,20 @@ public class DateConverter implements Converter<String, Date> {
 
     @Override
     public Date convert(String s) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-             parse = simpleDateFormat.parse(s);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (s.length() > 10) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                parse = simpleDateFormat.parse(s);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        } else {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                parse = simpleDateFormat.parse(s);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         return parse;

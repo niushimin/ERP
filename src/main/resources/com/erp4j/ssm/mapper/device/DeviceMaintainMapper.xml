@@ -41,6 +41,49 @@
 		on dm.device_maintain_emp_id=em.emp_id
     </select>
 
+  <!-- 修改备注-->
+  <update id="updateNote" parameterType="com.erp4j.ssm.pojo.device.DeviceMaintainVo" >
+		UPDATE device_maintain
+		SET note = #{note}
+		WHERE
+			device_maintain_id = #{deviceMaintainId}
+	</update>
+
+  <select id="searchDeviceMaintainByDeviceMaintainId" resultMap="BaseResultMap1">
+		select
+			device_maintain_id,
+			device_fault_id,
+			device_maintain_emp_id,
+			em.emp_name as device_maintain_emp,
+			device_maintain_date,
+			device_maintain_result,
+			device_maintain_cost,
+			dm.note
+		from device_maintain dm
+		left join employee em
+		on dm.device_maintain_emp_id=em.emp_id
+		where device_maintain_id like CONCAT(
+				'%',
+				#{deviceMaintainId},'%' )
+	</select>
+
+  <select id="searchDeviceMaintainByDeviceFaultId" resultMap="BaseResultMap1">
+		select
+			device_maintain_id,
+			device_fault_id,
+			device_maintain_emp_id,
+			em.emp_name as device_maintain_emp,
+			device_maintain_date,
+			device_maintain_result,
+			device_maintain_cost,
+			dm.note
+		from device_maintain dm
+		left join employee em
+		on dm.device_maintain_emp_id=em.emp_id
+		where device_fault_id like CONCAT(
+				'%',
+				#{deviceFaultId},'%' )
+	</select>
 
 
 

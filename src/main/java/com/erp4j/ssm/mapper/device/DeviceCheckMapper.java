@@ -12,7 +12,7 @@ public interface DeviceCheckMapper {
 
     List<DeviceCheckVo> find(DeviceCheckVo deviceCheckVo);
 
-
+    int updateNote(DeviceCheckVo deviceCheckVo);
 
 
 
@@ -49,4 +49,7 @@ public interface DeviceCheckMapper {
     int updateByPrimaryKey(DeviceCheck record);
 
 
+    List<DeviceCheckVo> searchDeviceCheckByDeviceCheckId(String deviceCheckId);
+
+    List<DeviceCheckVo> searchDeviceCheckByDeviceName(String deviceName);
 }
