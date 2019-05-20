@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -90,5 +91,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         criteria.andDepartmentNameLike("%" + searchValue + "%");
         int total = (int) departmentMapper.countByExample(departmentExample);
         return total;
+    }
+
+    @Override
+    public List<Department> searchDepartemtAll() {
+        List<Department> departments = departmentMapper.selectByExample(new DepartmentExample());
+
+        return departments;
     }
 }

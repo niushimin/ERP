@@ -20,9 +20,10 @@ public class MeasureServiceImpl implements MeasureService {
     FinalMeasuretCheckMapper finalMeasuretCheckMapper;
 
     @Override
-    public ResponseVo getResponseVo() {
+    public ResponseVo getResponseVo(int page, int rows) {
         ResponseVo<FinalMeasuretCheck> finalMeasuretCheckResponseVo = new ResponseVo<>();
 
+        PageHelper.startPage(page,rows);
         ArrayList<FinalMeasuretCheck>  finalMeasuretChecks= finalMeasuretCheckMapper.selectMeasureAll(null,null);
         finalMeasuretCheckResponseVo.setRows(finalMeasuretChecks);
 

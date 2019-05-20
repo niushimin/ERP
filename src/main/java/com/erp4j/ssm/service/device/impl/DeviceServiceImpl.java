@@ -116,14 +116,12 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     public Device queryDeviceById(String deviceId) {
-        Device device = deviceMapper.selectByPrimaryKey(deviceId);
-        return device;
+        return deviceMapper.selectByPrimaryKey(deviceId);
     }
 
     @Override
     public List<Device> queryDevice() {
-        List<Device> devices = deviceMapper.selectByExample(new DeviceExample());
-        return devices;
+        return null;
     }
 
 }

@@ -6,7 +6,7 @@ import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.FinalCountCheck;
 
 public interface FCountCheckService {
-    ResponseVo getResponseVo();
+    ResponseVo getResponseVo(int page, int rows);
 
     ResponseStatus insertFCountCheck(FinalCountCheck finalMeasuretCheck);
 

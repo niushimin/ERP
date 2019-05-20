@@ -148,10 +148,6 @@
 				#{deviceTypeName},'%' )
 	</select>
 
-
-
-
-
     <!--逆向工程生成-->
 
     <sql id="Example_Where_Clause">

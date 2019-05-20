@@ -28,8 +28,8 @@ public class DeviceListController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public EUDataGridResult findDeviceList(Integer page,Integer rows,DeviceVo deviceVo){
-        EUDataGridResult result = deviceService.findDeviceList(page, rows,deviceVo);
+    public EUDataGridResult findDeviceList(Integer page, Integer rows, DeviceVo deviceVo) {
+        EUDataGridResult result = deviceService.findDeviceList(page, rows, deviceVo);
         return result;
     }
 
@@ -54,7 +54,7 @@ public class DeviceListController {
     //新增设备验证
     @RequestMapping("/add_judge")
     @ResponseBody
-    public String addJudge(){
+    public String addJudge() {
         return "msg";
     }
 
@@ -67,7 +67,7 @@ public class DeviceListController {
     //编辑设备验证
     @RequestMapping("/edit_judge")
     @ResponseBody
-    public String editJudge(){
+    public String editJudge() {
         return "msg";
     }
 
@@ -80,7 +80,7 @@ public class DeviceListController {
     //删除设备验证
     @RequestMapping("/delete_judge")
     @ResponseBody
-    public String deleteJudge(){
+    public String deleteJudge() {
         return "msg";
     }
 
@@ -115,13 +115,13 @@ public class DeviceListController {
     //新增设备种类
     @RequestMapping("/insert")
     @ResponseBody
-    public Map<String,Object> insert(Device device){
+    public Map<String, Object> insert(Device device) {
         boolean flag = deviceService.insert(device);
         Map<String, Object> map = new HashMap<>();
-        if (flag){
-            map.put("status",200);
-            map.put("msg","OK");
-            map.put("data",null);
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
         }
         return map;
     }
@@ -129,13 +129,13 @@ public class DeviceListController {
     //编辑设备种类
     @RequestMapping("/update")
     @ResponseBody
-    public Map<String,Object> update(Device device){
+    public Map<String, Object> update(Device device) {
         boolean flag = deviceService.update(device);
         Map<String, Object> map = new HashMap<>();
-        if (flag){
-            map.put("status",200);
-            map.put("msg","OK");
-            map.put("data",null);
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
         }
         return map;
     }
@@ -177,6 +177,5 @@ public class DeviceListController {
         EUDataGridResult result = deviceService.searchDeviceByDeviceTypeName(page, rows, searchValue);
         return result;
     }
-
 }
 

@@ -15,7 +15,50 @@
     <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
     <result column="education_form" jdbcType="VARCHAR" property="educationForm" />
     <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <!--分隔符-杨盼-->
+    <association property="department" javaType="com.erp4j.ssm.pojo.department.Department">
+      <result column="department_id" property="departmentId"/>
+      <result column="department_name" property="departmentName"/>
+      <result column="note" property="note"/>
+    </association>
+    <!--分隔符-杨盼-->
   </resultMap>
+  <!--分隔符-杨盼-->
+  <select id="selectEmployeeAll" resultMap="BaseResultMap">
+    select emp_id,emp_name,sex,id_code,birthday,join_date,`status`,education,degree,major,graduate_school,education_form,em.department_id,department_name,note
+    from employee em
+    left join department de
+    on em.department_id=de.department_id
+    <where>
+      <if test="empId != null">
+        emp_id like #{empId}
+      </if>
+      <if test="empName != null">
+        and emp_name like #{empName}
+      </if>
+      <if test="departmentName != null">
+        and department_name like #{departmentName}
+      </if>
+    </where>
+  </select>
+  <select id="selectEmployeeBy" resultType="int">
+    select count(*)
+    from employee em
+    left join department de
+    on em.department_id=de.department_id
+    <where>
+      <if test="empId != null">
+        emp_id like #{empId}
+      </if>
+      <if test="empName != null">
+        and emp_name like #{empName}
+      </if>
+      <if test="departmentName != null">
+        and department_name like #{departmentName}
+      </if>
+    </where>
+  </select>
+  <!--分隔符-杨盼-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

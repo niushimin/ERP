@@ -8,6 +8,17 @@ public class SysUser {
     private String password;
 
     private String locked;
+    /*分隔符-杨盼*/
+    private String rolename = "Administrators";
+
+    public String getRolename() {
+        return rolename;
+    }
+
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
+    }
+    /*分隔符-杨盼*/
 
     public String getId() {
         return id;

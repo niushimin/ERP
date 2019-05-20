@@ -36,4 +36,5 @@ public interface UnqulifyFindService {
     ResponseVo searchUnqualifyByProductName(QueryParameters queryParameters);
 
     boolean updateEmployeeAll(Employee employee);
+
 }

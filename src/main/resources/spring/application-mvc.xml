@@ -36,4 +36,16 @@
             <value>112885760</value>
         </property>
     </bean>
+
+    <!--interceptor-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/ajaxLogin"/>
+            <mvc:exclude-mapping path="/**/*.*/**"/>
+            <mvc:exclude-mapping path="/login"/>
+            <bean class="com.erp4j.ssm.interceptor.DiyHandlerInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
