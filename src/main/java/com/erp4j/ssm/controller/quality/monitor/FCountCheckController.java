@@ -1,5 +1,6 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.FinalCountCheck;
@@ -82,5 +83,19 @@ public class FCountCheckController {
     public ResponseStatus deleteBatchFCountCheck(String[] ids){
         ResponseStatus responseStatus = fCountCheckService.deleteBatchFCountCheck(ids);
         return responseStatus;
+    }
+    /*根据成品计数质检编号查询成品计数*/
+    @ResponseBody
+    @RequestMapping("/f_count_check/search_fCountCheck_by_fCountCheckId")
+    public ResponseVo searchFCountCheckByFCountCheckId(QueryParameters queryParameters){
+        ResponseVo responseVo = fCountCheckService.searchFCountCheckByFCountCheckId(queryParameters);
+        return responseVo;
+    }
+    /*根据订单编号查询成品计数*/
+    @ResponseBody
+    @RequestMapping("/f_count_check/search_fCountCheck_by_orderId")
+    public ResponseVo searchFCountCheckByOrderId(QueryParameters queryParameters){
+        ResponseVo responseVo = fCountCheckService.searchFCountCheckByOrderId(queryParameters);
+        return responseVo;
     }
 }

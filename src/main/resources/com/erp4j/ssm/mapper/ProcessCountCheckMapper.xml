@@ -24,6 +24,22 @@
     from process_count_check pr
     left join employee em
     on pr.emp_id=em.emp_id
+    <where>
+      <if test="pCountCheckId != null">
+        p_count_check_id like #{pCountCheckId}
+      </if>
+    </where>
+  </select>
+  <select id="countPMeasureCheckById" resultType="int">
+    select count(*)
+    from process_count_check pr
+    left join employee em
+    on pr.emp_id=em.emp_id
+    <where>
+      <if test="pCountCheckId != null">
+        p_count_check_id like #{pCountCheckId}
+      </if>
+    </where>
   </select>
   <!--分隔符 杨盼-->
   <sql id="Example_Where_Clause">

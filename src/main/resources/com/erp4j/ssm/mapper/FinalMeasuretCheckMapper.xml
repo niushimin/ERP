@@ -19,8 +19,30 @@
       select f_measure_check_id,order_id,check_item,cdate,measure_data,fi.emp_id,em.emp_name,result,fi.note
       from final_measuret_check fi
       left join employee em on fi.emp_id=em.emp_id
+      <where>
+        <if test="fMeasureCheckId != null">
+          f_measure_check_id like #{fMeasureCheckId}
+        </if>
+        <if test="orderId != null">
+          and order_id like #{orderId}
+        </if>
+      </where>
+    </select>
+    <select id="countFMeasureCheckByFMeasureCheckId" resultType="int">
+      select count(*)
+      from final_measuret_check fi
+      left join employee em on fi.emp_id=em.emp_id
+      <where>
+        <if test="fMeasureCheckId != null">
+          f_measure_check_id like #{fMeasureCheckId}
+        </if>
+        <if test="orderId != null">
+          and order_id like #{orderId}
+        </if>
+      </where>
     </select>
   <!--分隔符 杨盼-->
+
 
   <sql id="Example_Where_Clause">
     <where>

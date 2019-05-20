@@ -17,4 +17,6 @@ public interface MeasureService {
     ResponseStatus deleteBatchMeasure(String[] ids);
 
     ResponseVo searchFMeasureCheckByFMeasureCheckId(QueryParameters queryParameters);
+
+    ResponseVo searchFMeasureCheckByOrderId(QueryParameters queryParameters);
 }
