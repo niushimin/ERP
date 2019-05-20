@@ -1,16 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.MaterialConsumeMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.MaterialConsume">
-    <id column="consume_id" jdbcType="VARCHAR" property="consumeId" />
-    <result column="work_id" jdbcType="VARCHAR" property="workId" />
+<mapper namespace="com.erp4j.ssm.mapper.material.MaterialReceiveMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.MaterialReceive">
+    <id column="receive_id" jdbcType="VARCHAR" property="receiveId" />
     <result column="material_id" jdbcType="VARCHAR" property="materialId" />
-    <result column="consume_amount" jdbcType="INTEGER" property="consumeAmount" />
-    <result column="consume_date" jdbcType="TIMESTAMP" property="consumeDate" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="receive_date" jdbcType="TIMESTAMP" property="receiveDate" />
     <result column="sender" jdbcType="VARCHAR" property="sender" />
     <result column="receiver" jdbcType="VARCHAR" property="receiver" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+
+ <!-- 新增-->
+
+  <resultMap id="BaseResultMap1" type="com.erp4j.ssm.pojo.material.MaterialReceiveVo">
+    <id column="receive_id" jdbcType="VARCHAR" property="receiveId" />
+    <!--<result column="material_id" jdbcType="VARCHAR" property="materialId" />-->
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="receive_date" jdbcType="TIMESTAMP" property="receiveDate" />
+    <result column="sender" jdbcType="VARCHAR" property="sender" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <association property="material" javaType="com.erp4j.ssm.pojo.Material">
+      <id column="material_id" property="materialId" jdbcType="VARCHAR" />
+      <result column="material_type" property="materialType" jdbcType="VARCHAR" />
+      <result column="status" property="status" jdbcType="VARCHAR" />
+      <result column="remaining" property="remaining" jdbcType="INTEGER" />
+      <result column="note" property="note" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+
+  <!-- 查询所有记录 -->
+  <select id="find" resultMap="BaseResultMap1">
+    SELECT
+    receive_id,
+    amount,
+    receive_date,
+    sender,
+    receiver,
+    mr.note,
+    m.material_id
+    FROM
+    material_receive mr
+    LEFT JOIN material m
+    ON mr.material_id=m.material_id
+  </select>
+
+  <!-- 修改备注-->
+  <update id="updateNote" parameterType="com.erp4j.ssm.pojo.material.MaterialReceiveVo" >
+		UPDATE material_receive
+		SET note = #{note}
+		WHERE
+			receive_id = #{receiveId}
+	</update>
+
+  <!-- 依据ReceiveId查询 -->
+  <select id="searchMaterialReceiveByReceiveId" resultMap="BaseResultMap1">
+		 SELECT
+            receive_id,
+            amount,
+            receive_date,
+            sender,
+            receiver,
+            mr.note,
+            m.material_id
+         FROM
+            material_receive mr
+         LEFT JOIN material m
+         ON mr.material_id=m.material_id
+	     where receive_id like CONCAT('%',#{receiveId},'%' )
+	</select>
+
+  <!-- 依据materialId查询 -->
+  <select id="searchMaterialReceiveByMaterialId" resultMap="BaseResultMap1">
+	     SELECT
+            receive_id,
+            amount,
+            receive_date,
+            sender,
+            receiver,
+            mr.note,
+            m.material_id
+         FROM
+            material_receive mr
+         LEFT JOIN material m
+         ON mr.material_id=m.material_id
+	     where m.material_id like CONCAT('%',#{materialId},'%' )
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--逆向工程生成-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -70,16 +202,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    consume_id, work_id, material_id, consume_amount, consume_date, sender, receiver, 
-    note
+    receive_id, material_id, amount, receive_date, sender, receiver, note
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.MaterialConsumeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.MaterialReceiveExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from material_consume
+    from material_receive
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -90,44 +221,41 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from material_consume
-    where consume_id = #{consumeId,jdbcType=VARCHAR}
+    from material_receive
+    where receive_id = #{receiveId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from material_consume
-    where consume_id = #{consumeId,jdbcType=VARCHAR}
+    delete from material_receive
+    where receive_id = #{receiveId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.MaterialConsumeExample">
-    delete from material_consume
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.MaterialReceiveExample">
+    delete from material_receive
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.MaterialConsume">
-    insert into material_consume (consume_id, work_id, material_id, 
-      consume_amount, consume_date, sender, 
-      receiver, note)
-    values (#{consumeId,jdbcType=VARCHAR}, #{workId,jdbcType=VARCHAR}, #{materialId,jdbcType=VARCHAR}, 
-      #{consumeAmount,jdbcType=INTEGER}, #{consumeDate,jdbcType=TIMESTAMP}, #{sender,jdbcType=VARCHAR}, 
-      #{receiver,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.MaterialReceive">
+    insert into material_receive (receive_id, material_id, amount, 
+      receive_date, sender, receiver, 
+      note)
+    values (#{receiveId,jdbcType=VARCHAR}, #{materialId,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
+      #{receiveDate,jdbcType=TIMESTAMP}, #{sender,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.MaterialConsume">
-    insert into material_consume
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.MaterialReceive">
+    insert into material_receive
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="consumeId != null">
-        consume_id,
-      </if>
-      <if test="workId != null">
-        work_id,
+      <if test="receiveId != null">
+        receive_id,
       </if>
       <if test="materialId != null">
         material_id,
       </if>
-      <if test="consumeAmount != null">
-        consume_amount,
+      <if test="amount != null">
+        amount,
       </if>
-      <if test="consumeDate != null">
-        consume_date,
+      <if test="receiveDate != null">
+        receive_date,
       </if>
       <if test="sender != null">
         sender,
@@ -140,20 +268,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="consumeId != null">
-        #{consumeId,jdbcType=VARCHAR},
-      </if>
-      <if test="workId != null">
-        #{workId,jdbcType=VARCHAR},
+      <if test="receiveId != null">
+        #{receiveId,jdbcType=VARCHAR},
       </if>
       <if test="materialId != null">
         #{materialId,jdbcType=VARCHAR},
       </if>
-      <if test="consumeAmount != null">
-        #{consumeAmount,jdbcType=INTEGER},
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
       </if>
-      <if test="consumeDate != null">
-        #{consumeDate,jdbcType=TIMESTAMP},
+      <if test="receiveDate != null">
+        #{receiveDate,jdbcType=TIMESTAMP},
       </if>
       <if test="sender != null">
         #{sender,jdbcType=VARCHAR},
@@ -166,29 +291,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.MaterialConsumeExample" resultType="java.lang.Long">
-    select count(*) from material_consume
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.MaterialReceiveExample" resultType="java.lang.Long">
+    select count(*) from material_receive
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update material_consume
+    update material_receive
     <set>
-      <if test="record.consumeId != null">
-        consume_id = #{record.consumeId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.workId != null">
-        work_id = #{record.workId,jdbcType=VARCHAR},
+      <if test="record.receiveId != null">
+        receive_id = #{record.receiveId,jdbcType=VARCHAR},
       </if>
       <if test="record.materialId != null">
         material_id = #{record.materialId,jdbcType=VARCHAR},
       </if>
-      <if test="record.consumeAmount != null">
-        consume_amount = #{record.consumeAmount,jdbcType=INTEGER},
+      <if test="record.amount != null">
+        amount = #{record.amount,jdbcType=INTEGER},
       </if>
-      <if test="record.consumeDate != null">
-        consume_date = #{record.consumeDate,jdbcType=TIMESTAMP},
+      <if test="record.receiveDate != null">
+        receive_date = #{record.receiveDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.sender != null">
         sender = #{record.sender,jdbcType=VARCHAR},
@@ -205,12 +327,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update material_consume
-    set consume_id = #{record.consumeId,jdbcType=VARCHAR},
-      work_id = #{record.workId,jdbcType=VARCHAR},
+    update material_receive
+    set receive_id = #{record.receiveId,jdbcType=VARCHAR},
       material_id = #{record.materialId,jdbcType=VARCHAR},
-      consume_amount = #{record.consumeAmount,jdbcType=INTEGER},
-      consume_date = #{record.consumeDate,jdbcType=TIMESTAMP},
+      amount = #{record.amount,jdbcType=INTEGER},
+      receive_date = #{record.receiveDate,jdbcType=TIMESTAMP},
       sender = #{record.sender,jdbcType=VARCHAR},
       receiver = #{record.receiver,jdbcType=VARCHAR},
       note = #{record.note,jdbcType=VARCHAR}
@@ -218,20 +339,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.MaterialConsume">
-    update material_consume
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.MaterialReceive">
+    update material_receive
     <set>
-      <if test="workId != null">
-        work_id = #{workId,jdbcType=VARCHAR},
-      </if>
       <if test="materialId != null">
         material_id = #{materialId,jdbcType=VARCHAR},
       </if>
-      <if test="consumeAmount != null">
-        consume_amount = #{consumeAmount,jdbcType=INTEGER},
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
       </if>
-      <if test="consumeDate != null">
-        consume_date = #{consumeDate,jdbcType=TIMESTAMP},
+      <if test="receiveDate != null">
+        receive_date = #{receiveDate,jdbcType=TIMESTAMP},
       </if>
       <if test="sender != null">
         sender = #{sender,jdbcType=VARCHAR},
@@ -243,17 +361,16 @@
         note = #{note,jdbcType=VARCHAR},
       </if>
     </set>
-    where consume_id = #{consumeId,jdbcType=VARCHAR}
+    where receive_id = #{receiveId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.MaterialConsume">
-    update material_consume
-    set work_id = #{workId,jdbcType=VARCHAR},
-      material_id = #{materialId,jdbcType=VARCHAR},
-      consume_amount = #{consumeAmount,jdbcType=INTEGER},
-      consume_date = #{consumeDate,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.MaterialReceive">
+    update material_receive
+    set material_id = #{materialId,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      receive_date = #{receiveDate,jdbcType=TIMESTAMP},
       sender = #{sender,jdbcType=VARCHAR},
       receiver = #{receiver,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR}
-    where consume_id = #{consumeId,jdbcType=VARCHAR}
+    where receive_id = #{receiveId,jdbcType=VARCHAR}
   </update>
 </mapper>

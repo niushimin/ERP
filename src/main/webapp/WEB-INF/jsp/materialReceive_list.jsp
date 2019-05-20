@@ -11,7 +11,7 @@
         	<th data-options="field:'ck',checkbox:true"></th>
         	<th data-options="field:'receiveId',align:'center',width:100">物料收入编号</th>
             <th data-options="field:'material',width:100,align:'center',formatter:formatMaterial">物料</th>
-            <th data-options="field:'ammount',align:'center',width:100">收入数量</th>
+            <th data-options="field:'amount',align:'center',width:100">收入数量</th>
             <th data-options="field:'receiveDate',width:130,align:'center',formatter:TAOTAO.formatDateTime">
 				收入日期
 			</th>
@@ -148,7 +148,7 @@ function doSearch_materialReceive(value,name){ //用户输入用户名,点击搜
 				{field : 'ck', checkbox:true },
 				{field : 'receiveId', width : 100, title : '物料收入编号', align:'center'},
 				{field : 'material', width : 100, align : 'center', title : '物料', formatter:formatMaterial},
-				{field : 'ammount', width : 100, align : 'center', title : '收入数量'},
+				{field : 'amount', width : 100, align : 'center', title : '收入数量'},
 				{field : 'receiveDate', width : 130, title : '收入日期', align:'center',formatter:TAOTAO.formatDateTime},
 				{field : 'sender', width : 100, title : '发送者', align:'center'},
 				{field : 'receiver', width : 100, title : '接收者', align:'center'},
@@ -164,7 +164,7 @@ function doSearch_materialReceive(value,name){ //用户输入用户名,点击搜
 				{field : 'ck', checkbox:true },
 				{field : 'receiveId', width : 100, title : '物料收入编号', align:'center'},
 				{field : 'material', width : 100, align : 'center', title : '物料', formatter:formatMaterial},
-				{field : 'ammount', width : 100, align : 'center', title : '收入数量'},
+				{field : 'amount', width : 100, align : 'center', title : '收入数量'},
 				{field : 'receiveDate', width : 130, title : '收入日期', align:'center',formatter:TAOTAO.formatDateTime},
 				{field : 'sender', width : 100, title : '发送者', align:'center'},
 				{field : 'receiver', width : 100, title : '接收者', align:'center'},

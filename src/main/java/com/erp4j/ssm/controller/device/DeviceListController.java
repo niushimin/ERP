@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,12 +28,12 @@ public class DeviceListController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public EUDataGridResult findDeviceList(Integer page,Integer rows,DeviceVo deviceVo){
-        EUDataGridResult result = deviceService.findDeviceList(page, rows,deviceVo);
+    public EUDataGridResult findDeviceList(Integer page, Integer rows, DeviceVo deviceVo) {
+        EUDataGridResult result = deviceService.findDeviceList(page, rows, deviceVo);
         return result;
     }
 
-<<<<<<< HEAD
+
     //获取所有设备信息
     @RequestMapping("/get_data")
     @ResponseBody
@@ -53,7 +54,7 @@ public class DeviceListController {
     //新增设备验证
     @RequestMapping("/add_judge")
     @ResponseBody
-    public String addJudge(){
+    public String addJudge() {
         return "msg";
     }
 
@@ -66,7 +67,7 @@ public class DeviceListController {
     //编辑设备验证
     @RequestMapping("/edit_judge")
     @ResponseBody
-    public String editJudge(){
+    public String editJudge() {
         return "msg";
     }
 
@@ -79,7 +80,7 @@ public class DeviceListController {
     //删除设备验证
     @RequestMapping("/delete_judge")
     @ResponseBody
-    public String deleteJudge(){
+    public String deleteJudge() {
         return "msg";
     }
 
@@ -114,13 +115,13 @@ public class DeviceListController {
     //新增设备种类
     @RequestMapping("/insert")
     @ResponseBody
-    public Map<String,Object> insert(Device device){
+    public Map<String, Object> insert(Device device) {
         boolean flag = deviceService.insert(device);
         Map<String, Object> map = new HashMap<>();
-        if (flag){
-            map.put("status",200);
-            map.put("msg","OK");
-            map.put("data",null);
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
         }
         return map;
     }
@@ -128,13 +129,13 @@ public class DeviceListController {
     //编辑设备种类
     @RequestMapping("/update")
     @ResponseBody
-    public Map<String,Object> update(Device device){
+    public Map<String, Object> update(Device device) {
         boolean flag = deviceService.update(device);
         Map<String, Object> map = new HashMap<>();
-        if (flag){
-            map.put("status",200);
-            map.put("msg","OK");
-            map.put("data",null);
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
         }
         return map;
     }
@@ -175,20 +176,6 @@ public class DeviceListController {
     public EUDataGridResult searchDeviceByDeviceTypeName(Integer page, Integer rows, String searchValue) {
         EUDataGridResult result = deviceService.searchDeviceByDeviceTypeName(page, rows, searchValue);
         return result;
-=======
-    @ResponseBody
-    @RequestMapping("/get/{deviceId}")
-    public Device get(@PathVariable String deviceId) {
-        Device device = deviceService.queryDeviceById(deviceId);
-        return device;
-    }
-
-    @ResponseBody
-    @RequestMapping("/get_data")
-    public List<Device> get_data() {
-        List<Device> list = deviceService.queryDevice();
-        return list;
->>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
     }
 }
 

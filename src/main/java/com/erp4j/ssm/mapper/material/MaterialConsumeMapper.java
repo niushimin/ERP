@@ -1,11 +1,46 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.material;
 
 import com.erp4j.ssm.pojo.MaterialConsume;
 import com.erp4j.ssm.pojo.MaterialConsumeExample;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.material.MaterialConsumeVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface MaterialConsumeMapper {
+
+    List<MaterialConsumeVo> find(MaterialConsumeVo materialConsumeVo);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //逆向工程生成
     long countByExample(MaterialConsumeExample example);
 
     int deleteByExample(MaterialConsumeExample example);
@@ -27,4 +62,6 @@ public interface MaterialConsumeMapper {
     int updateByPrimaryKeySelective(MaterialConsume record);
 
     int updateByPrimaryKey(MaterialConsume record);
+
+
 }
