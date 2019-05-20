@@ -8,7 +8,7 @@ import com.erp4j.ssm.pojo.FinalMeasuretCheck;
 import java.util.ArrayList;
 
 public interface MeasureService {
-    ResponseVo getResponseVo();
+    ResponseVo getResponseVo(int page, int rows);
 
     ResponseStatus insertMeasure(FinalMeasuretCheck finalMeasuretCheck);
 

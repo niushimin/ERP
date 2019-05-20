@@ -21,9 +21,10 @@ public class FCountCheckServiceImpl implements FCountCheckService {
     FinalCountCheckMapper finalCountCheckMapper;
 
     @Override
-    public ResponseVo getResponseVo() {
+    public ResponseVo getResponseVo(int page, int rows) {
         ResponseVo<FinalCountCheck> responseVo = new ResponseVo<>();
 
+        PageHelper.startPage(page,rows);
         ArrayList<FinalCountCheck> finalCountChecks = finalCountCheckMapper.selectFinalCountCheckAll(null,null);
         responseVo.setRows(finalCountChecks);
 

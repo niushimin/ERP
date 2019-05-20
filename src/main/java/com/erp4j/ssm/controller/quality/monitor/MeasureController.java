@@ -28,8 +28,8 @@ public class MeasureController {
     /*返回成品计量列表*/
     @ResponseBody
     @RequestMapping("/list")
-    public ResponseVo selectMeasureAll(){
-        ResponseVo responseVo = measureService.getResponseVo();
+    public ResponseVo selectMeasureAll(int page, int rows){
+        ResponseVo responseVo = measureService.getResponseVo(page,rows);
         return responseVo;
     }
     /*新增成品计量*/

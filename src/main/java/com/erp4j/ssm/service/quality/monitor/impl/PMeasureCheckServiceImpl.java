@@ -23,9 +23,10 @@ public class PMeasureCheckServiceImpl implements PMeasureCheckService {
     ProcessMeasureCheckMapper processMeasureCheckMapper;
 
     @Override
-    public ResponseVo getResponseVo() {
+    public ResponseVo getResponseVo(int page, int rows) {
         ResponseVo<ProcessMeasureCheck> responseVo = new ResponseVo<>();
 
+        PageHelper.startPage(page,rows);
         ArrayList<ProcessMeasureCheck> processMeasureChecks = processMeasureCheckMapper.selectpMeasureCheckAll(null);
         responseVo.setRows(processMeasureChecks);
 

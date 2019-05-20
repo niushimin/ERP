@@ -1,5 +1,7 @@
 package com.erp4j.ssm.pojo;
 
+import com.erp4j.ssm.pojo.department.Department;
+
 import java.util.Date;
 
 public class Employee {
@@ -28,6 +30,18 @@ public class Employee {
     private String educationForm;
 
     private String departmentId;
+
+    /*分隔符-杨盼*/
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+    /*分隔符-杨盼*/
 
     public String getEmpId() {
         return empId;

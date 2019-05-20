@@ -6,7 +6,7 @@ import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.ProcessMeasureCheck;
 
 public interface PMeasureCheckService {
-    ResponseVo getResponseVo();
+    ResponseVo getResponseVo(int page, int rows);
 
     ResponseStatus insertProcessMeasure(ProcessMeasureCheck processMeasureCheck);
 

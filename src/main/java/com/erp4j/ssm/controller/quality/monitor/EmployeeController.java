@@ -8,6 +8,7 @@ import com.erp4j.ssm.pojo.Employee;
 
 import com.erp4j.ssm.actionform.quality.monitor.EmployeeForm;
 import com.erp4j.ssm.pojo.product.Product;
+import com.erp4j.ssm.service.quality.monitor.EmployeeService;
 import com.erp4j.ssm.service.quality.monitor.UnqulifyFindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,20 @@ public class EmployeeController {
     @Autowired
     UnqulifyFindService unqulifyFindService;
 
+    @Autowired
+    EmployeeService employeeService;
+
+    /*员工管理*/
+    @RequestMapping("/find")
+    public String findEmployee(){
+        return "employee_list";
+    }
+    /*返回员工列表*/
+    @RequestMapping("/list")
+    public ResponseVo selectEmployeeAll(int page, int rows){
+        ResponseVo responseVo = employeeService.selectEmployeeAll(page,rows);
+        return responseVo;
+    }
 
     /*返回不合格品列表*/
     @ResponseBody

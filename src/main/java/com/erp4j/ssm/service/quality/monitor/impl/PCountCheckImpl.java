@@ -21,9 +21,10 @@ public class PCountCheckImpl implements PCountCheckService {
     ProcessCountCheckMapper processCountCheckMapper;
 
     @Override
-    public ResponseVo<ProcessCountCheck> getResponseVo() {
+    public ResponseVo<ProcessCountCheck> getResponseVo(int page, int rows) {
         ResponseVo<ProcessCountCheck> responseVo = new ResponseVo<>();
 
+        PageHelper.startPage(page,rows);
         ArrayList<ProcessCountCheck> processCountChecks = processCountCheckMapper.selectPCountCheckAll(null);
         responseVo.setRows(processCountChecks);
 

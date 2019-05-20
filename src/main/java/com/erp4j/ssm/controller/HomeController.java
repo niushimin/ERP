@@ -1,11 +1,16 @@
 package com.erp4j.ssm.controller;
 
+import com.erp4j.ssm.pojo.SysUser;
+import com.erp4j.ssm.service.HomeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @Author: Ethan New
@@ -15,7 +20,43 @@ import java.util.ArrayList;
 
 @Controller
 public class HomeController {
+    @Autowired
+    HomeService homeService;
 
+    /*登录页面*/
+    @RequestMapping("/")
+    public String defaultLogin(){
+        return "login";
+    }
+    /*登录页面*/
+    @RequestMapping("/login")
+    public String login(){
+        System.out.println();
+        return "login";
+    }
+    /*密码验证*/
+    @ResponseBody
+    @RequestMapping("/ajaxLogin")
+    public HashMap<String,String> ajaxLogin(HttpServletRequest request, SysUser sysUser){
+        HttpSession session = request.getSession();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        if(session.getAttribute("sysUser") != null){
+            return hashMap;
+        }else{
+            if(homeService.ajaxLogin(sysUser)){
+                session.setAttribute("sysUser",sysUser);
+                return hashMap;
+            }else{
+                hashMap.put("msg","password_error");
+                return hashMap;
+            }
+        }
+
+
+    }
+    /*越过超级用户权限*/
     @RequestMapping("/home")
     public String home(HttpServletRequest request) {
         HttpSession session = request.getSession();
