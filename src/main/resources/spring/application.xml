@@ -52,17 +52,17 @@
     </bean>
 
     <!--配置通知事务管理器-->
-    <tx:advice id="txAdvice1" transaction-manager="transactionManager">
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <!--传播行为和隔离级别可以省略不写-->
-            <tx:method name="deleteMultiCustom" propagation="REQUIRED" isolation="DEFAULT"/>
+            <tx:method name="deleteMulti*" propagation="REQUIRED" isolation="DEFAULT"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
         <!--关联通知和切面-->
-        <aop:pointcut id="pointcut1" expression="execution(* com.erp4j.ssm.service.custom.impl.*.*(..))"/>
-        <aop:advisor advice-ref="txAdvice1" pointcut-ref="pointcut1"/>
+        <aop:pointcut id="pointcut" expression="execution(* com.erp4j.ssm.service..impl.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
     </aop:config>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

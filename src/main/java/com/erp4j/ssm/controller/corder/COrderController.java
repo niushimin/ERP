@@ -141,6 +141,20 @@ public class COrderController {
         return list;
     }
 
+    // 修改订单要求信息
+    @ResponseBody
+    @RequestMapping("/update_note")
+    public Map<String, Object> update_note(COrderVo cOrderVo) {
+        boolean flag = orderService.updateCOrder(cOrderVo);
+        Map<String, Object> map = new HashMap<>();
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
+        }
+        return map;
+    }
+
     // 根据订单Id查询订单信息
     @ResponseBody
     @RequestMapping("/search_order_by_orderId")

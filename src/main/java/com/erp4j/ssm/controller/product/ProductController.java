@@ -1,6 +1,7 @@
 package com.erp4j.ssm.controller.product;
 
 import com.erp4j.ssm.pojo.QueryVo;
+import com.erp4j.ssm.pojo.corder.COrderVo;
 import com.erp4j.ssm.pojo.custom.Custom;
 import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.service.product.ProductService;
@@ -60,7 +61,7 @@ public class ProductController {
     @ResponseBody
     @RequestMapping("/insert")
     public Map<String, Object> insert(Product product) {
-        boolean flag = productService.insertCustom(product);
+        boolean flag = productService.insertProduct(product);
         HashMap<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -86,7 +87,7 @@ public class ProductController {
     @ResponseBody
     @RequestMapping("/update_all")
     public Map<String, Object> update_all(Product product) {
-        boolean flag = productService.updateCustom(product);
+        boolean flag = productService.updateProduct(product);
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -107,7 +108,7 @@ public class ProductController {
     @ResponseBody
     @RequestMapping("/delete_batch")
     public Map<String, Object> delete_batch(QueryVo queryVo) {
-        boolean flag = productService.deleteMultiCustom(queryVo.getIds());
+        boolean flag = productService.deleteMultiProduct(queryVo.getIds());
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -131,6 +132,20 @@ public class ProductController {
     public List<Product> get_data() {
         List<Product> list = productService.queryProduct();
         return list;
+    }
+
+    // 修改订单要求信息
+    @ResponseBody
+    @RequestMapping("/update_note")
+    public Map<String, Object> update_note(Product product) {
+        boolean flag = productService.updateProduct(product);
+        Map<String, Object> map = new HashMap<>();
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
+        }
+        return map;
     }
 
     // 根据产品Id查询商品信息

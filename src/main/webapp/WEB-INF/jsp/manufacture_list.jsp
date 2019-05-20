@@ -357,7 +357,7 @@ function doSearch_manufacture(value,name){ //用户输入用户名,点击搜素,
 	}
 	
 	function submitManuOrderEditForm(){
-		$.get("corder/edit_judge",'',function(data){
+		$.get("order/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
@@ -366,7 +366,7 @@ function doSearch_manufacture(value,name){ //用户输入用户名,点击搜素,
     				return ;
     			}
     			manuOrderEditor.sync();
-    			$.post("corder/update_all",$("#manuOrderEditForm").serialize(), function(data){
+    			$.post("order/update_all",$("#manuOrderEditForm").serialize(), function(data){
     				if(data.status == 200){
     					$.messager.alert('提示','修改订单成功!','info',function(){
     						$("#manuOrderInfo").dialog("close");

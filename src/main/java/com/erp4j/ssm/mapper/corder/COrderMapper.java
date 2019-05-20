@@ -52,6 +52,4 @@ public interface COrderMapper {
     int queryTotalByProduct(String searchValue);
 
     COrder querySingleById(String cOrderId);
-
-    List<String> queryCOrderId();
 }

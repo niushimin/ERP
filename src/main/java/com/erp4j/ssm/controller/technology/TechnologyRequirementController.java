@@ -1,7 +1,6 @@
 package com.erp4j.ssm.controller.technology;
 
 import com.erp4j.ssm.pojo.QueryVo;
-import com.erp4j.ssm.pojo.custom.Custom;
 import com.erp4j.ssm.pojo.technology.TechnologyRequirement;
 import com.erp4j.ssm.service.technology.TechnologyRequirementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,6 +112,20 @@ public class TechnologyRequirementController {
     @RequestMapping("/delete_batch")
     public Map<String, Object> delete_batch(QueryVo queryVo) {
         boolean flag = technologyRequirementService.deleteMultiTechnologyRequirement(queryVo.getIds());
+        Map<String, Object> map = new HashMap<>();
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
+        }
+        return map;
+    }
+
+    // 修改工艺要求信息
+    @ResponseBody
+    @RequestMapping("/update_requirement")
+    public Map<String, Object> update_requirement(TechnologyRequirement technologyRequirement) {
+        boolean flag = technologyRequirementService.updateTechnologyRequirement(technologyRequirement);
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);

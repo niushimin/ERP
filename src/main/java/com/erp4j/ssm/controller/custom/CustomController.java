@@ -138,6 +138,20 @@ public class CustomController {
         return list;
     }
 
+    // 修改客户介绍信息
+    @ResponseBody
+    @RequestMapping("/update_note")
+    public Map<String, Object> update_note(Custom custom) {
+        boolean flag = customService.updateCustom(custom);
+        Map<String, Object> map = new HashMap<>();
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
+        }
+        return map;
+    }
+
     // 根据客户Id查询客户信息
     @ResponseBody
     @RequestMapping("/search_custom_by_customId")

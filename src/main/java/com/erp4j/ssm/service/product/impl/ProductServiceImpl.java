@@ -37,19 +37,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean insertCustom(Product product) {
+    public boolean insertProduct(Product product) {
         int result = productMapper.insertSelective(product);
         return result == 1;
     }
 
     @Override
-    public boolean updateCustom(Product product) {
-        int result = productMapper.updateByPrimaryKey(product);
+    public boolean updateProduct(Product product) {
+        int result = productMapper.updateByPrimaryKeySelective(product);
         return result == 1;
     }
 
     @Override
-    public boolean deleteMultiCustom(List<String> ids) {
+    public boolean deleteMultiProduct(List<String> ids) {
         ProductExample productExample = new ProductExample();
         ProductExample.Criteria criteria = productExample.createCriteria();
         criteria.andProductIdIn(ids);

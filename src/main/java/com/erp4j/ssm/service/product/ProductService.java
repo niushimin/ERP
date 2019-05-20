@@ -16,11 +16,11 @@ public interface ProductService {
 
     int queryTotal();
 
-    boolean insertCustom(Product product);
+    boolean insertProduct(Product product);
 
-    boolean updateCustom(Product product);
+    boolean updateProduct(Product product);
 
-    boolean deleteMultiCustom(List<String> ids);
+    boolean deleteMultiProduct(List<String> ids);
 
     Product queryProductById(String productId);
 
@@ -37,4 +37,5 @@ public interface ProductService {
     List<Product> queryProductByType(String searchValue, int page, int rows);
 
     int queryTotalByType(String searchValue);
+
 }

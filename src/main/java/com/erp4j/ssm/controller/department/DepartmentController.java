@@ -122,6 +122,20 @@ public class DepartmentController {
         return map;
     }
 
+    // 修改部门职责信息
+    @ResponseBody
+    @RequestMapping("/update_note")
+    public Map<String, Object> update_note(Department department) {
+        boolean flag = departmentService.updateDepartment(department);
+        Map<String, Object> map = new HashMap<>();
+        if (flag) {
+            map.put("status", 200);
+            map.put("msg", "OK");
+            map.put("data", null);
+        }
+        return map;
+    }
+
 
     // 根据部门Id查询部门信息
     @ResponseBody
