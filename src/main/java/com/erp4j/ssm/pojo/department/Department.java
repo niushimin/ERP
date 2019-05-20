@@ -1,4 +1,4 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.department;
 
 public class Department {
     private String departmentId;

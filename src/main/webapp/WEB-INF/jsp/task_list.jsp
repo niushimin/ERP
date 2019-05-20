@@ -132,14 +132,14 @@
 	            <td>订单编号:</td>
 	            <td>
 	            	<input class="easyui-combobox" name="orderId" data-options="required:true,valueField:'orderId',
-	            		textField:'orderId',url:'order/get_data', editable:false" />
+	            		textField:'orderId',url:'corder/get_data', editable:false" />
 	            </td>
 	        </tr>
 	        <tr>
 	            <td>工艺:</td>
 	            <td>
 	            	<input class="easyui-combobox" name="technologyId" data-options="valueField:'technologyId',
-	            		textField:'technologyName',url:'product/get_data', editable:false"/>
+	            		textField:'technologyName',url:'technology/get_data', editable:false"/>
     			</td>  
 	        </tr>
 	        <tr>

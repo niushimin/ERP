@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.department;
 
-import com.erp4j.ssm.pojo.Department;
-import com.erp4j.ssm.pojo.DepartmentExample;
+import com.erp4j.ssm.pojo.department.Department;
+import com.erp4j.ssm.pojo.department.DepartmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -33,4 +33,8 @@ public interface ManufactureService {
     List<Manufacture> queryManufactureByTechnologyName(String searchValue, int page, int rows);
 
     int queryTotalByTechnologyName(String searchValue);
+
+    Manufacture queryManufactureById(String manufactureSn);
+
+    List<Manufacture> queryManufacture();
 }

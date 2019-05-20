@@ -45,6 +45,9 @@ public class HomeController {
         list.add("task:edit");
         list.add("task:delete");
 
+        list.add("department:add");
+        list.add("department:edit");
+        list.add("department:delete");
 
         list.add("device:add");
         list.add("device:edit");
