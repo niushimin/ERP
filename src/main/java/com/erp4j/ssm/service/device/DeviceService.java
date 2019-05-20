@@ -28,4 +28,9 @@ public interface DeviceService {
 
     Device get(String deviceId);
 
+    Device queryDeviceById(String deviceId);
+
+    List<Device> queryDevice();
+
+
 }

@@ -14,7 +14,34 @@
     <result column="emp_id" jdbcType="VARCHAR" property="empId" />
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="note" jdbcType="VARCHAR" property="note" />
+    <!--分隔符 杨盼-->
+    <result column="emp_name" property="empName"/>
+    <!--分隔符 杨盼-->
   </resultMap>
+  <!--分隔符 杨盼-->
+  <select id="selectPCountCheckAll" resultMap="BaseResultMap">
+    SELECT p_count_check_id,process_id,check_item,sample,check_number,unqualify,qualify,cdate,measure_data,pr.emp_id,emp_name,result,pr.note
+    from process_count_check pr
+    left join employee em
+    on pr.emp_id=em.emp_id
+    <where>
+      <if test="pCountCheckId != null">
+        p_count_check_id like #{pCountCheckId}
+      </if>
+    </where>
+  </select>
+  <select id="countPMeasureCheckById" resultType="int">
+    select count(*)
+    from process_count_check pr
+    left join employee em
+    on pr.emp_id=em.emp_id
+    <where>
+      <if test="pCountCheckId != null">
+        p_count_check_id like #{pCountCheckId}
+      </if>
+    </where>
+  </select>
+  <!--分隔符 杨盼-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

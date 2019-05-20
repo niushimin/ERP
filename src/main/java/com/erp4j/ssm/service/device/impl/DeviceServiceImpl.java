@@ -36,7 +36,6 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-
     public boolean updateNote(DeviceVo deviceVo) {
         int i = deviceMapper.updateNote(deviceVo);
         return i == 1;
@@ -115,4 +114,16 @@ public class DeviceServiceImpl implements DeviceService {
     public Device get(String deviceId) {
         return deviceMapper.selectByPrimaryKey(deviceId);
     }
+
+    public Device queryDeviceById(String deviceId) {
+        Device device = deviceMapper.selectByPrimaryKey(deviceId);
+        return device;
+    }
+
+    @Override
+    public List<Device> queryDevice() {
+        List<Device> devices = deviceMapper.selectByExample(new DeviceExample());
+        return devices;
+    }
+
 }

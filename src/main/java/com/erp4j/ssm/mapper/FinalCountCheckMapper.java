@@ -30,5 +30,10 @@ public interface FinalCountCheckMapper {
 
     int updateByPrimaryKey(FinalCountCheck record);
 
-    ArrayList<FinalCountCheck> selectFinalCountCheckAll();
+    /*分隔符-杨盼*/
+    ArrayList<FinalCountCheck> selectFinalCountCheckAll(@Param("fCountCheckId") String fCountCheckId,@Param("orderId")String orderId);
+
+    int countFCountCheckById(@Param("fCountCheckId") String fCountCheckId,@Param("orderId")String orderId);
+
+    /*分隔符-杨盼*/
 }

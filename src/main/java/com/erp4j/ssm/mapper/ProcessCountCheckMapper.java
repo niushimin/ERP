@@ -2,7 +2,11 @@ package com.erp4j.ssm.mapper;
 
 import com.erp4j.ssm.pojo.ProcessCountCheck;
 import com.erp4j.ssm.pojo.ProcessCountCheckExample;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.ProcessMeasureCheck;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProcessCountCheckMapper {
@@ -27,4 +31,10 @@ public interface ProcessCountCheckMapper {
     int updateByPrimaryKeySelective(ProcessCountCheck record);
 
     int updateByPrimaryKey(ProcessCountCheck record);
+
+    ArrayList<ProcessMeasureCheck> selectpMeasureCheckAll();
+
+    ArrayList<ProcessCountCheck> selectPCountCheckAll(@Param("pCountCheckId") String pCountCheckId);
+
+    int countPMeasureCheckById(@Param("pCountCheckId") String pCountCheckId);
 }
