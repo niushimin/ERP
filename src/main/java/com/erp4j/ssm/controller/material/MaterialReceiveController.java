@@ -37,8 +37,9 @@ public class MaterialReceiveController {
     //新增物料收入验证
     @RequestMapping("/add_judge")
     @ResponseBody
-    public String addJudge(){
-        return "msg";
+    public Map<String, Object> addJudge(){
+        Map<String, Object> map = new HashMap<>();
+        return map;
     }
 
     //新增物料收入

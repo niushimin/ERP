@@ -16,7 +16,7 @@ public class DiyHandlerInterceptor implements HandlerInterceptor {
             return true;
         }else{  //未登录
            response.setHeader("session-status","timeout");
-           //response.sendRedirect(request.getContextPath() + "/");
+           request.getRequestDispatcher("/").forward(request,response);
            return false;
         }
 

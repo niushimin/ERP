@@ -66,6 +66,10 @@ public class HomeController {
         list.add("fMeasureCheck:edit");
         list.add("fMeasureCheck:delete");
 
+        list.add("employee:add");
+        list.add("employee:edit");
+        list.add("employee:delete");
+
         list.add("fCountCheck:add");
         list.add("fCountCheck:edit");
         list.add("fCountCheck:delete");

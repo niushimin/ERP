@@ -2,6 +2,7 @@ package com.erp4j.ssm.service.department;
 
 import com.erp4j.ssm.pojo.department.Department;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,4 +29,6 @@ public interface DepartmentService {
     List<Department> queryDepartmentByName(String searchValue, int page, int rows);
 
     int queryTotalByName(String searchValue);
+
+    List<Department> searchDepartemtAll();
 }
