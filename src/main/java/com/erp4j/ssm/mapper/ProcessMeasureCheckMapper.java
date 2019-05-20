@@ -2,6 +2,8 @@ package com.erp4j.ssm.mapper;
 
 import com.erp4j.ssm.pojo.ProcessMeasureCheck;
 import com.erp4j.ssm.pojo.ProcessMeasureCheckExample;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface ProcessMeasureCheckMapper {
     int updateByPrimaryKeySelective(ProcessMeasureCheck record);
 
     int updateByPrimaryKey(ProcessMeasureCheck record);
+
+    ArrayList<ProcessMeasureCheck> selectpMeasureCheckAll();
 }
