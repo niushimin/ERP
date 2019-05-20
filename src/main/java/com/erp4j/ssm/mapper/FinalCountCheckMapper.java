@@ -2,6 +2,8 @@ package com.erp4j.ssm.mapper;
 
 import com.erp4j.ssm.pojo.FinalCountCheck;
 import com.erp4j.ssm.pojo.FinalCountCheckExample;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface FinalCountCheckMapper {
     int updateByPrimaryKeySelective(FinalCountCheck record);
 
     int updateByPrimaryKey(FinalCountCheck record);
+
+    ArrayList<FinalCountCheck> selectFinalCountCheckAll();
 }

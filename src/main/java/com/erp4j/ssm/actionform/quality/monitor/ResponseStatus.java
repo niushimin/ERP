@@ -3,16 +3,17 @@ package com.erp4j.ssm.actionform.quality.monitor;
 import java.util.Date;
 
 public class ResponseStatus {
-    Date date;
+    String data;
     String msg;
     String status;
 
-    public Date getDate() {
-        return date;
+
+    public String getData() {
+        return data;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getMsg() {

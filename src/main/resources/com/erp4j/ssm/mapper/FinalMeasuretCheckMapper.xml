@@ -10,7 +10,18 @@
     <result column="emp_id" jdbcType="VARCHAR" property="empId" />
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="note" jdbcType="VARCHAR" property="note" />
+    <!--分隔符 杨盼-->
+    <result column="emp_name" property="empName"/>
+    <!--分隔符 杨盼-->
   </resultMap>
+  <!--分隔符 杨盼-->
+    <select id="selectMeasureAll" resultMap="BaseResultMap">
+      select f_measure_check_id,order_id,check_item,cdate,measure_data,fi.emp_id,em.emp_name,result,fi.note
+      from final_measuret_check fi
+      left join employee em on fi.emp_id=em.emp_id
+    </select>
+  <!--分隔符 杨盼-->
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

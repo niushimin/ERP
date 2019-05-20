@@ -94,28 +94,31 @@ public class UnqulifyFindServiceImpl implements UnqulifyFindService {
     }
 
     @Override
-    public void deleteUnqulifyById(String[] ids) {
+    public boolean deleteUnqulifyById(String[] ids) {
         for (String id : ids) {
-            unqualifyApplyMapper.deleteByPrimaryKey(id);
+            if(unqualifyApplyMapper.deleteByPrimaryKey(id) == 0){
+                return false;
+            }
         }
+        return true;
     }
 
     @Override
-    public void insertUnqulify(UnqualifyApply unqualifyApply) {
-        int insert = unqualifyApplyMapper.insert(unqualifyApply);
+    public boolean insertUnqulify(UnqualifyApply unqualifyApply) {
+        return unqualifyApplyMapper.insert(unqualifyApply) != 0 ? true : false;
     }
 
     @Override
-    public ResponseStatus getResponseStatus() {
+    public ResponseStatus getResponseStatus(String msg,String status) {
         ResponseStatus responseStatus = new ResponseStatus();
-        responseStatus.setMsg("OK");
-        responseStatus.setStatus("200");
+        responseStatus.setMsg(msg);
+        responseStatus.setStatus(status);
         return responseStatus;
     }
 
     @Override
-    public void unqulifyUpdateAll(UnqualifyApply unqualifyApply) {
-        unqualifyApplyMapper.updateByPrimaryKey(unqualifyApply);
+    public boolean unqulifyUpdateAll(UnqualifyApply unqualifyApply) {
+        return unqualifyApplyMapper.updateByPrimaryKey(unqualifyApply) != 0 ? true : false;
     }
 
     @Override
@@ -148,5 +151,10 @@ public class UnqulifyFindServiceImpl implements UnqulifyFindService {
         unqualifyApplyPojoResponseVo.setRows(unqualifyApplyPojos);
 
         return unqualifyApplyPojoResponseVo;
+    }
+
+    @Override
+    public boolean updateEmployeeAll(Employee employee) {
+        return employeeMapper.updateByPrimaryKey(employee) != 0 ? true : false;
     }
 }

@@ -21,6 +21,22 @@ public class HomeController {
         HttpSession session = request.getSession();
         ArrayList<String> list = new ArrayList<>();
         /*添加权限*/
+        list.add("fMeasureCheck:add");
+        list.add("fMeasureCheck:edit");
+        list.add("fMeasureCheck:delete");
+
+        list.add("fCountCheck:add");
+        list.add("fCountCheck:edit");
+        list.add("fCountCheck:delete");
+
+        list.add("pMeasureCheck:add");
+        list.add("pMeasureCheck:edit");
+        list.add("pMeasureCheck:delete");
+
+        list.add("pCountCheck:add");
+        list.add("pCountCheck:edit");
+        list.add("pCountCheck:delete");
+
         list.add("unqualify:add");
         list.add("unqualify:edit");
         list.add("unqualify:delete");
@@ -37,6 +53,10 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
+<<<<<<< HEAD
+
+        //设备管理
+=======
         list.add("manufacture:add");
         list.add("manufacture:edit");
         list.add("manufacture:delete");
@@ -49,6 +69,7 @@ public class HomeController {
         list.add("department:edit");
         list.add("department:delete");
 
+>>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
         list.add("device:add");
         list.add("device:edit");
         list.add("device:delete");
@@ -68,10 +89,18 @@ public class HomeController {
         list.add("deviceMaintain:add");
         list.add("deviceMaintain:edit");
         list.add("deviceMaintain:delete");
+<<<<<<< HEAD
+
+=======
+>>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
 
         list.add("work:add");
         list.add("work:edit");
         list.add("work:delete");
+<<<<<<< HEAD
+
+=======
+>>>>>>> 234ada30729eb95c6b592e1e88f4231c311a25ab
 
         session.setAttribute("sysPermissionList",list);
         return "home";

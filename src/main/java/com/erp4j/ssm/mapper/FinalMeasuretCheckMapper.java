@@ -2,10 +2,15 @@ package com.erp4j.ssm.mapper;
 
 import com.erp4j.ssm.pojo.FinalMeasuretCheck;
 import com.erp4j.ssm.pojo.FinalMeasuretCheckExample;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface FinalMeasuretCheckMapper {
+    /*分隔符 杨盼*/
+
+    /*分隔符 杨盼*/
     long countByExample(FinalMeasuretCheckExample example);
 
     int deleteByExample(FinalMeasuretCheckExample example);
@@ -27,4 +32,6 @@ public interface FinalMeasuretCheckMapper {
     int updateByPrimaryKeySelective(FinalMeasuretCheck record);
 
     int updateByPrimaryKey(FinalMeasuretCheck record);
+
+    ArrayList<FinalMeasuretCheck> selectMeasureAll();
 }

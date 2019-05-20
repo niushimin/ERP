@@ -11,9 +11,9 @@ public interface DeviceFaultMapper {
 
     List<DeviceFaultVo> find(DeviceFaultVo deviceFaultVo);
 
+    int updateNote(DeviceFaultVo deviceFaultVo);
 
-
-
+    List<DeviceFault> listType();
 
 
 
@@ -47,6 +47,11 @@ public interface DeviceFaultMapper {
     int updateByPrimaryKeySelective(DeviceFault record);
 
     int updateByPrimaryKey(DeviceFault record);
+
+
+    List<DeviceFaultVo> searchDeviceFaultByDeviceFaultId(String deviceFaultId);
+
+    List<DeviceFaultVo> searchDeviceFaultByDeviceName(String deviceName);
 
 
 }

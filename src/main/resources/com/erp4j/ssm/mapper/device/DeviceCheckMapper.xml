@@ -41,6 +41,56 @@
     </select>
 
 
+  <!-- 修改备注-->
+  <update id="updateNote" parameterType="com.erp4j.ssm.pojo.device.DeviceCheckVo" >
+	UPDATE device_check
+		SET device_check_result = #{deviceCheckResult}
+		WHERE
+			device_check_id = #{deviceCheckId}
+	</update>
+
+
+  <select id="searchDeviceCheckByDeviceCheckId" resultMap="BaseResultMap1">
+		 select
+			device_check_id,
+			de.device_id,
+			de.device_name,
+			em.emp_id as device_check_emp_id,
+			em.emp_name as device_check_emp,
+			device_check_date,
+			device_check_result,
+			device_check_fault_id
+	    from device_check dc
+	    left join device de
+	    on dc.device_id=de.device_id
+	    left join employee em
+	    on dc.device_check_emp_id=em.emp_id
+		where device_check_id like CONCAT(
+				'%',
+				#{deviceCheckId},'%' )
+	</select>
+
+  <select id="searchDeviceCheckByDeviceName" resultMap="BaseResultMap1">
+		 select
+			device_check_id,
+			de.device_id,
+			de.device_name,
+			em.emp_id as device_check_emp_id,
+			em.emp_name as device_check_emp,
+			device_check_date,
+			device_check_result,
+			device_check_fault_id
+	    from device_check dc
+	    left join device de
+	    on dc.device_id=de.device_id
+	    left join employee em
+	    on dc.device_check_emp_id=em.emp_id
+		where de.device_name like CONCAT(
+				'%',
+				#{deviceName},'%' )
+	</select>
+
+
 
 
 
