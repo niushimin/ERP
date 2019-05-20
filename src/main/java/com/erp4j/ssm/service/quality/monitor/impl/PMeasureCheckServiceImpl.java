@@ -1,5 +1,6 @@
 package com.erp4j.ssm.service.quality.monitor.impl;
 
+import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.mapper.ProcessCountCheckMapper;
 import com.erp4j.ssm.mapper.ProcessMeasureCheckMapper;
@@ -7,6 +8,7 @@ import com.erp4j.ssm.pojo.ProcessCountCheckExample;
 import com.erp4j.ssm.pojo.ProcessMeasureCheck;
 import com.erp4j.ssm.pojo.ProcessMeasureCheckExample;
 import com.erp4j.ssm.service.quality.monitor.PMeasureCheckService;
+import com.erp4j.ssm.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,33 @@ public class PMeasureCheckServiceImpl implements PMeasureCheckService {
         long count = processMeasureCheckMapper.countByExample(new ProcessMeasureCheckExample());
         responseVo.setTotal((int)count);
         return responseVo;
+    }
+
+    @Override
+    public ResponseStatus insertProcessMeasure(ProcessMeasureCheck processMeasureCheck) {
+        if(processMeasureCheckMapper.insert(processMeasureCheck) != 0){
+            return ResponseUtil.getResponseStatus("OK","200");
+        }else{
+            return ResponseUtil.getResponseStatus("插入错误","400");
+        }
+    }
+
+    @Override
+    public ResponseStatus updateAllProcessMeasure(ProcessMeasureCheck processMeasureCheck) {
+        if(processMeasureCheckMapper.updateByPrimaryKey(processMeasureCheck) != 0){
+            return ResponseUtil.getResponseStatus("OK","200");
+        }else{
+            return ResponseUtil.getResponseStatus("修改错误","400");
+        }
+    }
+
+    @Override
+    public ResponseStatus deleteBatchProcessMeasure(String[] ids) {
+        for (String id : ids) {
+            if(processMeasureCheckMapper.deleteByPrimaryKey(id) == 0){
+                return ResponseUtil.getResponseStatus("删除错误","400");
+            }
+        }
+        return ResponseUtil.getResponseStatus("OK","200");
     }
 }
