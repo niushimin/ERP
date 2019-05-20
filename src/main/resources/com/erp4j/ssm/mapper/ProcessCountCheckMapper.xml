@@ -19,9 +19,9 @@
     <!--分隔符 杨盼-->
   </resultMap>
   <!--分隔符 杨盼-->
-  <select id="selectpMeasureCheckAll" resultMap="BaseResultMap">
-    select p_measure_check_id,process_id,check_item,cdate,measure_data,pr.emp_id,emp_name,result,note
-    from process_measure_check pr
+  <select id="selectPCountCheckAll" resultMap="BaseResultMap">
+    SELECT p_count_check_id,process_id,check_item,sample,check_number,unqualify,qualify,cdate,measure_data,pr.emp_id,emp_name,result,pr.note
+    from process_count_check pr
     left join employee em
     on pr.emp_id=em.emp_id
   </select>

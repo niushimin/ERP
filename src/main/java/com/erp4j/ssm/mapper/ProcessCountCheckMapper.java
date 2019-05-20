@@ -33,4 +33,6 @@ public interface ProcessCountCheckMapper {
     int updateByPrimaryKey(ProcessCountCheck record);
 
     ArrayList<ProcessMeasureCheck> selectpMeasureCheckAll();
+
+    ArrayList<ProcessCountCheck> selectPCountCheckAll();
 }
