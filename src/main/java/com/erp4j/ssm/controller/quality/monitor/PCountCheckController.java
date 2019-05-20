@@ -27,8 +27,8 @@ public class PCountCheckController {
     /*返回工序计数列表*/
     @ResponseBody
     @RequestMapping("/p_count_check/list")
-    public ResponseVo<ProcessCountCheck> selectPCountCheckAll(){
-        ResponseVo<ProcessCountCheck> responseVo = pCountCheckService.getResponseVo();
+    public ResponseVo<ProcessCountCheck> selectPCountCheckAll(int page, int rows){
+        ResponseVo<ProcessCountCheck> responseVo = pCountCheckService.getResponseVo(page,rows);
         return responseVo;
     }
     /*工序计数新增校验*/

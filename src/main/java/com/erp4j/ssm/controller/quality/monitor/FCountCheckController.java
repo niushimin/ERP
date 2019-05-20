@@ -25,8 +25,8 @@ public class FCountCheckController {
     /*返回成品计数列表*/
     @ResponseBody
     @RequestMapping("/f_count_check/list")
-    public ResponseVo selectMeasureAll(){
-        ResponseVo responseVo = fCountCheckService.getResponseVo();
+    public ResponseVo selectMeasureAll(int page, int rows){
+        ResponseVo responseVo = fCountCheckService.getResponseVo(page,rows);
         return responseVo;
     }
     /*成品计数新增校验*/

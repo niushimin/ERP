@@ -26,8 +26,8 @@ public class PMeasureCheckController {
     /*返回工序计量列表*/
     @ResponseBody
     @RequestMapping("/p_measure_check/list")
-    public ResponseVo selectpMeasureCheckAll(){
-        ResponseVo responseVo = pMeasureCheckService.getResponseVo();
+    public ResponseVo selectpMeasureCheckAll(int page, int rows){
+        ResponseVo responseVo = pMeasureCheckService.getResponseVo(page,rows);
         return responseVo;
     }
     /*工序计量新增校验*/

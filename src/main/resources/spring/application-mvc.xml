@@ -25,4 +25,15 @@
     </bean>
     <!--字符串转成日期类型-->
     <bean id="dateConverter" class="com.erp4j.ssm.controller.converter.DateConverter"/>
+    <!--interceptor-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/ajaxLogin"/>
+            <mvc:exclude-mapping path="/**/*.*/**"/>
+            <mvc:exclude-mapping path="/login"/>
+            <bean class="com.erp4j.ssm.interceptor.DiyHandlerInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

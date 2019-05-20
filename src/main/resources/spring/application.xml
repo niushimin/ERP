@@ -69,5 +69,6 @@
         <property name="basePackage" value="com.erp4j.ssm.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
+    <!--异常处理器-->
+    <bean class="com.erp4j.ssm.exception.DiyHandlerException"/>
 </beans>
