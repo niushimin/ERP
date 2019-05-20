@@ -11,9 +11,13 @@ public interface MaterialConsumeMapper {
 
     List<MaterialConsumeVo> find(MaterialConsumeVo materialConsumeVo);
 
+    int updateNote(MaterialConsumeVo materialConsumeVo);
 
+    List<MaterialConsumeVo> searchMaterialConsumeByConsumeId(String consumeId);
 
+    List<MaterialConsumeVo> searchMaterialConsumeByMaterialId(String materialId);
 
+    List<MaterialConsumeVo> searchMaterialConsumeByWorkId(String workId);
 
 
 
@@ -62,6 +66,7 @@ public interface MaterialConsumeMapper {
     int updateByPrimaryKeySelective(MaterialConsume record);
 
     int updateByPrimaryKey(MaterialConsume record);
+
 
 
 }
