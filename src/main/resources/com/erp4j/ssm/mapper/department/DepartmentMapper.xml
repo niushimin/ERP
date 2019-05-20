@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.DepartmentMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Department">
+<mapper namespace="com.erp4j.ssm.mapper.department.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.department.Department">
     <id column="department_id" jdbcType="VARCHAR" property="departmentId" />
     <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
     <result column="note" jdbcType="VARCHAR" property="note" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     department_id, department_name, note
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.DepartmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.department.DepartmentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from department
     where department_id = #{departmentId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.DepartmentExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.department.DepartmentExample">
     delete from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.Department">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.department.Department">
     insert into department (department_id, department_name, note
       )
     values (#{departmentId,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.Department">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.department.Department">
     insert into department
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="departmentId != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.DepartmentExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.department.DepartmentExample" resultType="java.lang.Long">
     select count(*) from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.Department">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.department.Department">
     update department
     <set>
       <if test="departmentName != null">
@@ -172,7 +172,7 @@
     </set>
     where department_id = #{departmentId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.Department">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.department.Department">
     update department
     set department_name = #{departmentName,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR}

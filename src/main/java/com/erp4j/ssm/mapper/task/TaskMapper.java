@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.task;
 
-import com.erp4j.ssm.pojo.Task;
-import com.erp4j.ssm.pojo.TaskExample;
+import com.erp4j.ssm.pojo.task.Task;
+import com.erp4j.ssm.pojo.task.TaskExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +27,6 @@ public interface TaskMapper {
     int updateByPrimaryKeySelective(Task record);
 
     int updateByPrimaryKey(Task record);
+
+    List<Task> queryTask();
 }

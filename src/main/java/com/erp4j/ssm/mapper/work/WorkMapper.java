@@ -36,7 +36,7 @@ public interface WorkMapper {
 
     int updateWork(WorkVo workVo);
 
-    List<Work> queryCOrderById(String searchValue);
+    List<Work> queryWorkById(String searchValue);
 
     List<Work> queryWorkByProduct(String searchValue);
 
@@ -49,4 +49,6 @@ public interface WorkMapper {
     List<Work> queryWorkByProcess(String searchValue);
 
     int queryTotalByProcess(String searchValue);
+
+    Work querySingleById(String workId);
 }

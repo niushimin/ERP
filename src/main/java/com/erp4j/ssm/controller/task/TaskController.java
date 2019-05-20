@@ -1,50 +1,51 @@
-package com.erp4j.ssm.controller.custom;
+package com.erp4j.ssm.controller.task;
 
 import com.erp4j.ssm.pojo.QueryVo;
-import com.erp4j.ssm.pojo.custom.Custom;
-import com.erp4j.ssm.pojo.product.Product;
-import com.erp4j.ssm.service.custom.CustomService;
-import net.sf.jsqlparser.expression.operators.relational.OldOracleJoinBinaryExpression;
+import com.erp4j.ssm.pojo.corder.COrder;
+import com.erp4j.ssm.pojo.task.Task;
+import com.erp4j.ssm.pojo.work.Work;
+import com.erp4j.ssm.service.task.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: Ethan New
- * @Date: 2019/5/17 23:25
+ * @Date: 2019/5/19 21:29
  * @Description:
  */
+
 @Controller
-@RequestMapping("/custom")
-public class CustomController {
+@RequestMapping("/task")
+public class TaskController {
 
     @Autowired
-    CustomService customService;
+    TaskService taskService;
 
-    // 从主页查看客户列表信息
+    // 从主页查看生产派工信息
     @RequestMapping("/find")
     public String find() {
-        return "custom_list";
+        return "task_list";
     }
 
-    // 返回客户列表的数据
+    // 返回生产派工列表的数据
     @ResponseBody
     @RequestMapping("/list")
     public Map<String, Object> list(int page, int rows) {
-        List<Custom> list = customService.queryCustom(page, rows);
-        int total = customService.queryTotal();
+        List<Task> list = taskService.queryTask(page, rows);
+        int total = taskService.queryTotal();
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-
-    // 新增客户信息权限校验
+    // 新增生产派工权限校验
     @ResponseBody
     @RequestMapping("/add_judge")
     public Map<String, Object> add_judge() {
@@ -52,17 +53,17 @@ public class CustomController {
         return map;
     }
 
-    // 跳转新增客户信息页面
+    // 跳转新增生产派工页面
     @RequestMapping("/add")
     public String add() {
-        return "custom_add";
+        return "task_add";
     }
 
-    // 保存信息到数据库中
+    // 保存生产派工信息
     @ResponseBody
     @RequestMapping("/insert")
-    public Map<String, Object> insert(Custom custom) {
-        boolean flag = customService.insertCustom(custom);
+    public Map<String, Object> insert(Task task) {
+        boolean flag = taskService.insertTask(task);
         HashMap<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -72,7 +73,7 @@ public class CustomController {
         return map;
     }
 
-    // 修改顾客信息权限校验
+    // 修改生产派工权限校验
     @ResponseBody
     @RequestMapping("/edit_judge")
     public Map<String, Object> edit_judge() {
@@ -80,17 +81,17 @@ public class CustomController {
         return map;
     }
 
-    // 跳转到修改顾客信息页面
+    // 跳转到修改生产派工页面
     @RequestMapping("/edit")
     public String edit() {
-        return "custom_edit";
+        return "task_edit";
     }
 
     // 将修改的信息保存到数据库中
     @ResponseBody
     @RequestMapping("/update_all")
-    public Map<String, Object> update_all(Custom custom) {
-        boolean flag = customService.updateCustom(custom);
+    public Map<String, Object> update_all(Task task) {
+        boolean flag = taskService.updateTask(task);
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -100,8 +101,7 @@ public class CustomController {
         return map;
     }
 
-
-    // 删除顾客信息权限校验
+    // 删除生产派工权限校验
     @ResponseBody
     @RequestMapping("/delete_judge")
     public Map<String, Object> delete_judge() {
@@ -109,11 +109,11 @@ public class CustomController {
         return map;
     }
 
-    // 批量删除顾客信息
+    // 批量删除生产派工
     @ResponseBody
     @RequestMapping("/delete_batch")
     public Map<String, Object> delete_batch(QueryVo queryVo) {
-        boolean flag = customService.deleteMultiCustom(queryVo.getIds());
+        boolean flag = taskService.deleteMultiTask(queryVo.getIds());
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -123,38 +123,36 @@ public class CustomController {
         return map;
     }
 
+    // 根据生产派工Id查询生产派工信息
     @ResponseBody
-    @RequestMapping("/get/{customId}")
-    public Custom get(@PathVariable("customId") String customId) {
-        Custom custom = customService.queryCustomById(customId);
-        return custom;
-    }
-
-    @ResponseBody
-    @RequestMapping("/get_data")
-    public List<Custom> get_data() {
-        List<Custom> list = customService.queryCustom();
-        return list;
-    }
-
-    // 根据客户Id查询客户信息
-    @ResponseBody
-    @RequestMapping("/search_custom_by_customId")
-    public Map<String, Object> search_custom_by_customId(String searchValue, int page, int rows) {
-        List<Custom> list = customService.queryCustomById(searchValue, page, rows);
-        int total = customService.queryTotalById(searchValue);
+    @RequestMapping("/search_task_by_taskId")
+    public Map<String, Object> search_task_by_taskId(String searchValue, int page, int rows) {
+        List<Task> list = taskService.queryTaskById(searchValue, page, rows);
+        int total = taskService.queryTotalById(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-    // 根据客户名称查询客户信息
+    // 根据作业Id查询生产派工信息
     @ResponseBody
-    @RequestMapping("/search_custom_by_customName")
-    public Map<String, Object> search_custom_by_customName(String searchValue, int page, int rows) {
-        List<Custom> list = customService.queryCustomByName(searchValue, page, rows);
-        int total = customService.queryTotalByName(searchValue);
+    @RequestMapping("/search_task_by_taskWorkId")
+    public Map<String, Object> search_task_by_taskWorkId(String searchValue, int page, int rows) {
+        List<Task> list = taskService.queryTaskByWork(searchValue, page, rows);
+        int total = taskService.queryTotalByWork(searchValue);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", list);
+        return map;
+    }
+
+    // 根据作业Id查询生产派工信息
+    @ResponseBody
+    @RequestMapping("/search_task_by_taskManufactureSn")
+    public Map<String, Object> search_task_by_taskManufactureSn(String searchValue, int page, int rows) {
+        List<Task> list = taskService.queryTaskByManufacture(searchValue, page, rows);
+        int total = taskService.queryTotalByManufacture(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);

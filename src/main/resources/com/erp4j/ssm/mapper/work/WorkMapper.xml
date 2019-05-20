@@ -270,7 +270,7 @@
     where work_id = #{workId}
   </update>
 
-  <select id="queryCOrderById" resultMap="workMap">
+  <select id="queryWorkById" resultMap="workMap">
     select
     <include refid="Base_Column_List"/>
     from work
@@ -320,5 +320,11 @@
     where process_id like concat("%", #{searchValue}, "%")
   </select>
 
+  <select id="querySingleById" resultMap="workMap">
+    select
+    <include refid="Base_Column_List" />
+    from work
+    where work_id = #{workId}
+  </select>
 
 </mapper>

@@ -37,4 +37,8 @@ public interface WorkService {
     List<Work> queryWorkByProcess(String searchValue, int page, int rows);
 
     int queryTotalProcess(String searchValue);
+
+    Work queryWorkById(String workId);
+
+    List<Work> queryWork();
 }

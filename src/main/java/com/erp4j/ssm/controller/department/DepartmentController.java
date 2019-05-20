@@ -1,50 +1,50 @@
-package com.erp4j.ssm.controller.custom;
+package com.erp4j.ssm.controller.department;
 
 import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.custom.Custom;
-import com.erp4j.ssm.pojo.product.Product;
-import com.erp4j.ssm.service.custom.CustomService;
-import net.sf.jsqlparser.expression.operators.relational.OldOracleJoinBinaryExpression;
+import com.erp4j.ssm.pojo.department.Department;
+import com.erp4j.ssm.service.department.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: Ethan New
- * @Date: 2019/5/17 23:25
+ * @Date: 2019/5/19 23:45
  * @Description:
  */
+
 @Controller
-@RequestMapping("/custom")
-public class CustomController {
+@RequestMapping("/department")
+public class DepartmentController {
 
     @Autowired
-    CustomService customService;
+    DepartmentService departmentService;
 
-    // 从主页查看客户列表信息
+    // 从主页查看部门列表信息
     @RequestMapping("/find")
     public String find() {
-        return "custom_list";
+        return "department_list";
     }
 
-    // 返回客户列表的数据
+    // 返回部门列表的数据
     @ResponseBody
     @RequestMapping("/list")
     public Map<String, Object> list(int page, int rows) {
-        List<Custom> list = customService.queryCustom(page, rows);
-        int total = customService.queryTotal();
+        List<Department> list = departmentService.queryDepartment(page, rows);
+        int total = departmentService.queryTotal();
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
         return map;
     }
 
-
-    // 新增客户信息权限校验
+    // 新增部门信息权限校验
     @ResponseBody
     @RequestMapping("/add_judge")
     public Map<String, Object> add_judge() {
@@ -52,17 +52,17 @@ public class CustomController {
         return map;
     }
 
-    // 跳转新增客户信息页面
+    // 跳转新增部门信息页面
     @RequestMapping("/add")
     public String add() {
-        return "custom_add";
+        return "department_add";
     }
 
     // 保存信息到数据库中
     @ResponseBody
     @RequestMapping("/insert")
-    public Map<String, Object> insert(Custom custom) {
-        boolean flag = customService.insertCustom(custom);
+    public Map<String, Object> insert(Department department) {
+        boolean flag = departmentService.insertDepartment(department);
         HashMap<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -72,7 +72,7 @@ public class CustomController {
         return map;
     }
 
-    // 修改顾客信息权限校验
+    // 修改部门信息权限校验
     @ResponseBody
     @RequestMapping("/edit_judge")
     public Map<String, Object> edit_judge() {
@@ -80,17 +80,17 @@ public class CustomController {
         return map;
     }
 
-    // 跳转到修改顾客信息页面
+    // 跳转到修改部门信息页面
     @RequestMapping("/edit")
     public String edit() {
-        return "custom_edit";
+        return "department_edit";
     }
 
     // 将修改的信息保存到数据库中
     @ResponseBody
     @RequestMapping("/update_all")
-    public Map<String, Object> update_all(Custom custom) {
-        boolean flag = customService.updateCustom(custom);
+    public Map<String, Object> update_all(Department department) {
+        boolean flag = departmentService.updateDepartment(department);
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -100,8 +100,7 @@ public class CustomController {
         return map;
     }
 
-
-    // 删除顾客信息权限校验
+    // 删除部门信息权限校验
     @ResponseBody
     @RequestMapping("/delete_judge")
     public Map<String, Object> delete_judge() {
@@ -109,11 +108,11 @@ public class CustomController {
         return map;
     }
 
-    // 批量删除顾客信息
+    // 批量删除部门信息
     @ResponseBody
     @RequestMapping("/delete_batch")
     public Map<String, Object> delete_batch(QueryVo queryVo) {
-        boolean flag = customService.deleteMultiCustom(queryVo.getIds());
+        boolean flag = departmentService.deleteMultiDepartment(queryVo.getIds());
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -123,26 +122,13 @@ public class CustomController {
         return map;
     }
 
-    @ResponseBody
-    @RequestMapping("/get/{customId}")
-    public Custom get(@PathVariable("customId") String customId) {
-        Custom custom = customService.queryCustomById(customId);
-        return custom;
-    }
 
+    // 根据部门Id查询部门信息
     @ResponseBody
-    @RequestMapping("/get_data")
-    public List<Custom> get_data() {
-        List<Custom> list = customService.queryCustom();
-        return list;
-    }
-
-    // 根据客户Id查询客户信息
-    @ResponseBody
-    @RequestMapping("/search_custom_by_customId")
-    public Map<String, Object> search_custom_by_customId(String searchValue, int page, int rows) {
-        List<Custom> list = customService.queryCustomById(searchValue, page, rows);
-        int total = customService.queryTotalById(searchValue);
+    @RequestMapping("/search_department_by_departmentId")
+    public Map<String, Object> search_department_by_departmentId(String searchValue, int page, int rows) {
+        List<Department> list = departmentService.queryDepartmentById(searchValue, page, rows);
+        int total = departmentService.queryTotalById(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);
@@ -151,10 +137,10 @@ public class CustomController {
 
     // 根据客户名称查询客户信息
     @ResponseBody
-    @RequestMapping("/search_custom_by_customName")
-    public Map<String, Object> search_custom_by_customName(String searchValue, int page, int rows) {
-        List<Custom> list = customService.queryCustomByName(searchValue, page, rows);
-        int total = customService.queryTotalByName(searchValue);
+    @RequestMapping("/search_department_by_departmentName")
+    public Map<String, Object> search_department_by_departmentName(String searchValue, int page, int rows) {
+        List<Department> list = departmentService.queryDepartmentByName(searchValue, page, rows);
+        int total = departmentService.queryTotalByName(searchValue);
         Map<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", list);

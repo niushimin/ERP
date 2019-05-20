@@ -43,4 +43,6 @@ public interface ManufactureMapper {
     List<Manufacture> queryManufactureByTechnologyName(String searchValue);
 
     int queryTotalByTechnologyName(String searchValue);
+
+    Manufacture querySingleBySn(String manufactureSn);
 }

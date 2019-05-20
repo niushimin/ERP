@@ -32,4 +32,5 @@ public interface DeviceService {
 
     List<Device> queryDevice();
 
+
 }

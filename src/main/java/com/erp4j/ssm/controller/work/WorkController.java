@@ -9,6 +9,7 @@ import com.erp4j.ssm.pojo.work.WorkVo;
 import com.erp4j.ssm.service.work.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -122,6 +123,22 @@ public class WorkController {
             map.put("data", null);
         }
         return map;
+    }
+
+    // 根据作业Id查询作业信息
+    @ResponseBody
+    @RequestMapping("/get/{workId}")
+    public Work get(@PathVariable("workId") String workId) {
+        Work works = workService.queryWorkById(workId);
+        return works;
+    }
+
+    // 获取全部作业信息
+    @ResponseBody
+    @RequestMapping("/get_data")
+    public List<Work> get_data() {
+        List<Work> list = workService.queryWork();
+        return list;
     }
 
     // 根据作业Id查询订单信息

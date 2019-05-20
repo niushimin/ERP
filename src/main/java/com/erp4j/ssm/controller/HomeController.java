@@ -53,8 +53,8 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
-
         //设备管理
+
         list.add("manufacture:add");
         list.add("manufacture:edit");
         list.add("manufacture:delete");
@@ -63,6 +63,9 @@ public class HomeController {
         list.add("task:edit");
         list.add("task:delete");
 
+        list.add("department:add");
+        list.add("department:edit");
+        list.add("department:delete");
 
         list.add("device:add");
         list.add("device:edit");
@@ -87,7 +90,6 @@ public class HomeController {
         list.add("work:add");
         list.add("work:edit");
         list.add("work:delete");
-
 
         session.setAttribute("sysPermissionList",list);
         return "home";
