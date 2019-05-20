@@ -15,4 +15,22 @@ public interface ProcessService {
     Process queryProcessById(String processId);
 
     List<Process> queryProcess();
+
+    List<Process> queryProcess(int page, int rows);
+
+    int queryTotal();
+
+    boolean insertProcess(Process process);
+
+    boolean updateProcess(Process process);
+
+    boolean deleteMultiProcess(List<String> ids);
+
+    List<Process> queryProcessById(String searchValue, int page, int rows);
+
+    int queryTotalById(String searchValue);
+
+    List<Process> queryProcessByTechnologyPlanId(String searchValue, int page, int rows);
+
+    int queryTotalByTechnologyPlanId(String searchValue);
 }

@@ -1,4 +1,4 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.technology;
 
 import java.util.Date;
 
@@ -6,6 +6,8 @@ public class TechnologyPlan {
     private String technologyPlanId;
 
     private String technologyId;
+
+    private String technologyName;
 
     private Integer batchAmount;
 
@@ -33,6 +35,14 @@ public class TechnologyPlan {
 
     public void setTechnologyId(String technologyId) {
         this.technologyId = technologyId == null ? null : technologyId.trim();
+    }
+
+    public String getTechnologyName() {
+        return technologyName;
+    }
+
+    public void setTechnologyName(String technologyName) {
+        this.technologyName = technologyName;
     }
 
     public Integer getBatchAmount() {
