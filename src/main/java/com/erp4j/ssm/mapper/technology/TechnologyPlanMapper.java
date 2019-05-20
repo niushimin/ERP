@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.technology;
 
-import com.erp4j.ssm.pojo.TechnologyPlan;
-import com.erp4j.ssm.pojo.TechnologyPlanExample;
+import com.erp4j.ssm.pojo.technology.TechnologyPlan;
+import com.erp4j.ssm.pojo.technology.TechnologyPlanExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +27,18 @@ public interface TechnologyPlanMapper {
     int updateByPrimaryKeySelective(TechnologyPlan record);
 
     int updateByPrimaryKey(TechnologyPlan record);
+
+    List<TechnologyPlan> queryTechnologyPlan();
+
+    int queryTotal();
+
+    List<TechnologyPlan> queryTechnologyPlanByTechnologyName(String searchValue);
+
+    int queryTotalByTechnologyName(String searchValue);
+
+    List<TechnologyPlan> queryTechnologyPlanById(String searchValue);
+
+    int queryTotalById(String searchValue);
+
+    TechnologyPlan querySingleById(String technologyPlanId);
 }

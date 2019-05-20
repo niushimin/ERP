@@ -1,14 +1,8 @@
-package com.erp4j.ssm.pojo;
+package com.erp4j.ssm.pojo.material;
 
 import java.util.List;
 
-/**
- * @Author: Ethan New
- * @Date: 2019/5/18 17:31
- * @Description:
- */
-
-public class QueryVo {
+public class MCVo {
 
     List<String> ids;
 

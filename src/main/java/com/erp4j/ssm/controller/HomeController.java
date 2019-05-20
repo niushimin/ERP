@@ -94,6 +94,21 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
+        list.add("technology:add");
+        list.add("technology:edit");
+        list.add("technology:delete");
+
+        list.add("technologyRequirement:add");
+        list.add("technologyRequirement:edit");
+        list.add("technologyRequirement:delete");
+
+        list.add("technologyPlan:add");
+        list.add("technologyPlan:edit");
+        list.add("technologyPlan:delete");
+
+        list.add("process:add");
+        list.add("process:edit");
+        list.add("process:delete");
         //设备管理
 
         list.add("manufacture:add");
@@ -131,6 +146,18 @@ public class HomeController {
         list.add("work:add");
         list.add("work:edit");
         list.add("work:delete");
+
+        list.add("material:add");
+        list.add("material:edit");
+        list.add("material:delete");
+
+        list.add("materialReceive:add");
+        list.add("materialReceive:edit");
+        list.add("materialReceive:delete");
+
+        list.add("materialConsume:add");
+        list.add("materialConsume:edit");
+        list.add("materialConsume:delete");
 
         session.setAttribute("sysPermissionList",list);
         return "home";

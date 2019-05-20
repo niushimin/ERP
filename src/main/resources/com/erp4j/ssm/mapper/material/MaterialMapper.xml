@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.MaterialMapper">
+<mapper namespace="com.erp4j.ssm.mapper.material.MaterialMapper">
   <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.Material">
     <id column="material_id" jdbcType="VARCHAR" property="materialId" />
     <result column="material_type" jdbcType="VARCHAR" property="materialType" />
@@ -8,6 +8,77 @@
     <result column="remaining" jdbcType="INTEGER" property="remaining" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+
+  <!--  新增-->
+
+
+  <!-- 修改备注-->
+  <update id="updateNote" parameterType="com.erp4j.ssm.pojo.Material" >
+		UPDATE material
+		SET note = #{note}
+		WHERE
+			material_id = #{materialId}
+	</update>
+
+  <select id="searchMaterialByMaterialId" resultMap="BaseResultMap">
+       SELECT
+			*
+		FROM
+			material
+		WHERE
+			material_id like CONCAT(
+				'%',
+				#{materialId},'%' )
+    </select>
+
+  <select id="searchMaterialByMaterialType" resultMap="BaseResultMap">
+    	SELECT
+			*
+		FROM
+			material
+		WHERE
+			material_type like CONCAT(
+				'%',
+				#{materialType},'%' )
+    </select>
+
+  <!-- 查询所有记录 -->
+  <select id="listType" resultMap="BaseResultMap">
+		SELECT
+			material_id
+		FROM
+			material
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--逆向工程生成-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
