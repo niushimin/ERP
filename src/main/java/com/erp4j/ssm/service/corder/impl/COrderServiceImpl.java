@@ -4,6 +4,7 @@ import com.erp4j.ssm.mapper.corder.COrderMapper;
 import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.corder.COrder;
 import com.erp4j.ssm.pojo.corder.COrderExample;
+import com.erp4j.ssm.pojo.corder.COrderVo;
 import com.erp4j.ssm.service.corder.COrderService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class COrderServiceImpl implements COrderService {
     }
 
     @Override
-    public boolean insertCOrder(QueryVo queryVo) {
-        int total =  orderMapper.insertCOrder(queryVo);
+    public boolean insertCOrder(COrderVo cOrderVo) {
+        int total =  orderMapper.insertCOrder(cOrderVo);
         return total == 1;
     }
 
@@ -52,8 +53,8 @@ public class COrderServiceImpl implements COrderService {
     }
 
     @Override
-    public boolean updateCOrder(QueryVo queryVo) {
-        int result = orderMapper.updateCorder(queryVo);
+    public boolean updateCOrder(COrderVo cOrderVo) {
+        int result = orderMapper.updateCorder(cOrderVo);
         return result == 1;
     }
 
