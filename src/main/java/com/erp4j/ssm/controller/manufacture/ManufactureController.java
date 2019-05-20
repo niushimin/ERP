@@ -8,6 +8,7 @@ import com.erp4j.ssm.service.manufacture.ManufactureService;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -122,6 +123,22 @@ public class ManufactureController {
             map.put("data", null);
         }
         return map;
+    }
+
+    // 根据生产计划Id查询生产计划信息
+    @ResponseBody
+    @RequestMapping("/get/{manufactureSn}")
+    public Manufacture get(@PathVariable("manufactureSn") String manufactureSn) {
+        Manufacture manufacture = manufactureService.queryManufactureById(manufactureSn);
+        return manufacture;
+    }
+
+    // 获取全部生产计划信息
+    @ResponseBody
+    @RequestMapping("/get_data")
+    public List<Manufacture> get_data() {
+        List<Manufacture> list = manufactureService.queryManufacture();
+        return list;
     }
 
     // 根据生产批号查询生产计划信息

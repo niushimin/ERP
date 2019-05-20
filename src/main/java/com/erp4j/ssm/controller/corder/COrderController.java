@@ -2,6 +2,7 @@ package com.erp4j.ssm.controller.corder;
 
 import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.corder.COrder;
+import com.erp4j.ssm.pojo.corder.COrderVo;
 import com.erp4j.ssm.pojo.product.Product;
 import com.erp4j.ssm.service.corder.COrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +63,8 @@ public class COrderController {
     // 保存订单信息
     @ResponseBody
     @RequestMapping("/insert")
-    public Map<String, Object> insert(QueryVo queryVo) {
-        boolean flag = orderService.insertCOrder(queryVo);
+    public Map<String, Object> insert(COrderVo cOrderVo) {
+        boolean flag = orderService.insertCOrder(cOrderVo);
         HashMap<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);
@@ -90,8 +91,8 @@ public class COrderController {
     // 将修改的信息保存到数据库中
     @ResponseBody
     @RequestMapping("/update_all")
-    public Map<String, Object> update_all(QueryVo queryVo) {
-        boolean flag = orderService.updateCOrder(queryVo);
+    public Map<String, Object> update_all(COrderVo cOrderVo) {
+        boolean flag = orderService.updateCOrder(cOrderVo);
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("status", 200);

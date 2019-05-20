@@ -417,12 +417,12 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
 	
 	//更新订单要求
 	function updateOrderNote(){
-		$.get("order/edit_judge",'',function(data){
+		$.get("corder/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
     			orderNoteEditor.sync();
-    			$.post("order/update_note",$("#orderNoteForm").serialize(), function(data){
+    			$.post("corder/update_note",$("#orderNoteForm").serialize(), function(data){
     				if(data.status == 200){
     					$("#orderNoteDialog").dialog("close");
     					$("#orderList").datagrid("reload");
@@ -448,7 +448,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_add(){
-    	$.get("order/add_judge",'',function(data){
+    	$.get("corder/add_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -458,7 +458,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_edit(){
-    	$.get("order/edit_judge",'',function(data){
+    	$.get("corder/edit_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -499,7 +499,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
     }
     
     function order_delete(){
-    	$.get("order/delete_judge",'',function(data){
+    	$.get("corder/delete_judge",'',function(data){
       		if(data.msg != null){
       			$.messager.alert('提示', data.msg);
       		}else{
@@ -511,7 +511,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
               	$.messager.confirm('确认','确定删除ID为 '+ids+' 的订单吗？',function(r){
               	    if (r){
               	    	var params = {"ids":ids};
-                      	$.post("order/delete_batch",params, function(data){
+                      	$.post("corder/delete_batch",params, function(data){
                   			if(data.status == 200){
                   				$.messager.alert('提示','删除订单成功!',undefined,function(){
                   					$("#orderList").datagrid("reload");

@@ -177,5 +177,9 @@ public class DeviceListController {
         EUDataGridResult result = deviceService.searchDeviceByDeviceTypeName(page, rows, searchValue);
         return result;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
 }
 

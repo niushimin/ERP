@@ -3,6 +3,9 @@ package com.erp4j.ssm.pojo;
 import java.util.Date;
 
 public class FinalMeasuretCheck {
+    /*分隔符 杨盼*/
+    private String empName;
+    /*分隔符 杨盼*/
     private String fMeasureCheckId;
 
     private String orderId;
@@ -19,6 +22,17 @@ public class FinalMeasuretCheck {
 
     private String note;
 
+    /*分隔符 杨盼*/
+
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+    /*分隔符 杨盼*/
     public String getfMeasureCheckId() {
         return fMeasureCheckId;
     }

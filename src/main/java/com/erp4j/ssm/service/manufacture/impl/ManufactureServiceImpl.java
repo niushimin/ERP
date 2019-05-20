@@ -96,4 +96,16 @@ public class ManufactureServiceImpl implements ManufactureService {
         int total = manufactureMapper.queryTotalByTechnologyName(searchValue);
         return total;
     }
+
+    @Override
+    public Manufacture queryManufactureById(String manufactureSn) {
+        Manufacture manufacture = manufactureMapper.querySingleBySn(manufactureSn);
+        return manufacture;
+    }
+
+    @Override
+    public List<Manufacture> queryManufacture() {
+        List<Manufacture> manufactures = manufactureMapper.queryManufacture();
+        return manufactures;
+    }
 }

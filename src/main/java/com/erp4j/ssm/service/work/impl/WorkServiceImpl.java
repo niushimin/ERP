@@ -62,7 +62,7 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public List<Work> queryWorkById(String searchValue, int page, int rows) {
         PageHelper.startPage(page, rows);
-        List<Work> works = workMapper.queryCOrderById(searchValue);
+        List<Work> works = workMapper.queryWorkById(searchValue);
         return works;
     }
 
@@ -112,5 +112,17 @@ public class WorkServiceImpl implements WorkService {
     public int queryTotalProcess(String searchValue) {
         int total = workMapper.queryTotalByProcess(searchValue);
         return total;
+    }
+
+    @Override
+    public Work queryWorkById(String workId) {
+        Work work = workMapper.querySingleById(workId);
+        return work;
+    }
+
+    @Override
+    public List<Work> queryWork() {
+        List<Work> works = workMapper.queryWork();
+        return works;
     }
 }

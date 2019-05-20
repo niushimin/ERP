@@ -302,4 +302,11 @@
     from manufacture m left join technology t on m.technology_id = t.technology_id
     where t.technology_name like concat("%", #{searchValue}, "%")
   </select>
+
+  <select id="querySingleBySn" resultMap="manufactureMap">
+    select
+    <include refid="Base_Column_List"/>
+    from manufacture
+    where manufacture_sn = #{manufactureSn}
+  </select>
 </mapper>

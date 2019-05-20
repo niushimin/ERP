@@ -25,11 +25,13 @@ public class CustomController {
     @Autowired
     CustomService customService;
 
+    // 从主页查看客户列表信息
     @RequestMapping("/find")
     public String find() {
         return "custom_list";
     }
 
+    // 返回客户列表的数据
     @ResponseBody
     @RequestMapping("/list")
     public Map<String, Object> list(int page, int rows) {
@@ -41,19 +43,21 @@ public class CustomController {
         return map;
     }
 
+    // 新增客户信息权限校验
     @ResponseBody
     @RequestMapping("/add_judge")
     public Map<String, Object> add_judge() {
         Map<String, Object> map = new HashMap<>();
-        map.put("msg", null);
         return map;
     }
 
+    // 跳转新增客户信息页面
     @RequestMapping("/add")
     public String add() {
         return "custom_add";
     }
 
+    // 保存信息到数据库中
     @ResponseBody
     @RequestMapping("/insert")
     public Map<String, Object> insert(Custom custom) {
@@ -72,7 +76,6 @@ public class CustomController {
     @RequestMapping("/edit_judge")
     public Map<String, Object> edit_judge() {
         Map<String, Object> map = new HashMap<>();
-        map.put("msg", null);
         return map;
     }
 
@@ -102,7 +105,6 @@ public class CustomController {
     @RequestMapping("/delete_judge")
     public Map<String, Object> delete_judge() {
         Map<String, Object> map = new HashMap<>();
-        map.put("msg", null);
         return map;
     }
 
@@ -120,6 +122,7 @@ public class CustomController {
         return map;
     }
 
+    // 根据客户Id获取客户信息
     @ResponseBody
     @RequestMapping("/get/{customId}")
     public Custom get(@PathVariable("customId") String customId) {
@@ -127,6 +130,7 @@ public class CustomController {
         return custom;
     }
 
+    // 获取所有的客户信息
     @ResponseBody
     @RequestMapping("/get_data")
     public List<Custom> get_data() {
@@ -157,4 +161,5 @@ public class CustomController {
         map.put("rows", list);
         return map;
     }
+
 }

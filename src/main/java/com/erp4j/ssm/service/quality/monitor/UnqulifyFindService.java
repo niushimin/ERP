@@ -23,15 +23,17 @@ public interface UnqulifyFindService {
 
     List<Employee> selectEmployAll();
 
-    void deleteUnqulifyById(String[] ids);
+    boolean deleteUnqulifyById(String[] ids);
 
-    void insertUnqulify(UnqualifyApply unqualifyApply);
+    boolean insertUnqulify(UnqualifyApply unqualifyApply);
 
-    ResponseStatus getResponseStatus();
+    ResponseStatus getResponseStatus(String msg,String status);
 
-    void unqulifyUpdateAll(UnqualifyApply unqualifyApply);
+    boolean unqulifyUpdateAll(UnqualifyApply unqualifyApply);
 
     ResponseVo searchUnqualifyByUnqualifyId(QueryParameters queryParameters);
 
     ResponseVo searchUnqualifyByProductName(QueryParameters queryParameters);
+
+    boolean updateEmployeeAll(Employee employee);
 }

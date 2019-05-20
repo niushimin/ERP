@@ -536,7 +536,9 @@ function doSearch_unqualify(value,name){ //用户输入用户名,点击搜素,�
                    				$.messager.alert('提示','删除不合格品成功!',undefined,function(){
                    					$("#unqualifyList").datagrid("reload");
                    				});
-                   			}
+                   			}else{
+								$.messager.alert('提示',data.msg);
+							}
                    		});
                	    }
                	});

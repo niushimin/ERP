@@ -10,7 +10,10 @@ public interface DeviceService {
 
     EUDataGridResult findDeviceList(Integer page, Integer rows,DeviceVo deviceVo);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
     boolean updateNote(DeviceVo deviceVo);
 
     List<DeviceVo> find();
@@ -32,4 +35,9 @@ public interface DeviceService {
     Device queryDeviceById(String deviceId);
 
     List<Device> queryDevice();
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
 }
