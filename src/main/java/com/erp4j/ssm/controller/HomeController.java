@@ -42,11 +42,11 @@ public class HomeController {
 
         HashMap<String, String> hashMap = new HashMap<>();
 
-        if(session.getAttribute("sysUser") != null){
+        if(session.getAttribute("activeUser") != null){
             return hashMap;
         }else{
             if(homeService.ajaxLogin(sysUser)){
-                session.setAttribute("sysUser",sysUser);
+                session.setAttribute("activeUser",sysUser);
                 return hashMap;
             }else{
                 hashMap.put("msg","password_error");

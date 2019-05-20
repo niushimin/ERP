@@ -12,7 +12,7 @@ public class DiyHandlerInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         HttpSession session = request.getSession();
-        if(session.getAttribute("sysUser") != null){    //已经登录
+        if(session.getAttribute("activeUser") != null){    //已经登录
             return true;
         }else{  //未登录
            response.setHeader("session-status","timeout");
