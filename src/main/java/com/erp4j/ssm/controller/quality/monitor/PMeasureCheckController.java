@@ -1,5 +1,6 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.ProcessMeasureCheck;
@@ -83,5 +84,12 @@ public class PMeasureCheckController {
     public ResponseStatus deleteBatchProcessMeasure(String[] ids){
         ResponseStatus responseStatus = pMeasureCheckService.deleteBatchProcessMeasure(ids);
         return responseStatus;
+    }
+    /*根据工序计量编号查询工序计量*/
+    @ResponseBody
+    @RequestMapping("/p_measure_check/search_pMeasureCheck_by_pMeasureCheckId")
+    public ResponseVo searchPMeasureCheckByPMeasureCheckId(QueryParameters queryParameters){
+        ResponseVo responseVo = pMeasureCheckService.searchPMeasureCheckByPMeasureCheckId(queryParameters);
+        return responseVo;
     }
 }

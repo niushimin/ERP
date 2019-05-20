@@ -18,7 +18,7 @@
 	            <td>
 	            	<input class="easyui-combobox" name="technologyId" panelHeight="auto" 
     					data-options="required:true,valueField:'technologyId',textField:'technologyName',
-    						url:'technologyRequirement/get_data',editable:false" />  
+    						url:'technology/get_data',editable:false" />
 	            </td>
 	        </tr>
 	        <tr>
@@ -85,5 +85,6 @@
 	
 	function clearTechnologyRequirementAddForm(){
 		$('#technologyRequirementAddForm').form('reset');
+        technologyRequirementAddEditor.html('');
 	}
 </script>

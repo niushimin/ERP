@@ -1,7 +1,7 @@
-package com.erp4j.ssm.mapper;
+package com.erp4j.ssm.mapper.technology;
 
-import com.erp4j.ssm.pojo.TechnologyRequirement;
-import com.erp4j.ssm.pojo.TechnologyRequirementExample;
+import com.erp4j.ssm.pojo.technology.TechnologyRequirement;
+import com.erp4j.ssm.pojo.technology.TechnologyRequirementExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +27,16 @@ public interface TechnologyRequirementMapper {
     int updateByPrimaryKeySelective(TechnologyRequirement record);
 
     int updateByPrimaryKey(TechnologyRequirement record);
+
+    List<TechnologyRequirement> queryTechnologyRequirement();
+
+    int queryTotal();
+
+    List<TechnologyRequirement> queryTechnologyRequirementByTechnologyName(String searchValue);
+
+    int queryTotalByTechnologyName(String searchValue);
+
+    List<TechnologyRequirement> queryTechnologyRequirementById(String searchValue);
+
+    int queryTotalById(String searchValue);
 }

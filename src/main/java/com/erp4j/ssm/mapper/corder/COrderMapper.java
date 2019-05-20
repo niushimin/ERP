@@ -4,6 +4,8 @@ import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.corder.COrder;
 import com.erp4j.ssm.pojo.corder.COrderExample;
 import java.util.List;
+
+import com.erp4j.ssm.pojo.corder.COrderVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface COrderMapper {
@@ -35,9 +37,9 @@ public interface COrderMapper {
     // 自己写的接口
     List<COrder> queryCorder();
 
-    int insertCOrder(QueryVo queryVo);
+    int insertCOrder(COrderVo cOrderVo);
 
-    int updateCorder(QueryVo queryVo);
+    int updateCorder(COrderVo cOrderVo);
 
     List<COrder> queryCOrderById(String searchValue);
 

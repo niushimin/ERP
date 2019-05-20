@@ -63,11 +63,18 @@ public class MeasureController {
     public String editMeasure(){
         return "measurement_edit";
     }
-    /*根据成品计量质检编号查询不合格品*/
+    /*根据成品计量质检编号查询成品计量*/
     @ResponseBody
     @RequestMapping("/search_fMeasureCheck_by_fMeasureCheckId")
     public ResponseVo searchFMeasureCheckByFMeasureCheckId(QueryParameters queryParameters){
         ResponseVo responseVo = measureService.searchFMeasureCheckByFMeasureCheckId(queryParameters);
+        return responseVo;
+    }
+    /*根据订单编号查询成品计量*/
+    @ResponseBody
+    @RequestMapping("/search_fMeasureCheck_by_orderId")
+    public ResponseVo searchFMeasureCheckByOrderId(QueryParameters queryParameters){
+        ResponseVo responseVo = measureService.searchFMeasureCheckByOrderId(queryParameters);
         return responseVo;
     }
 }

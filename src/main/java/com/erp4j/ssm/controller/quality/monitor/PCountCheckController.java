@@ -1,5 +1,6 @@
 package com.erp4j.ssm.controller.quality.monitor;
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.pojo.ProcessCountCheck;
@@ -85,5 +86,13 @@ public class PCountCheckController {
     public ResponseStatus deleteBatchProcessCountCheck(String[] ids){
         ResponseStatus responseStatus = pCountCheckService.deleteBatchProcessCountCheck(ids);
         return responseStatus;
+    }
+
+    /*根据工序计数编号查询工序计数*/
+    @ResponseBody
+    @RequestMapping("/p_count_check/search_pCountCheck_by_pCountCheckId")
+    public ResponseVo searchPCountCheckByPCountCheckId(QueryParameters queryParameters){
+        ResponseVo responseVo = pCountCheckService.searchPMeasureCheckByPMeasureCheckId(queryParameters);
+        return responseVo;
     }
 }

@@ -34,5 +34,7 @@ public interface ProcessCountCheckMapper {
 
     ArrayList<ProcessMeasureCheck> selectpMeasureCheckAll();
 
-    ArrayList<ProcessCountCheck> selectPCountCheckAll();
+    ArrayList<ProcessCountCheck> selectPCountCheckAll(@Param("pCountCheckId") String pCountCheckId);
+
+    int countPMeasureCheckById(@Param("pCountCheckId") String pCountCheckId);
 }

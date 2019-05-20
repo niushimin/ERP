@@ -31,6 +31,4 @@ public interface DeviceService {
     Device queryDeviceById(String deviceId);
 
     List<Device> queryDevice();
-
-
 }

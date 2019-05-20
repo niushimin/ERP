@@ -1,5 +1,6 @@
 package com.erp4j.ssm.service.quality.monitor.impl;
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.mapper.ProcessCountCheckMapper;
@@ -7,6 +8,7 @@ import com.erp4j.ssm.pojo.ProcessCountCheck;
 import com.erp4j.ssm.pojo.ProcessCountCheckExample;
 import com.erp4j.ssm.service.quality.monitor.PCountCheckService;
 import com.erp4j.ssm.util.ResponseUtil;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ public class PCountCheckImpl implements PCountCheckService {
     public ResponseVo<ProcessCountCheck> getResponseVo() {
         ResponseVo<ProcessCountCheck> responseVo = new ResponseVo<>();
 
-        ArrayList<ProcessCountCheck> processCountChecks = processCountCheckMapper.selectPCountCheckAll();
+        ArrayList<ProcessCountCheck> processCountChecks = processCountCheckMapper.selectPCountCheckAll(null);
         responseVo.setRows(processCountChecks);
 
         long count = processCountCheckMapper.countByExample(new ProcessCountCheckExample());
@@ -57,5 +59,19 @@ public class PCountCheckImpl implements PCountCheckService {
             }
         }
         return ResponseUtil.getResponseStatus("OK","200");
+    }
+
+    @Override
+    public ResponseVo searchPMeasureCheckByPMeasureCheckId(QueryParameters queryParameters) {
+        ResponseVo<ProcessCountCheck> responseVo = new ResponseVo<>();
+
+        PageHelper.startPage(queryParameters.getPage(),queryParameters.getRows());
+        ArrayList<ProcessCountCheck> processCountChecks = processCountCheckMapper.selectPCountCheckAll("%" + queryParameters.getSearchValue() + "%");
+        responseVo.setRows(processCountChecks);
+
+        int count = processCountCheckMapper.countPMeasureCheckById("%" + queryParameters.getSearchValue() + "%");
+        responseVo.setTotal(count);
+
+        return responseVo;
     }
 }

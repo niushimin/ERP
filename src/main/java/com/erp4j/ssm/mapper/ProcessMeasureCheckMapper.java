@@ -30,5 +30,11 @@ public interface ProcessMeasureCheckMapper {
 
     int updateByPrimaryKey(ProcessMeasureCheck record);
 
-    ArrayList<ProcessMeasureCheck> selectpMeasureCheckAll();
+    /*分隔符-杨盼*/
+    ArrayList<ProcessMeasureCheck> selectpMeasureCheckAll(@Param("pMeasureCheckId")String pMeasureCheckId);
+
+    int countPMeasureCheckById(@Param("pMeasureCheckId")String pMeasureCheckId);
+
+    /*分隔符-杨盼*/
+
 }

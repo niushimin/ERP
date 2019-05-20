@@ -10,7 +10,7 @@
 	            <td>工艺名称:</td>
 	            <td>
 	            	<input class="easyui-combobox" name="technologyId" panelHeight="auto" data-options="required:true,
-	            		valueField:'technologyId',textField:'technologyName',url:'technologyRequirement/get_data',
+	            		valueField:'technologyId',textField:'technologyName',url:'technology/get_data',
 	            		editable:false"/>
 	            </td>
 	        </tr>

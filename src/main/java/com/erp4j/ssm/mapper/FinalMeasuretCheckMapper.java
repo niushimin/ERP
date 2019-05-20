@@ -33,5 +33,7 @@ public interface FinalMeasuretCheckMapper {
 
     int updateByPrimaryKey(FinalMeasuretCheck record);
 
-    ArrayList<FinalMeasuretCheck> selectMeasureAll();
+    ArrayList<FinalMeasuretCheck> selectMeasureAll(@Param("fMeasureCheckId") String fMeasureCheckId,@Param("orderId")String orderId);
+
+    int countFMeasureCheckByFMeasureCheckId(@Param("fMeasureCheckId") String fMeasureCheckId,@Param("orderId")String orderId);
 }

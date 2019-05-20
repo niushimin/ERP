@@ -2,6 +2,7 @@ package com.erp4j.ssm.service.corder;
 
 import com.erp4j.ssm.pojo.QueryVo;
 import com.erp4j.ssm.pojo.corder.COrder;
+import com.erp4j.ssm.pojo.corder.COrderVo;
 
 import java.util.List;
 
@@ -17,11 +18,11 @@ public interface COrderService {
 
     int queryTotal();
 
-    boolean insertCOrder(QueryVo queryVo);
+    boolean insertCOrder(COrderVo queryVo);
 
     boolean deleteMultiCOrder(List<String> ids);
 
-    boolean updateCOrder(QueryVo queryVo);
+    boolean updateCOrder(COrderVo queryVo);
 
     List<COrder> queryCOrderById(String searchValue, int page, int rows);
 

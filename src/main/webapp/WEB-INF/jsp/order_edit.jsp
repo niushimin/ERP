@@ -110,7 +110,8 @@
 		}
 		orderEditEditor.sync();
 		
-		$.post("order/update_all",$("#orderEditForm").serialize(), function(data){
+		$.post("c" +
+			"corder/update_all",$("#orderEditForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','修改订单成功!','info',function(){
 					$("#orderEditWindow").window('close');

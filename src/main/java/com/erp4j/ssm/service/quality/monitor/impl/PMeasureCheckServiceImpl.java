@@ -1,5 +1,6 @@
 package com.erp4j.ssm.service.quality.monitor.impl;
 
+import com.erp4j.ssm.actionform.quality.monitor.QueryParameters;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseStatus;
 import com.erp4j.ssm.actionform.quality.monitor.ResponseVo;
 import com.erp4j.ssm.mapper.ProcessCountCheckMapper;
@@ -9,6 +10,7 @@ import com.erp4j.ssm.pojo.ProcessMeasureCheck;
 import com.erp4j.ssm.pojo.ProcessMeasureCheckExample;
 import com.erp4j.ssm.service.quality.monitor.PMeasureCheckService;
 import com.erp4j.ssm.util.ResponseUtil;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class PMeasureCheckServiceImpl implements PMeasureCheckService {
     public ResponseVo getResponseVo() {
         ResponseVo<ProcessMeasureCheck> responseVo = new ResponseVo<>();
 
-        ArrayList<ProcessMeasureCheck> processMeasureChecks = processMeasureCheckMapper.selectpMeasureCheckAll();
+        ArrayList<ProcessMeasureCheck> processMeasureChecks = processMeasureCheckMapper.selectpMeasureCheckAll(null);
         responseVo.setRows(processMeasureChecks);
 
         long count = processMeasureCheckMapper.countByExample(new ProcessMeasureCheckExample());
@@ -58,5 +60,19 @@ public class PMeasureCheckServiceImpl implements PMeasureCheckService {
             }
         }
         return ResponseUtil.getResponseStatus("OK","200");
+    }
+
+    @Override
+    public ResponseVo searchPMeasureCheckByPMeasureCheckId(QueryParameters queryParameters) {
+        ResponseVo<ProcessMeasureCheck> responseVo = new ResponseVo<>();
+
+        PageHelper.startPage(queryParameters.getPage(),queryParameters.getRows());
+        ArrayList<ProcessMeasureCheck> processMeasureChecks = processMeasureCheckMapper.selectpMeasureCheckAll("%" + queryParameters.getSearchValue() + "%");
+        responseVo.setRows(processMeasureChecks);
+
+        int count = processMeasureCheckMapper.countPMeasureCheckById("%" + queryParameters.getSearchValue() + "%");
+        responseVo.setTotal(count);
+
+        return responseVo;
     }
 }

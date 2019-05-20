@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp4j.ssm.mapper.TechnologyPlanMapper">
-  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.TechnologyPlan">
+<mapper namespace="com.erp4j.ssm.mapper.technology.TechnologyPlanMapper">
+  <resultMap id="BaseResultMap" type="com.erp4j.ssm.pojo.technology.TechnologyPlan">
     <id column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
     <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
     <result column="batch_amount" jdbcType="INTEGER" property="batchAmount" />
@@ -73,7 +73,7 @@
     technology_plan_id, technology_id, batch_amount, start_plan, end_plan, commit_plan, 
     technology_plan_start, technology_plan_end
   </sql>
-  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.TechnologyPlanExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlanExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from technology_plan
     where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.TechnologyPlanExample">
+  <delete id="deleteByExample" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlanExample">
     delete from technology_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp4j.ssm.pojo.TechnologyPlan">
+  <insert id="insert" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlan">
     insert into technology_plan (technology_plan_id, technology_id, batch_amount, 
       start_plan, end_plan, commit_plan, 
       technology_plan_start, technology_plan_end
@@ -113,7 +113,7 @@
       #{technologyPlanStart,jdbcType=TIMESTAMP}, #{technologyPlanEnd,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.TechnologyPlan">
+  <insert id="insertSelective" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlan">
     insert into technology_plan
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="technologyPlanId != null">
@@ -168,7 +168,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.TechnologyPlanExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlanExample" resultType="java.lang.Long">
     select count(*) from technology_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -220,7 +220,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.TechnologyPlan">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlan">
     update technology_plan
     <set>
       <if test="technologyId != null">
@@ -247,7 +247,7 @@
     </set>
     where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.TechnologyPlan">
+  <update id="updateByPrimaryKey" parameterType="com.erp4j.ssm.pojo.technology.TechnologyPlan">
     update technology_plan
     set technology_id = #{technologyId,jdbcType=VARCHAR},
       batch_amount = #{batchAmount,jdbcType=INTEGER},
@@ -258,4 +258,68 @@
       technology_plan_end = #{technologyPlanEnd,jdbcType=TIMESTAMP}
     where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
   </update>
+
+
+
+
+  <resultMap id="technologyPlanMap" type="com.erp4j.ssm.pojo.technology.TechnologyPlan">
+    <id column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
+    <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+    <result column="batch_amount" jdbcType="INTEGER" property="batchAmount" />
+    <result column="start_plan" jdbcType="TIMESTAMP" property="startPlan" />
+    <result column="end_plan" jdbcType="TIMESTAMP" property="endPlan" />
+    <result column="commit_plan" jdbcType="TIMESTAMP" property="commitPlan" />
+    <result column="technology_plan_start" jdbcType="TIMESTAMP" property="technologyPlanStart" />
+    <result column="technology_plan_end" jdbcType="TIMESTAMP" property="technologyPlanEnd" />
+  </resultMap>
+
+  <sql id="Base_Column_TechnologyPlan">
+    tp.technology_plan_id, tp.technology_id, t.technology_name, tp.batch_amount, tp.start_plan,
+    tp.end_plan, tp.commit_plan, tp.technology_plan_start, tp.technology_plan_end
+  </sql>
+
+  <select id="queryTechnologyPlan" resultMap="technologyPlanMap">
+    select
+    <include refid="Base_Column_TechnologyPlan"/>
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+  </select>
+
+  <select id="queryTotal" resultType="int">
+    select count(tp.technology_plan_id)
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+  </select>
+
+  <select id="queryTechnologyPlanById" resultMap="technologyPlanMap">
+    select
+    <include refid="Base_Column_TechnologyPlan"/>
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+    where tp.technology_plan_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalById" resultType="int">
+    select count(tp.technology_plan_id)
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+    where tp.technology_plan_id like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTechnologyPlanByTechnologyName" resultMap="technologyPlanMap">
+    select
+    <include refid="Base_Column_TechnologyPlan"/>
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+    where t.technology_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="queryTotalByTechnologyName" resultType="int">
+    select count(tp.technology_plan_id)
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+    where t.technology_name like concat("%", #{searchValue}, "%")
+  </select>
+
+  <select id="querySingleById" resultMap="technologyPlanMap">
+    select
+    <include refid="Base_Column_TechnologyPlan"/>
+    from technology_plan tp left join technology t on tp.technology_id = t.technology_id
+    where tp.technology_plan_id = #{searchValue}
+  </select>
 </mapper>

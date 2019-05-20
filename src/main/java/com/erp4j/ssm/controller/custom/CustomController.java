@@ -43,7 +43,6 @@ public class CustomController {
         return map;
     }
 
-
     // 新增客户信息权限校验
     @ResponseBody
     @RequestMapping("/add_judge")
@@ -123,6 +122,7 @@ public class CustomController {
         return map;
     }
 
+    // 根据客户Id获取客户信息
     @ResponseBody
     @RequestMapping("/get/{customId}")
     public Custom get(@PathVariable("customId") String customId) {
@@ -130,6 +130,7 @@ public class CustomController {
         return custom;
     }
 
+    // 获取所有的客户信息
     @ResponseBody
     @RequestMapping("/get_data")
     public List<Custom> get_data() {
@@ -160,4 +161,5 @@ public class CustomController {
         map.put("rows", list);
         return map;
     }
+
 }

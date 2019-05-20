@@ -7,10 +7,94 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2adc86ee-fd4f-48bf-9420-bbb9c9ebbe5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ERP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/erp4j.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/material/MaterialConsumeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/material/MaterialController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/material/MaterialReceiveController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/technology/TechnologyPlanController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/technology/TechnologyRequirementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/corder/COrderVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/material/MCVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/material/MRVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/material/MVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/material/MaterialConsumeVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/material/MaterialReceiveVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/material/MaterialConsumeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/material/MaterialReceiveService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/material/MaterialService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/material/impl/MaterialConsumeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/material/impl/MaterialReceiveServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/material/impl/MaterialServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/TechnologyPlanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/TechnologyRequirementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/impl/TechnologyPlanServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/impl/TechnologyRequirementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/impl/TechnologyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ERP.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/corder/COrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/corder/COrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/custom/CustomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/custom/CustomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/device/DeviceListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/device/DeviceListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/process/ProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/process/ProcessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/FCountCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/FCountCheckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/MeasureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/MeasureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/PCountCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/PCountCheckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/PMeasureCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/quality/monitor/PMeasureCheckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/technology/TechnologyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/technology/TechnologyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/FinalCountCheckMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/FinalCountCheckMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/FinalMeasuretCheckMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/FinalMeasuretCheckMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/MaterialConsumeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/material/MaterialConsumeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/MaterialMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/material/MaterialMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/MaterialReceiveMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/material/MaterialReceiveMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/ProcessCountCheckMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/ProcessCountCheckMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/ProcessMeasureCheckMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/ProcessMeasureCheckMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/TechnologyPlanMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/technology/TechnologyPlanMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/TechnologyRequirementMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/technology/TechnologyRequirementMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/corder/COrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/mapper/corder/COrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/QueryVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/QueryVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/TechnologyPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/technology/TechnologyPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/TechnologyPlanExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/technology/TechnologyPlanExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/TechnologyRequirement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/technology/TechnologyRequirement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/TechnologyRequirementExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/pojo/technology/TechnologyRequirementExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/corder/COrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/corder/COrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/corder/impl/COrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/corder/impl/COrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/device/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/device/DeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/device/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/device/impl/DeviceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/process/ProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/process/ProcessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/process/impl/ProcessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/process/impl/ProcessServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/FCountCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/FCountCheckService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/MeasureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/MeasureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/PCountCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/PCountCheckService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/PMeasureCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/PMeasureCheckService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/FCountCheckServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/FCountCheckServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/MeasureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/MeasureServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/PCountCheckImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/PCountCheckImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/PMeasureCheckServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/quality/monitor/impl/PMeasureCheckServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/TechnologyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/TechnologyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/technology/impl/TechnologyServiceimpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/FinalCountCheckMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/FinalCountCheckMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/FinalMeasuretCheckMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/FinalMeasuretCheckMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/MaterialConsumeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/material/MaterialConsumeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/MaterialMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/material/MaterialMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/MaterialReceiveMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/material/MaterialReceiveMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/ProcessCountCheckMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/ProcessCountCheckMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/ProcessMeasureCheckMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/ProcessMeasureCheckMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/TechnologyPlanMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/technology/TechnologyPlanMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/TechnologyRequirementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/technology/TechnologyRequirementMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/device/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/device/DeviceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/materialReceive_add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/materialReceive_add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/materialReceive_edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/materialReceive_edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/materialReceive_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/materialReceive_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order_add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order_add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order_edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order_edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/technologyRequirement_add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/technologyRequirement_add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/technologyRequirement_edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/technologyRequirement_edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/笔记/杨盼/note.txt" beforeDir="false" afterPath="$PROJECT_DIR$/笔记/杨盼/note.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +138,91 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/department/DepartmentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="62" column="30" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/department/DepartmentService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="33">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/department/impl/DepartmentServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/department/DepartmentMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-483">
+              <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/application-mvc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/application.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="1" column="58" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/quality/monitor/UnqualifyMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -124,9 +292,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="200" />
+    <option name="x" value="60" />
     <option name="y" value="5" />
-    <option name="width" value="1720" />
+    <option name="width" value="1860" />
     <option name="height" value="1030" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -135,7 +303,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -327,12 +494,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558335394136" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558352306807" />
     <property name="last_opened_file_path" value="D:/WD/13th_JAVA/java_Spring/ERP/codes/druid" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -530,12 +698,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37286000" />
+    <option name="totallyTimeSpent" value="37400000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26675603" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21313673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -552,12 +720,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3299566" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49932975" visible="true" weight="0.5531915" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.85531914" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.87935656" visible="true" weight="0.15460993" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.12064343" side_tool="true" weight="0.15460993" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32907802" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.6461126" weight="0.6042553" />
+      <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" sideWeight="0.6461126" weight="0.6042553" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -601,7 +769,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/quality/monitor/UnqualifyMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="71">
           <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
         </state>
       </provider>
@@ -702,15 +870,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+        <state relative-caret-position="477">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring/application.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1081">
-          <caret line="1" column="58" lean-forward="true" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+        <state relative-caret-position="21">
+          <caret line="1" column="58" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -805,9 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
           <caret line="158" column="5" selection-start-line="158" selection-start-column="5" selection-end-line="158" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,8 +988,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/erp4j/ssm/controller/department/DepartmentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="135">
+          <caret line="62" column="30" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -840,8 +1005,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/department/impl/DepartmentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="-357">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -850,7 +1015,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/erp4j/ssm/service/department/DepartmentService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
+        <state relative-caret-position="33">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
@@ -864,7 +1029,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/erp4j/ssm/mapper/department/DepartmentMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-441">
+        <state relative-caret-position="-483">
           <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
         </state>
       </provider>
