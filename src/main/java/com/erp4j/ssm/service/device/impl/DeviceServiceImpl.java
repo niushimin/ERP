@@ -115,10 +115,6 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceMapper.selectByPrimaryKey(deviceId);
     }
 
-<<<<<<< HEAD
-    @Override
-=======
->>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
     public Device queryDeviceById(String deviceId) {
         return deviceMapper.selectByPrimaryKey(deviceId);
     }
@@ -127,8 +123,5 @@ public class DeviceServiceImpl implements DeviceService {
     public List<Device> queryDevice() {
         return null;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
 }

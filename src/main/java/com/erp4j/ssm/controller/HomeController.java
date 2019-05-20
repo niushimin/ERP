@@ -53,8 +53,6 @@ public class HomeController {
         list.add("product:edit");
         list.add("product:delete");
 
-<<<<<<< HEAD
-=======
         list.add("technology:add");
         list.add("technology:edit");
         list.add("technology:delete");
@@ -62,7 +60,6 @@ public class HomeController {
         list.add("technologyRequirement:add");
         list.add("technologyRequirement:edit");
         list.add("technologyRequirement:delete");
->>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
 
         list.add("technologyPlan:add");
         list.add("technologyPlan:edit");
@@ -72,10 +69,7 @@ public class HomeController {
         list.add("process:edit");
         list.add("process:delete");
         //设备管理
-<<<<<<< HEAD
-=======
 
->>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
         list.add("manufacture:add");
         list.add("manufacture:edit");
         list.add("manufacture:delete");
@@ -84,13 +78,10 @@ public class HomeController {
         list.add("task:edit");
         list.add("task:delete");
 
-<<<<<<< HEAD
-=======
         list.add("department:add");
         list.add("department:edit");
         list.add("department:delete");
 
->>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
         list.add("device:add");
         list.add("device:edit");
         list.add("device:delete");
@@ -114,7 +105,6 @@ public class HomeController {
         list.add("work:add");
         list.add("work:edit");
         list.add("work:delete");
-<<<<<<< HEAD
 
         list.add("material:add");
         list.add("material:edit");
@@ -127,8 +117,6 @@ public class HomeController {
         list.add("materialConsume:add");
         list.add("materialConsume:edit");
         list.add("materialConsume:delete");
-=======
->>>>>>> 57660e6948a20d13f481d8fc0deb94a95d84a205
 
         session.setAttribute("sysPermissionList",list);
         return "home";
