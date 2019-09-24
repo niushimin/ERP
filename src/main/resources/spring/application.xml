@@ -15,7 +15,7 @@
     </context:component-scan>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value="jdbc:mysql://192.168.5.20:3306/erp?serverTimezone=GMT&amp;useSSL=false"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/erp"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <property name="filters" value="stat"/>

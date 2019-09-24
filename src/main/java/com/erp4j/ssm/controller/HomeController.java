@@ -31,7 +31,6 @@ public class HomeController {
     /*登录页面*/
     @RequestMapping("/login")
     public String login(){
-        System.out.println();
         return "login";
     }
     /*密码验证*/
@@ -40,7 +39,7 @@ public class HomeController {
     public HashMap<String,String> ajaxLogin(HttpServletRequest request, SysUser sysUser){
         HttpSession session = request.getSession();
 
-        HashMap<String, String> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>(16);
 
         if(session.getAttribute("activeUser") != null){
             return hashMap;
