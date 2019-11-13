@@ -46,9 +46,9 @@
 		    </div>  
 		</c:if>
 	</c:forEach>
-	
-	<div class="datagrid-btn-separator"></div>  
-	
+
+	<div class="datagrid-btn-separator"></div>
+
 	<div style="float: left;">  
 		<a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="task_reload()">刷新</a>  
 	</div>  
